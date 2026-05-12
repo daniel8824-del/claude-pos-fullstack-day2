@@ -10,7 +10,7 @@
 
 - 학습 만화 8컷 (셰프 Claude 식당 메타포)
 - hyperframes 도입 영상 **3개** (60초 × 3 — ① 하네스 5요소 / ② QMD / ③ LLM 위키)
-- POS 가상 데이터 205건 (SAP IBP 9컬럼, 이상 5건 elif chain)
+- POS 가상 데이터 410건 (SAP IBP 9컬럼, 정상 400 + 이상 10건 — 5종 카테고리 각 2건)
 - 4차시 강의 흐름 (60+90+60+60 = 270분)
 - 하네스 5대 요소 (**CLAUDE.md · MCP · Skills · Hooks · Memory**) — Karpathy/martinfowler/OpenAI Codex 정의 정합
 - 대표 플러그인 3종 (Superpowers · gstack · oh-my-claudecode) · 각 5+ 스킬
