@@ -445,6 +445,7 @@
     <a href="#copilot">Copilot 대응</a>
     <a href="#ch2">2교시</a>
     <a href="#ch3">3교시</a>
+    <a href="#agents">Agents</a>
     <a href="#ch4">4교시</a>
     <a href="#aiops">AI-Ops</a>
     <a href="#ch5">연장</a>
@@ -757,29 +758,40 @@
     <figcaption><strong>만화 ④</strong> | CLAUDE.md = 가게 운영 매뉴얼 (AI에게 회사 룰 가르치기)</figcaption>
   </figure>
 
-  <h3><span class="step-num">2</span>상권 자료 리서치 5종 | 만화 ⑧</h3>
+  <h3><span class="step-num">2</span>외부 리서치 | EXA API 1종 집중 (만화 ⑧)</h3>
 
-  <p>실습은 가상 데이터로 하지만, 실전에선 외부 자료 수집이 풀스택의 진짜 첫 단계. 강사 시연만 보고, 학생 본인 도메인 적용은 차주 과제.</p>
+  <p>실전에선 외부 자료 수집이 풀스택의 진짜 첫 단계입니다. <strong>오늘 강의에선 EXA API 한 가지만 깊이</strong> — AI 의미 검색에 특화된 무료 1000회/월 도구. 강사가 회원가입 → API 키 발급 후 라이브 시연.</p>
 
   <table>
-    <thead><tr><th>도구</th><th>용도</th><th>비용</th><th>강사 사용 빈도</th></tr></thead>
+    <thead><tr><th>항목</th><th>EXA API</th></tr></thead>
     <tbody>
-      <tr><td>Naver 블로그·뉴스 collector</td><td>한국어 상권 정보·트렌드</td><td>무료 (API 키)</td><td>매일</td></tr>
-      <tr><td>Brave Search MCP</td><td>글로벌 웹 검색</td><td>유료 구독 (강사 계정)</td><td>자주</td></tr>
-      <tr><td>firecrawl MCP</td><td>URL 본문 추출 (경쟁사 페이지)</td><td>유료 구독 (강사 계정)</td><td>자주</td></tr>
-      <tr><td>공공 데이터 <code class="inline">data.go.kr</code></td><td>정부 공식 통계·카드 사용 데이터</td><td>무료 (API 키)</td><td>가끔</td></tr>
-      <tr><td><strong>소상공인 상권분석</strong> <code class="inline">sg.sbiz.or.kr</code> ⭐</td><td>실제 상권 거래·인구·경쟁 데이터</td><td>무료</td><td><strong>POS 도메인 핵심</strong></td></tr>
+      <tr><td>역할</td><td>AI 의미 검색 (단순 키워드 매칭이 아닌 의미 기반 — 경쟁사 페이지·트렌드·논문 등)</td></tr>
+      <tr><td>비용</td><td>무료 1000 검색/월 · 가입 후 즉시 API 키 발급</td></tr>
+      <tr><td>회원가입</td><td><a href="https://exa.ai/" target="_blank">exa.ai</a> → 이메일·GitHub 로그인 → Dashboard에서 API 키 복사</td></tr>
+      <tr><td>호출 방법</td><td>별도 .py 스크립트 X — AI 프롬프트 한 줄 또는 PowerShell curl 한 줄</td></tr>
     </tbody>
   </table>
 
-  <div class="reference">
-    <p><strong>도구는 별도 .py 스크립트 X — AI 프롬프트 한 줄</strong>로 호출. 예) "EXA API로 'POS 상권 분석 2026' 검색해서 결과 정리해줘" — Claude Code/Copilot이 알아서 API 호출 + 결과 정리.</p>
-    <p><strong>PowerShell 직접 호출 (curl 한 줄)</strong>:</p>
-    <pre style="background:#1a1a1a;color:#f0f0f0;padding:10px 14px;border-radius:6px;font-size:12.5px;margin-top:6px;">curl -X POST https://api.exa.ai/search `
-  -H "Authorization: Bearer YOUR_API_KEY" `
+  <h4>호출 예시 — 둘 중 편한 방식으로</h4>
+
+  <div class="dual-track">
+    <div class="track instr">
+      <div class="track-h">방법 ① AI 프롬프트 한 줄</div>
+      <pre>EXA API로 "POS 상권 분석 2026"
+검색해서 상위 5건 정리해줘.
+환경변수 EXA_API_KEY 사용.</pre>
+    </div>
+    <div class="track stu">
+      <div class="track-h">방법 ② PowerShell curl 한 줄</div>
+      <pre>curl -X POST https://api.exa.ai/search `
+  -H "Authorization: Bearer YOUR_KEY" `
   -H "Content-Type: application/json" `
   -d '{\"query\":\"POS 상권 분석 2026\"}'</pre>
-    <p>회사 환경에서 EXA·Naver·data.go.kr 같은 외부 API는 별도 .py 스크립트 없이 <strong>AI에게 프롬프트 한 줄 또는 PowerShell curl 한 줄</strong>로 호출 가능합니다.</p>
+    </div>
+  </div>
+
+  <div class="reference">
+    <p><strong>다른 외부 리서치 도구</strong>는 강사 본인 환경에서 운영 중 (Brave Search · firecrawl · 공공 데이터 data.go.kr · 소상공인 상권분석 sg.sbiz.or.kr). 본 강의에서는 EXA 1종에 집중 — 회원가입 부담 최소, 가장 빠른 ROI. 다른 도구 깊이는 Day 4 (MCP·자동화)에서.</p>
   </div>
 
   <figure class="comic">
@@ -1074,6 +1086,105 @@ agentmemory = AI 에이전트의 평생 일기장 (강사 환경 예시)
 
   <div class="reference">
     <p><strong>POS팀 환경별 추천</strong> | 빠르게 시작: <strong>agentmemory (npx 한 줄)</strong> · 비용 0원 유지: agentmemory(LLM OFF) + Kùzu · 사내 RAG 본격: LightRAG/txtai · Oracle 보완: Apache AGE.</p>
+  </div>
+</section>
+
+<!-- §Custom Agent + 서브에이전트 + 팀체제 (강의안 line 814~838 Day 2 본편 누락 보완) -->
+<section id="agents">
+  <span class="section-tag">§ Custom Agent · 서브에이전트 · 팀체제</span>
+  <h2>스킬보다 <span class="accent">더 자율적인 단위</span> — Custom Agent</h2>
+  <p class="lead">
+    SKILL은 "특정 분야 전문 매뉴얼"이고, <strong>Custom Agent는 자기 임무·도구·모델을 가진 독립 일꾼</strong>입니다. 메인 에이전트가 필요할 때 자동으로 위임 → 서브에이전트가 결과 가져옴 → 메인이 정리. 큰 작업을 specialist 여러 명에게 나눠 시키는 게 팀체제.
+  </p>
+
+  <h3><span class="step-num">1</span>핵심 개념 — Custom Agent (.agent.md)</h3>
+  <table class="concept-table">
+    <thead><tr><th>개념</th><th>정의</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Custom Agent<span class="term">.agent.md</span></td>
+        <td>독립 임무·도구·모델을 가진 에이전트. 메인이 필요할 때 자동 위임 (intent matching).</td>
+      </tr>
+      <tr>
+        <td>서브에이전트<span class="term">sub-agent</span></td>
+        <td>메인 에이전트의 위임 호출로만 동작. read-only / 코딩 / 리뷰 등 좁은 역할.</td>
+      </tr>
+      <tr>
+        <td>팀체제<span class="term">Multi-agent orchestration</span></td>
+        <td>Coordinator + Planner + Implementer + Reviewer 같은 specialist 조합. 큰 작업 분담.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3><span class="step-num">2</span>예시 — POS 거래 검증 에이전트</h3>
+  <p>강사 본인이 운영 중인 POS 거래 검증 에이전트 정의 (Day 1 4차시 라이트닝에서 미리 본 것):</p>
+
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:18px 22px;border-radius:8px;font-size:13px;">
+---
+name: pos-tx-verifier
+description: POS 거래 로그 이상 패턴 자동 탐지. 사용자가 "거래 검증", "이상 패턴", "결제 이상" 언급 시 자동 발동.
+model: sonnet
+tools: Read, Bash, Grep
+---
+
+# POS Transaction Verifier
+
+## 임무
+Oracle DB 거래 로그 → 이상 패턴 3종 탐지:
+- 동일 단말 1초 내 중복 결제
+- 거래 취소 누락 (chargeback)
+- 야간 시간대 비정상 금액 (1AM~5AM, 평균 5배 이상)
+
+## 보고 형식
+- 발견 건수
+- 케이스별 timestamp · terminal_id
+- 후속 조치 권장 사항</pre>
+
+  <h3><span class="step-num">3</span>저장 위치 — 강사(Claude Code) vs 수강생(Copilot)</h3>
+
+  <div class="dual-track">
+    <div class="track instr">
+      <div class="track-h">강사 (Claude Code)</div>
+      <pre>프로젝트: .claude/agents/{name}.agent.md
+글로벌:   ~/.claude/agents/{name}.agent.md
+
+# 호출 방식
+- 메인이 자동 위임 (intent matching)
+- 또는 명시: "pos-tx-verifier로
+  거래 로그 검증해줘"</pre>
+    </div>
+    <div class="track stu">
+      <div class="track-h">수강생 (GitHub Copilot)</div>
+      <pre>프로젝트: agents/{name}.agent.md
+또는:     .github/agents/{name}.agent.md
+
+# 호출 방식
+- IDE Settings → Chat → "Enable Subagent"
+- Copilot CLI: /fleet (백그라운드 서브)
+- Mission Control: @docs-agent · @test-agent</pre>
+    </div>
+  </div>
+
+  <h3><span class="step-num">4</span>팀체제 — Coordinator + Specialists</h3>
+  <p>큰 작업을 한 명에게 시키지 말고 specialist 여러 명에게 나눠 위임:</p>
+
+  <table>
+    <thead><tr><th>역할</th><th>임무</th><th>강사 (OMC)</th><th>수강생 (Copilot)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Coordinator</strong></td><td>전체 워크플로우 지휘</td><td>prometheus (planning)</td><td>Mission Control 메인</td></tr>
+      <tr><td><strong>Planner</strong></td><td>설계 계획 작성</td><td>metis (pre-planning)</td><td>@planner.agent.md</td></tr>
+      <tr><td><strong>Implementer</strong></td><td>실제 코딩</td><td>executor</td><td>@implementer.agent.md</td></tr>
+      <tr><td><strong>Reviewer</strong></td><td>코드 리뷰·QA</td><td>code-reviewer · momus</td><td>@reviewer.agent.md</td></tr>
+      <tr><td><strong>Security</strong></td><td>보안 검수</td><td>security-reviewer</td><td>@security.agent.md</td></tr>
+    </tbody>
+  </table>
+
+  <div class="field-case">
+    <strong>POS 적용 예시</strong>: "야간 결제 이상 분석 + 자동 차단 룰 PR" 같은 큰 작업을 한 에이전트에게 시키면 빠짐·실수 발생. <strong>Coordinator가 5명 specialist에 분담</strong> → planner(룰 설계) · implementer(코드) · reviewer(테스트) · security(취약점) · documenter(PR 본문). 강사 본인 6개월 운영 — 큰 작업 ROI 3~5배.
+  </div>
+
+  <div class="reference">
+    <p><strong>공식 출처</strong> | <a href="https://docs.github.com/en/copilot/how-tos/copilot-sdk/use-copilot-sdk/custom-agents" target="_blank">GitHub Copilot Custom Agents & Sub-agent Orchestration</a> · <a href="https://github.blog/ai-and-ml/github-copilot/how-to-orchestrate-agents-using-mission-control/" target="_blank">Mission Control 멀티 에이전트 오케스트레이션</a> · <a href="https://github.com/features/copilot/cli" target="_blank">Copilot CLI /fleet</a> · <a href="https://github.com/github/awesome-copilot/blob/main/AGENTS.md" target="_blank">awesome-copilot agents/ 카탈로그</a></p>
   </div>
 </section>
 
