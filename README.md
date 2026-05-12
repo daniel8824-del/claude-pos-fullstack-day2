@@ -8,12 +8,15 @@
 
 ## 본 페이지의 자료
 
-- 학습 만화 8컷 (Gemini multimodal + reference 기반)
-- hyperframes 도입 영상 2개 (60초 × 2)
-- POS 가상 데이터 205건 + Phase 0 starter
-- 5차시 → 8차시 + 연장 강의 흐름
-- 풀스택 5단계 워크플로우 표
-- 학생 다운로드 실습 7종
+- 학습 만화 8컷 (셰프 Claude 식당 메타포)
+- hyperframes 도입 영상 1개 (60초, 5차시) — QMD는 강사 라이브 시연
+- POS 가상 데이터 205건 (SAP IBP 9컬럼, 이상 5종 의도)
+- 5차시 → 8차시 + 연장 강의 흐름 (4.5시간)
+- 풀스택 5단계 워크플로우 표 + 하네스 5대 요소
+- §Custom Agent · 서브에이전트 · 팀체제 (Day 1 4차시 미리보기의 본편)
+- §Copilot 대응 매핑 (강사 Claude Code 시연 / 수강생 본인 Copilot 적용)
+- §AI-Ops 전환 5단계 로드맵 (회사 추가 요청 반영 부록)
+- 학생 다운로드: pos_data.csv 1개 (UTF-8 BOM)
 
 ## 강의 정보
 

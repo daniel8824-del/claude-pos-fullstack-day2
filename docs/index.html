@@ -413,7 +413,7 @@
   table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
   table th, table td {
     text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border);
-    vertical-align: top;
+    vertical-align: top; word-break: break-word; overflow-wrap: anywhere;
   }
   table th {
     font-weight: 800; font-size: 12px; text-transform: uppercase;
@@ -422,6 +422,16 @@
   code.inline {
     background: var(--code-bg); padding: 1px 6px; border-radius: 2px;
     font-size: 13px; border: 1px solid var(--border);
+    word-break: break-all;
+  }
+  pre { overflow-x: auto; max-width: 100%; }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    table { font-size: 13px; display: block; overflow-x: auto; white-space: nowrap; }
+    section h2 { font-size: 22px; }
+    .container { padding: 0 16px; }
+    pre { font-size: 12px; }
+    figure.comic img { border-radius: 8px; }
   }
 
   footer {
@@ -686,8 +696,8 @@
         <td>Copilot 전용 — 경로별(path-specific) 코딩 룰.</td>
       </tr>
       <tr>
-        <td><code class="inline">.claude/agents/{name}.agent.md</code></td>
-        <td><code class="inline">agents/{name}.agent.md</code></td>
+        <td><code class="inline">.claude/agents/{name}.md</code></td>
+        <td><code class="inline">.github/agents/{name}.md</code> (공식 권장)</td>
         <td>Custom Agent — 양쪽 동일 명세.</td>
       </tr>
       <tr>
@@ -859,14 +869,15 @@
 
   <p>건수: <strong>205건 (정상 200 + 이상 5)</strong>. 5주 분량 (202618 ~ 202622) · 화장품 6 SKU · 8개 점포 · 4개 고객사. UTF-8 BOM 인코딩 (Excel 한글 호환).</p>
 
-  <p>이상 5건 — Phase 2 분석에서 발견해야 할 케이스:</p>
+  <p>이상 5건 — Phase 2 분석에서 발견해야 할 5종 카테고리 (각 정확히 1건씩 의도). 정상 200건은 모든 카테고리 안 걸리도록 데이터 정합 완료:</p>
   <ol style="padding-left:22px;font-size:14.5px;">
-    <li><strong>STOCK 음수</strong> — 입고 누락 또는 마이너스 정합 실패 (<code class="inline">CUSTSTORESTOCKQTY &lt; 0</code>)</li>
-    <li><strong>SLS=0인데 PROM&gt;0</strong> — 정기 판매 0인데 판촉 판매만 발생 (불가능 패턴)</li>
-    <li><strong>재고 결품 직전</strong> — SLS &gt; STOCK (판매가 재고 초과)</li>
-    <li><strong>DC 판매 0인데 점포 판매 큼</strong> — 배송 누락 또는 DC 우회 의심</li>
-    <li><strong>PROM &gt; SLS</strong> — 판촉 수량이 전체 수량보다 큼 (정합 위반)</li>
+    <li><strong>STOCK 음수</strong> — <code class="inline">STOCK &lt; 0</code> (입고 누락 또는 마이너스 정합 실패)</li>
+    <li><strong>SLS=0인데 PROM&gt;0</strong> — <code class="inline">SLS == 0 AND PROM &gt; 0</code> (정기 판매 0인데 판촉만 발생, 불가능 패턴)</li>
+    <li><strong>재고 결품 직전</strong> — <code class="inline">SLS &gt; STOCK AND STOCK &gt;= 0</code> (판매가 재고 초과 — ①과 중복 방지)</li>
+    <li><strong>DC 판매 0인데 점포 판매 큼</strong> — <code class="inline">DC_SLS == 0</code> (배송 누락 또는 DC 우회 의심)</li>
+    <li><strong>PROM &gt; SLS</strong> — <code class="inline">PROM &gt; SLS AND SLS &gt; 0</code> (판촉 &gt; 전체 — ②와 중복 방지)</li>
   </ol>
+  <p style="font-size:13px;color:var(--muted);"><strong>검사 순서 주의</strong>: elif chain — 한 row가 여러 카테고리 동시 매칭되지 않도록 (위 카테고리 1~5 순서대로 검사하고 매칭되면 다음 카테고리 건너뜀).</p>
 
   <div class="reference">
     <p><strong>출처</strong> | SAP IBP 고객 점포·DC 데이터 주요 지표 (<a href="https://help.sap.com/docs/SAP_INTEGRATED_BUSINESS_PLANNING/feae3cea3cc549aaa9d9de7d363a83e6/eeed2f56ab1cf81ae10000000a441470.html?locale=ko-KR" target="_blank">SAP Help</a>). POS·CDP·SCM 도메인 표준 키 지표.</p>
@@ -938,15 +949,9 @@ Make it work with file:// (local).</pre>
     <div class="goal-text">SKILL.md 패턴 작성 → <code>/codex</code> 검수 → <code>/simplify</code> 리팩 → QMD/agentmemory <strong>강사 5분 시연 (학생은 보기만, 본격 설치는 차주)</strong></div>
   </div>
 
-  <h3><span class="step-num">1</span>도입 영상 (60초) | QMD 1분 사용법</h3>
-  <div class="video-frame">
-    <video controls preload="metadata">
-      <source src="videos/video2-qmd-1min.mp4" type="video/mp4">브라우저가 영상을 지원하지 않습니다.
-    </video>
-    <div class="video-meta">
-      <span class="label">영상 · 60초</span>
-      <strong>사내 자료 988 파일 1초 검색 — 토큰비 0</strong>
-    </div>
+  <h3><span class="step-num">1</span>도입 — QMD 1분 라이브 시연 (강사)</h3>
+  <div class="reference">
+    <p>강사가 본인 vault에서 <code class="inline">qmd search "Hermes agent" -n 5</code> 같은 명령으로 사내 자료 988 파일을 1초 내 검색하는 라이브 시연. 영상 본격 제작은 미진행 — 라이브가 베테랑 청중에 더 깊이 와닿음.</p>
   </div>
 
   <h3><span class="step-num">2</span>핵심 개념 | SKILL.md</h3>
@@ -1179,8 +1184,8 @@ Oracle DB 거래 로그 → 이상 패턴 3종 탐지:
   <div class="dual-track">
     <div class="track instr">
       <div class="track-h">강사 (Claude Code)</div>
-      <pre>프로젝트: .claude/agents/{name}.agent.md
-글로벌:   ~/.claude/agents/{name}.agent.md
+      <pre>프로젝트: .claude/agents/{name}.md
+글로벌:   ~/.claude/agents/{name}.md
 
 # 호출 방식
 - 메인이 자동 위임 (intent matching)
@@ -1189,8 +1194,8 @@ Oracle DB 거래 로그 → 이상 패턴 3종 탐지:
     </div>
     <div class="track stu">
       <div class="track-h">수강생 (GitHub Copilot)</div>
-      <pre>프로젝트: agents/{name}.agent.md
-또는:     .github/agents/{name}.agent.md
+      <pre>공식 권장: .github/agents/{name}.md
+(repo level custom agent)
 
 # 호출 방식
 - IDE Settings → Chat → "Enable Subagent"
@@ -1485,7 +1490,7 @@ Oracle DB 거래 로그 → 이상 패턴 3종 탐지:
   <div class="container">
     <p>
       <strong>Day 2 교재 | 하네스 5대 요소 + 풀스택 5단계</strong> · 2026-05-13<br>
-      만화 8컷 + 영상 2개 + 실습 6종 · 270분 (연장 30분 포함).
+      만화 8컷 + 영상 1개 + CSV 1개 · 270분 (연장 30분 포함).
     </p>
     <p class="muted">
       Repo: <a href="https://github.com/daniel8824-del/claude-pos-fullstack-day2" target="_blank">github.com/daniel8824-del/claude-pos-fullstack-day2</a> ·
