@@ -410,17 +410,14 @@
     .instructor-cases { grid-template-columns: 1fr; }
   }
 
-  /* 만화 4장 갤러리 (5대 요소) */
+  /* 만화 4장 갤러리 (5대 요소) — 세로 1열 풀 너비 */
   .comic-gallery {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 16px; margin: 16px 0 24px;
+    display: flex; flex-direction: column;
+    gap: 22px; margin: 18px 0 26px;
   }
   .comic-gallery figure.comic { margin: 0; }
   .comic-gallery figure.comic figcaption {
-    text-align: center; margin-top: 8px;
-  }
-  @media (max-width: 720px) {
-    .comic-gallery { grid-template-columns: 1fr; }
+    text-align: left; margin-top: 10px;
   }
 
   /* 개념 박스 4개 (이미지 정합) */
@@ -524,7 +521,7 @@
     <a href="#ch2">6차시</a>
     <a href="#ch3">7차시</a>
     <a href="#ch4">8차시</a>
-    <a href="#copilot">Copilot</a>
+    <a href="#copilot">용어비교</a>
     <a href="#dl">자료</a>
     <a href="https://daniel8824-del.github.io/claude-harness-catalog/" target="_blank">Day 1</a>
   </div>
@@ -538,7 +535,7 @@
       CLAUDE.md · MCP · Skills · Hooks · Memory — 5요소를 갖춘 환경에서 Superpowers 스킬로 POS 분석 앱을 PLAN → DEVELOP → VERIFY → REFACTOR → SECURITY 한 사이클 완주.
     </p>
     <p class="lead" style="font-size:15px;background:var(--accent-soft);padding:12px 16px;border-radius:8px;margin-top:14px;">
-      <strong>진행 방식</strong> | 강사는 <strong>Claude Code</strong>로 시연합니다. 수강생은 본인 <strong>GitHub Copilot</strong>(VS Code 확장 또는 CLI) 환경에서 같은 흐름을 적용합니다. <strong>5요소는 양쪽 대응되지만 파일 경로·명령 문법은 도구별로 다릅니다.</strong> SKILL.md는 GitHub Agent Skills 표준이라 형식 자체는 동일 — 자세한 매핑은 <a href="#copilot">§ Copilot 대응</a>.
+      Claude Code와 GitHub Copilot은 같은 <strong>5요소</strong>를 공유합니다. 파일 경로·명령 문법은 도구별로 다르지만, <code class="inline">SKILL.md</code> 형식은 <strong>GitHub Agent Skills 표준</strong>이라 양쪽 동일 — 자세한 매핑은 <a href="#copilot">§ 용어 비교표</a>.
     </p>
     <div class="meta-row">
       <span>📅 2026-05-13 (수)</span>
@@ -869,14 +866,14 @@ verification-before-completion
 
 <!-- §Copilot 대응 (1교시 뒤로 이동) -->
 <section id="copilot">
-  <span class="section-tag">§ Copilot 대응 매핑</span>
-  <h2>수강생 Copilot 환경에 <span class="accent">그대로 적용</span></h2>
+  <span class="section-tag">§ 용어 비교표</span>
+  <h2>Claude Code · <span class="accent">GitHub Copilot</span> 용어 비교</h2>
   <p class="lead">
-    강사는 Claude Code로 시연합니다. 수강생은 본인 GitHub Copilot 환경에서 같은 흐름을 따라합니다. 파일명·SKILL.md 형식·hook 이벤트명까지 양쪽 동일(GitHub Agent Skills 표준).
+    같은 개념을 두 도구에서 어떻게 부르는지. 파일명·SKILL.md 형식·hook 이벤트명은 양쪽 동일(GitHub Agent Skills 표준).
   </p>
 
   <table>
-    <thead><tr><th>강사 (Claude Code)</th><th>수강생 (GitHub Copilot)</th><th>비고</th></tr></thead>
+    <thead><tr><th>Claude Code</th><th>GitHub Copilot</th><th>비고</th></tr></thead>
     <tbody>
       <tr>
         <td><code class="inline">CLAUDE.md</code> (repo root)</td>
