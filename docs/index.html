@@ -1050,6 +1050,12 @@ python pos_analyzer.py            # 실제 실행
   <h3><span class="step-num">6</span>Phase 4 — REFACTOR (20분) | requesting-code-review + 외부 검수 팁</h3>
   <p>"이 코드 독립 컨텍스트에서 리뷰해줘" → <code class="inline">requesting-code-review</code> 활성화. 메인 세션과 분리된 코드 리뷰 에이전트가 자동 호출 — 작업한 사람이 자기 자신을 리뷰하는 함정 회피.</p>
 
+  <div class="reference">
+    <p><strong>Codex 네이티브 설치</strong> (Windows · 선택)</p>
+    <pre style="background:#1a1a1a;color:#f0f0f0;padding:12px 16px;border-radius:6px;font-size:13px;margin-top:8px;">winget install --id OpenAI.Codex -e</pre>
+    <p style="font-size:13px;color:#555;margin-top:8px;">설치 후 <code class="inline">codex --version</code> 확인. OpenAI 계정 로그인 한 번이면 Claude Code 옆에서 GPT 모델 검수 호출 가능.</p>
+  </div>
+
   <figure class="comic">
     <img src="images/comics/06-codex-review.png" alt="코덱스 검수">
     <figcaption><strong>만화 ⑥</strong> | 외부 검수자 시선 — 옆 식당 셰프가 다른 관점으로 본다</figcaption>
