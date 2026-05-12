@@ -143,16 +143,17 @@
 
   figure.comic { margin: 24px 0; padding: 0; }
   figure.comic img {
-    width: 100%; max-width: 700px; display: block;
+    width: 100%; max-width: 100%; display: block;
+    height: auto;
     border-radius: 12px;
     border: 1px solid var(--border);
     box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    margin: 0 auto;
+    margin: 0;
   }
   figure.comic figcaption {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12.5px; color: var(--muted);
-    text-align: center; margin-top: 10px;
+    text-align: left; margin-top: 10px;
     letter-spacing: 0.04em;
   }
   figure.comic figcaption strong { color: var(--accent-dark); }
