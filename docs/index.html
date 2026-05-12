@@ -1186,6 +1186,18 @@ Oracle DB 거래 로그 → 이상 패턴 3종 탐지:
   <div class="reference">
     <p><strong>공식 출처</strong> | <a href="https://docs.github.com/en/copilot/how-tos/copilot-sdk/use-copilot-sdk/custom-agents" target="_blank">GitHub Copilot Custom Agents & Sub-agent Orchestration</a> · <a href="https://github.blog/ai-and-ml/github-copilot/how-to-orchestrate-agents-using-mission-control/" target="_blank">Mission Control 멀티 에이전트 오케스트레이션</a> · <a href="https://github.com/features/copilot/cli" target="_blank">Copilot CLI /fleet</a> · <a href="https://github.com/github/awesome-copilot/blob/main/AGENTS.md" target="_blank">awesome-copilot agents/ 카탈로그</a></p>
   </div>
+
+  <h3><span class="step-num">5</span>회사 적용 | 스킬·에이전트 공유</h3>
+  <p>한 명이 만든 스킬·에이전트를 회사 전체와 공유하는 표준 방법:</p>
+  <ul style="padding-left:22px;font-size:15px;">
+    <li><strong>사내 Git Private repo</strong> — <code class="inline">github.com/{회사}/copilot-skills</code> 신규 생성. awesome-copilot 폴더 구조 (skills/ · agents/ · hooks/ · AGENTS.md) 그대로 따라가면 Copilot이 자동 인식.</li>
+    <li><strong>직원 동기화 한 줄</strong> — <code class="inline">copilot plugin marketplace add {회사}/copilot-skills</code></li>
+    <li><strong>변경 워크플로우</strong> — PR 머지 → 전 직원 자동 업데이트. 룰 변경 이력은 git log + Confluence(설명용) 페어로.</li>
+    <li><strong>권한·운영</strong> — GitHub Org Team 권한 분배. 회사 IT 협의 영역.</li>
+  </ul>
+  <div class="reference">
+    <p>공식 <code class="inline">github/awesome-copilot</code> 마켓플레이스는 public 오픈소스. 회사 사내용은 별도 private repo 신규 (fork 아님). 외부 노출 0.</p>
+  </div>
 </section>
 
 <!-- §4 8차시 -->
