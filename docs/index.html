@@ -707,8 +707,8 @@
       </tr>
       <tr>
         <td>QMD · agentmemory</td>
-        <td>npx 설치는 도구 무관. <strong>강의 시간엔 강사 시연만</strong>, 학생 본격 설치는 차주 과제.</td>
-        <td>agentmemory는 12 hooks + 4 skills + 51 MCP tools가 한 번에 등록되어 학생 환경 부담 — 차주 본인 PC에서 천천히 설치 권장.</td>
+        <td><strong>agentmemory는 Copilot CLI 직접 지원 X</strong> (2026-05). REST API 우회 필요</td>
+        <td>강사 시연(Claude Code) → 학생 차주 본인 PC에서 Claude Code 설치 후 시도, 또는 Copilot에 REST API 우회 (curl POST <code class="inline">/agentmemory/observe</code>). 12 hooks · 4-tier 메모리 · 51 MCP tools가 한 번에 등록되니 환경 부담 있음.</td>
       </tr>
       <tr>
         <td><code class="inline">/codex</code> · <code class="inline">/security-review</code> · <code class="inline">/simplify</code></td>
@@ -1038,18 +1038,47 @@ Make it work with file:// (local).</pre>
     </tbody>
   </table>
 
-  <h4>agentmemory 핵심 (eli5)</h4>
-  <pre style="background:#1a1a1a;color:#f0f0f0;padding:12px 14px;border-radius:6px;font-size:13px;">
-agentmemory = AI 에이전트의 평생 일기장 (강사 환경 예시)
+  <h4>agentmemory 작동 방식 (본격)</h4>
 
-기본 구조:
-  • 12개 훅이 자동으로 작업 기록 저장
-  • 4-tier 메모리 (작업 → 에피소드 → 의미 → 절차)
-  • BM25 + 벡터 + 그래프 RRF 융합 검색
-  • 51 MCP tools 자동 등록
+  <p><strong>4-tier 메모리 — 인간 뇌 처리 영감 (Ebbinghaus 망각 곡선 적용)</strong>:</p>
+  <table>
+    <thead><tr><th>Tier</th><th>의미</th><th>예시</th></tr></thead>
+    <tbody>
+      <tr><td><strong>① Working</strong></td><td>현재 작업 (raw observations)</td><td>"방금 starter.html 수정 중"</td></tr>
+      <tr><td><strong>② Episodic</strong></td><td>세션 일화 (compressed summaries)</td><td>"어제 POS Phase 1 데이터 로더 작성"</td></tr>
+      <tr><td><strong>③ Semantic</strong></td><td>의미적 사실·패턴</td><td>"POS CSV는 항상 UTF-8 BOM"</td></tr>
+      <tr><td><strong>④ Procedural</strong></td><td>워크플로우·결정 패턴</td><td>"디버깅 4단계: 증상→가설→검증→수정"</td></tr>
+    </tbody>
+  </table>
+  <p>자주 호출되는 메모리는 강해지고, 오래 안 쓰면 자동 제거(decay).</p>
 
-비용: 로컬 임베딩만 사용 → 강사 환경에서 0원
-주의: 학생 PC에 한꺼번에 51 tools 등록 시 컨텍스트·시작 시간 부담</pre>
+  <p><strong>12 hooks — 자동 캡처 (제로 수동)</strong>:</p>
+  <ul style="padding-left:22px;font-size:14.5px;">
+    <li><code class="inline">SessionStart</code> · <code class="inline">SessionEnd</code> · <code class="inline">Stop</code> — 세션 시작/종료</li>
+    <li><code class="inline">UserPromptSubmit</code> — 프라이버시 필터 통과한 프롬프트</li>
+    <li><code class="inline">PreToolUse</code> · <code class="inline">PostToolUse</code> · <code class="inline">PostToolUseFailure</code> — 도구 호출 전후·실패</li>
+    <li><code class="inline">PreCompact</code> — 컨텍스트 압축 직전 재주입</li>
+    <li><code class="inline">SubagentStart</code> · <code class="inline">SubagentStop</code> — 서브에이전트 라이프사이클</li>
+  </ul>
+
+  <p><strong>Triple-stream 검색 — Reciprocal Rank Fusion (k=60)</strong>:</p>
+  <table>
+    <thead><tr><th>스트림</th><th>방식</th></tr></thead>
+    <tbody>
+      <tr><td>BM25</td><td>Stemmed 키워드 매칭 + synonym expansion</td></tr>
+      <tr><td>Vector</td><td>Cosine similarity (로컬 <code class="inline">all-MiniLM-L6-v2</code> 또는 OpenAI/Gemini/Cohere 등)</td></tr>
+      <tr><td>Graph</td><td>지식 그래프 traversal (엔티티 매칭)</td></tr>
+    </tbody>
+  </table>
+  <p>세션별 최대 3건 다양화. <strong>95.2% R@5 (LongMemEval-S 벤치)</strong>.</p>
+
+  <p><strong>MCP tools</strong>: 기본 8개 core (memory_recall · memory_smart_search · memory_save · memory_compress_file 등) + <code class="inline">AGENTMEMORY_TOOLS=all</code>로 51개 전체 (governance · snapshots · workflows · team · graph).</p>
+
+  <p><strong>저장</strong>: SQLite (외부 의존성 0). <strong>임베딩</strong>: 로컬 무료 또는 클라우드 5종 선택.</p>
+
+  <div class="reference">
+    <p><strong>⚠ Copilot CLI 직접 지원 X</strong> (2026-05 기준). 공식 지원: Claude Code · Cursor · Gemini CLI · Codex CLI · Hermes · OpenClaw 등. <strong>Copilot에서 쓰려면 REST API 우회</strong> — <code class="inline">/agentmemory/observe</code> 엔드포인트로 직접 호출, 또는 Copilot hook에서 curl로 POST. 강사 시연은 Claude Code 환경.</p>
+  </div>
 
   <h4>강사 라이브 화면 (학생 보기만)</h4>
   <pre style="background:#1a1a1a;color:#f0f0f0;padding:12px 14px;border-radius:6px;font-size:13px;">
