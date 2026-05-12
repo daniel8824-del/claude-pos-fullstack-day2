@@ -1333,9 +1333,22 @@ Oracle DB 거래 로그 → 이상 패턴 3종 탐지:
 
   <p><code class="inline">/security-review</code>는 Anthropic 공식 슬래시 (2025-08~). Copilot 환경에서는 인라인 프롬프트 또는 awesome-copilot 동등 스킬로 대체.</p>
 
-  <h3><span class="step-num">6</span>실습 Phase 5 | GitHub Pages 배포</h3>
+  <h3><span class="step-num">6</span>실습 Phase 5 | 배포 (선택 — 로컬 HTML로 충분)</h3>
 
-  <p>GitHub Pages = 깃허브의 무료 정적 웹 호스팅. 정적 HTML/CSS/JS 그대로 라이브.</p>
+  <p>Phase 5 결과물은 <strong>로컬 정적 HTML로 충분합니다</strong>. 회사 환경에선 외부 공개 부담 + 보안 정책상 GitHub public Pages 비추천. 강의에선 <strong>강사 시연만</strong>, 수강생 본인 환경에선 회사 정책에 따라:</p>
+
+  <table>
+    <thead><tr><th>옵션</th><th>대상</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>로컬 정적 HTML</strong> (기본)</td><td>본인 PC에서 <code class="inline">file://</code> 열기</td><td>가장 안전. 회사 정책 무관.</td></tr>
+      <tr><td>사내 Git Private repo</td><td>회사 GitHub Org private + 사내 호스팅</td><td>회사 IT 정책 따라</td></tr>
+      <tr><td>GitHub Pages (public)</td><td>개인 학습용 — 가상 데이터만</td><td>회사 데이터 X</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:14px;"><strong>회사 데이터 주의</strong>: 실 매장 매출·고객 정보는 절대 GitHub public Pages 올리지 않기. 가상 데이터(오늘 실습용 pos_data.csv)만 안전. 회사 운영 분석은 <strong>사내 git private + 사내 호스팅</strong>으로.</p>
+
+  <p>아래는 강사 시연 (가상 데이터 사용 시):</p>
 
   <ol class="steps">
     <li>
