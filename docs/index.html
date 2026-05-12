@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day 2 — 풀스택 5단계 + POS 상권분석</title>
-<meta name="description" content="Day 2 강의 자료 — 만화 8컷 + hyperframes 영상 2개 + POS 가상 데이터 205건 + 풀스택 5단계 실습">
+<title>Day 2 교재 — POS 풀스택 같이 만들기</title>
+<meta name="description" content="Day 2 수업 교재 — 5시간 동안 같이 따라하는 단계별 가이드. 만화 8컷 + 영상 1개 + 실습 7종.">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -20,6 +20,7 @@
     --highlight: #fff8d4;
     --red: #c92a2a;
     --green: #2d6a4f;
+    --warm-bg: #fff9f3;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -27,11 +28,12 @@
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg); color: var(--fg);
     margin: 0; padding: 0;
-    line-height: 1.65; font-size: 16px;
+    line-height: 1.7; font-size: 17px;
   }
   code, pre { font-family: 'JetBrains Mono', 'Consolas', monospace; }
-  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
 
+  /* Nav */
   nav.topbar {
     border-bottom: 1px solid var(--border);
     padding: 14px 0; font-size: 13px;
@@ -39,205 +41,301 @@
     background: white; position: sticky; top: 0; z-index: 100;
   }
   nav.topbar .container {
-    display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: center;
-    max-width: 1320px; font-size: 12.5px;
+    display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center;
+    font-size: 12.5px;
   }
   nav.topbar a { color: var(--accent-dark); text-decoration: none; }
   nav.topbar a:hover { text-decoration: underline; }
-  nav.topbar .brand { font-weight: 700; color: var(--fg); margin-right: 10px; }
+  nav.topbar .brand { font-weight: 700; color: var(--fg); margin-right: 12px; }
 
   /* Hero */
-  .hero { padding: 60px 0 40px; border-bottom: 1px solid var(--border); }
+  .hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); text-align: left; }
   .hero .badge {
-    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    display: inline-block; padding: 5px 14px; border-radius: 20px;
     background: var(--accent-soft); color: var(--accent-dark);
     font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
     letter-spacing: 0.06em; margin-bottom: 14px;
   }
   .hero h1 {
-    font-size: 44px; font-weight: 800; margin: 0 0 12px; letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-size: 44px; font-weight: 800; margin: 0 0 14px;
+    letter-spacing: -0.02em; line-height: 1.15;
   }
   .hero h1 .accent { color: var(--accent-dark); }
-  .hero .subtitle { font-size: 18px; color: var(--muted); margin: 0 0 16px; }
-  .hero .meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
-  .hero .meta span { margin-right: 14px; }
-  .hero .hero-stats {
-    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 24px;
+  .hero .lead {
+    font-size: 20px; color: var(--fg); margin: 0 0 12px; line-height: 1.6;
   }
-  .hero-stat {
-    background: var(--code-bg);
-    padding: 12px 20px; border-radius: 12px;
-    border-bottom: 4px solid var(--accent);
-    min-width: 180px;
+  .hero .meta-row {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted);
+    margin-top: 18px;
   }
-  .hero-stat .val { font-size: 24px; font-weight: 800; color: var(--fg); line-height: 1; }
-  .hero-stat .lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .hero .meta-row span { margin-right: 16px; }
 
-  section { padding: 48px 0; border-bottom: 1px solid var(--border); }
-  section h2 { font-size: 26px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.01em; }
-  section .section-num {
-    font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    color: var(--accent-dark); text-transform: uppercase;
-    letter-spacing: 0.1em; display: block; margin-bottom: 6px;
+  /* Sections */
+  section { padding: 56px 0 48px; border-bottom: 1px solid var(--border); }
+  section h2 {
+    font-size: 32px; font-weight: 800; margin: 0 0 6px;
+    letter-spacing: -0.01em; line-height: 1.2;
   }
-  section .section-lead { font-size: 15px; color: var(--muted); margin: 0 0 24px; }
-  section h3 { font-size: 17px; margin-top: 28px; margin-bottom: 12px; font-weight: 700; }
+  section h2 .accent { color: var(--accent-dark); }
+  section .lead {
+    font-size: 18px; color: var(--muted); margin: 0 0 28px; line-height: 1.6;
+  }
+  section .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--accent-dark);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    display: inline-block; margin-bottom: 10px;
+    padding: 4px 10px; background: var(--accent-soft); border-radius: 4px;
+  }
+  section h3 {
+    font-size: 22px; font-weight: 800; margin: 36px 0 12px;
+    letter-spacing: -0.01em; color: var(--fg);
+  }
+  section h3 .step-num {
+    display: inline-block;
+    width: 36px; height: 36px; line-height: 36px;
+    text-align: center; border-radius: 50%;
+    background: var(--accent-dark); color: white;
+    font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 800;
+    margin-right: 12px;
+  }
+  section h4 { font-size: 18px; font-weight: 700; margin: 22px 0 8px; }
+  section p { margin: 10px 0 16px; }
 
-  /* Video gallery */
-  .video-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 24px; margin-top: 16px;
+  /* Goal card */
+  .goal {
+    background: var(--accent-soft);
+    border-left: 5px solid var(--accent-dark);
+    padding: 18px 22px; border-radius: 8px;
+    margin: 16px 0 28px;
   }
-  .video-card {
-    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-    background: white;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  .goal .goal-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--accent-dark); font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 4px;
   }
-  .video-card video {
+  .goal .goal-text {
+    font-size: 18px; font-weight: 700; color: var(--fg);
+  }
+  .goal .goal-text strong { color: var(--accent-dark); }
+
+  /* Analogy box (비유 박스) */
+  .analogy {
+    background: var(--warm-bg);
+    border: 2px dashed #d4a373;
+    padding: 22px 26px; border-radius: 12px;
+    margin: 18px 0; font-size: 17px;
+  }
+  .analogy::before {
+    content: "🍳 이렇게 비유해 볼게요";
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 800; color: #b87333;
+    letter-spacing: 0.06em; margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .analogy strong { color: #b87333; }
+
+  /* Comic inline */
+  figure.comic {
+    margin: 24px 0; padding: 0;
+  }
+  figure.comic img {
+    width: 100%; max-width: 700px; display: block;
+    border-radius: 16px;
+    border: 12px solid var(--accent-soft);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+    margin: 0 auto;
+  }
+  figure.comic figcaption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--muted);
+    text-align: center; margin-top: 10px;
+    letter-spacing: 0.04em;
+  }
+  figure.comic figcaption strong { color: var(--accent-dark); }
+
+  /* Video card */
+  .video-frame {
+    margin: 24px 0; border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .video-frame video {
     width: 100%; aspect-ratio: 16/9; display: block; background: #000;
   }
-  .video-card .video-meta {
-    padding: 16px 20px;
+  .video-frame .video-meta {
+    padding: 14px 20px; background: white;
+    border-top: 1px solid var(--border);
   }
-  .video-card .video-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-  .video-card .video-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
-  .video-card .video-time {
-    display: inline-block; padding: 2px 10px; border-radius: 4px;
-    background: var(--accent-soft); color: var(--accent-dark);
+  .video-frame .video-meta strong { font-weight: 800; }
+  .video-frame .video-meta .label {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    background: var(--accent-dark); color: white;
     font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
-    margin-top: 8px; letter-spacing: 0.04em;
-  }
-  @media (max-width: 768px) {
-    .video-grid { grid-template-columns: 1fr; }
+    letter-spacing: 0.04em; margin-right: 8px;
   }
 
-  /* Comic gallery */
-  .comic-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 20px; margin-top: 16px;
+  /* Step list (따라하기 단계) */
+  ol.steps {
+    list-style: none; padding: 0; margin: 16px 0 0;
+    counter-reset: step;
   }
-  .comic-card {
-    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  ol.steps > li {
+    counter-increment: step;
+    padding: 16px 18px 14px 60px;
+    border: 1px solid var(--border); border-radius: 12px;
+    margin-bottom: 12px; position: relative;
     background: white;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    cursor: pointer;
   }
-  .comic-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute; left: 18px; top: 16px;
+    width: 28px; height: 28px; line-height: 28px;
+    text-align: center; border-radius: 50%;
+    background: var(--accent-dark); color: white;
+    font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 800;
   }
-  .comic-card img {
-    width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;
+  ol.steps > li .step-h {
+    font-size: 17px; font-weight: 800; margin-bottom: 4px;
   }
-  .comic-card .comic-meta {
-    padding: 10px 14px; font-size: 12px;
+  ol.steps > li .step-desc {
+    font-size: 15px; color: var(--muted); line-height: 1.55;
   }
-  .comic-card .comic-num {
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--accent-dark); font-weight: 700;
+  ol.steps > li code {
+    background: var(--code-bg); padding: 1px 6px; border-radius: 3px;
+    font-size: 13px; border: 1px solid var(--border);
   }
-  .comic-card .comic-title {
-    color: var(--fg); font-weight: 600; line-height: 1.3; margin-top: 2px;
-  }
-  @media (max-width: 768px) {
-    .comic-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* Lightbox */
-  .lightbox {
-    display: none;
-    position: fixed; inset: 0; z-index: 1000;
-    background: rgba(0,0,0,0.85);
-    align-items: center; justify-content: center;
-    padding: 40px;
-  }
-  .lightbox.open { display: flex; }
-  .lightbox img { max-width: 95%; max-height: 95vh; border-radius: 8px; }
-  .lightbox .close {
-    position: absolute; top: 24px; right: 32px;
-    color: white; font-size: 36px; cursor: pointer; font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
+  ol.steps > li pre {
+    background: #1a1a1a; color: #f0f0f0; padding: 12px 14px;
+    border-radius: 6px; margin-top: 8px; font-size: 13px;
+    overflow-x: auto;
   }
 
-  /* Timeline */
-  .timeline-list {
-    list-style: none; padding: 0;
-    margin-top: 14px;
+  /* 4 items grid (하네스 4 도구) */
+  .four-tools {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 16px 0 20px;
   }
-  .timeline-list li {
-    padding: 14px 0 14px 0; border-bottom: 1px solid var(--border);
-    display: grid; grid-template-columns: 140px 1fr; gap: 18px; align-items: baseline;
+  .tool-card {
+    background: white; border: 2px solid var(--border); border-radius: 14px;
+    padding: 20px 22px;
   }
-  .timeline-list li:last-child { border-bottom: none; }
-  .timeline-time {
+  .tool-card .tool-icon { font-size: 38px; line-height: 1; margin-bottom: 8px; }
+  .tool-card .tool-name {
+    font-size: 22px; font-weight: 800; color: var(--fg);
+  }
+  .tool-card .tool-name .term {
+    font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--accent-dark);
+    font-weight: 700; margin-left: 6px;
+  }
+  .tool-card .tool-eli5 {
+    font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.55;
+  }
+  .tool-card .tool-eli5 .quote {
+    color: #b87333; font-style: italic; font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    .four-tools { grid-template-columns: 1fr; }
+  }
+
+  /* Timeline (오늘의 흐름) */
+  .day-timeline { margin-top: 16px; }
+  .day-row {
+    display: grid; grid-template-columns: 130px 1fr;
+    gap: 18px; padding: 14px 0;
+    border-bottom: 1px dashed var(--border);
+    align-items: baseline;
+  }
+  .day-row:last-child { border-bottom: none; }
+  .day-time {
     font-family: 'JetBrains Mono', monospace;
     background: var(--accent-soft); color: var(--accent-dark);
-    padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 700;
+    padding: 4px 10px; border-radius: 4px;
+    font-size: 12px; font-weight: 800;
     text-align: center; letter-spacing: 0.04em;
   }
-  .timeline-info { font-size: 15px; }
-  .timeline-info strong { font-weight: 700; }
-  .timeline-info .desc { color: var(--muted); font-size: 13px; margin-top: 4px; display: block; }
+  .day-info .ttl {
+    font-size: 16px; font-weight: 800; color: var(--fg); margin-bottom: 3px;
+  }
+  .day-info .desc { font-size: 14px; color: var(--muted); }
+  .day-info a { color: var(--accent-dark); text-decoration: none; }
+  .day-info a:hover { text-decoration: underline; }
 
   /* Download list */
-  ul.downloads { list-style: none; padding: 0; margin-top: 14px; }
-  ul.downloads li {
-    padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px;
-    background: var(--code-bg); margin-bottom: 8px;
-    display: flex; align-items: center; gap: 14px;
+  ul.dl { list-style: none; padding: 0; margin-top: 14px; }
+  ul.dl li {
+    padding: 14px 18px; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--code-bg); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 16px;
     transition: border-color 0.15s ease;
   }
-  ul.downloads li:hover { border-color: var(--accent); }
-  ul.downloads code {
-    background: white; padding: 4px 10px; border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  ul.dl li:hover { border-color: var(--accent); }
+  ul.dl code {
+    background: white; padding: 5px 10px; border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 700;
     border: 1px solid var(--border); flex-shrink: 0; min-width: 200px;
   }
-  ul.downloads .desc { font-size: 13px; color: var(--muted); flex: 1; }
-  ul.downloads .dl-btn {
+  ul.dl .dl-desc { font-size: 14px; color: var(--muted); flex: 1; }
+  ul.dl .dl-btn {
     background: var(--accent-dark); color: white;
-    padding: 6px 14px; border-radius: 6px;
-    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
-    text-decoration: none; flex-shrink: 0;
+    padding: 7px 16px; border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 800;
+    text-decoration: none; flex-shrink: 0; letter-spacing: 0.04em;
   }
-  ul.downloads .dl-btn:hover { background: var(--accent); }
+  ul.dl .dl-btn:hover { background: var(--accent); }
+
+  /* Tip box */
+  .tip {
+    background: var(--highlight); padding: 14px 18px; border-radius: 8px;
+    border-left: 5px solid #f5b800; margin: 16px 0;
+    font-size: 15px;
+  }
+  .tip::before {
+    content: "💡 알려드릴게요";
+    display: block; font-weight: 800; color: #946800; font-size: 13px;
+    letter-spacing: 0.04em; margin-bottom: 6px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* FAQ */
+  details.faq {
+    padding: 14px 18px; border: 1px solid var(--border); border-radius: 8px;
+    margin-bottom: 10px; background: white;
+    cursor: pointer;
+  }
+  details.faq summary {
+    font-size: 16px; font-weight: 700; padding: 4px 0;
+    list-style: none; position: relative; padding-right: 36px;
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after {
+    content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+    color: var(--accent-dark); font-weight: 800; font-size: 22px;
+    line-height: 1;
+  }
+  details.faq[open] summary::after { content: "−"; }
+  details.faq .answer {
+    margin-top: 12px; font-size: 15px; color: var(--fg); line-height: 1.65;
+    border-top: 1px dashed var(--border); padding-top: 12px;
+  }
 
   /* Table */
   table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
   table th, table td {
-    text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border);
+    text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
   }
   table th {
-    font-weight: 700; font-size: 12px; text-transform: uppercase;
-    color: var(--muted); border-bottom: 2px solid var(--fg);
+    font-weight: 800; font-size: 12px; text-transform: uppercase;
+    color: var(--muted); border-bottom: 2px solid var(--fg); background: var(--code-bg);
   }
   code.inline {
     background: var(--code-bg); padding: 1px 6px; border-radius: 2px;
     font-size: 13px; border: 1px solid var(--border);
   }
-  pre {
-    background: var(--code-bg); border: 1px solid var(--border);
-    padding: 14px 18px; border-radius: 3px; overflow-x: auto;
-    font-size: 13px; line-height: 1.55; margin: 12px 0;
-  }
-  .readmore {
-    background: var(--code-bg); border-left: 3px solid var(--accent);
-    padding: 12px 16px; margin: 20px 0 0; font-size: 14px;
-  }
-  .readmore strong { font-family: 'JetBrains Mono', monospace; color: var(--accent-dark); }
-  .readmore a { color: var(--accent-dark); text-decoration: none; margin-left: 4px; }
-  .readmore a:hover { text-decoration: underline; }
 
-  /* Chips */
-  .chip {
-    display: inline-block; padding: 2px 8px; margin: 2px 3px 2px 0;
-    background: var(--code-bg); border: 1px solid var(--border);
-    border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  }
-  .chip.accent { background: var(--accent-dark); color: white; border-color: var(--accent-dark); }
-
+  /* Footer */
   footer {
     padding: 40px 0 60px; border-top: 2px solid var(--fg);
     font-size: 14px; color: var(--muted);
@@ -245,11 +343,12 @@
   footer a { color: var(--accent-dark); }
   footer .muted { font-size: 12px; margin-top: 16px; }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .hero h1 { font-size: 32px; }
-    .timeline-list li { grid-template-columns: 1fr; gap: 4px; }
-    ul.downloads li { flex-direction: column; align-items: flex-start; gap: 8px; }
-    ul.downloads code { min-width: 0; }
+    section h2 { font-size: 24px; }
+    .day-row { grid-template-columns: 1fr; gap: 4px; }
+    ul.dl li { flex-direction: column; align-items: flex-start; gap: 8px; }
+    ul.dl code { min-width: 0; }
   }
 </style>
 </head>
@@ -258,14 +357,15 @@
 <!-- TOP NAV -->
 <nav class="topbar">
   <div class="container">
-    <span class="brand">Day 2 · POS 풀스택</span>
-    <a href="#video">영상</a>
-    <a href="#comics">만화</a>
-    <a href="#timeline">강의 흐름</a>
-    <a href="#practice">실습 자료</a>
-    <a href="#tools">도구</a>
-    <a href="https://daniel8824-del.github.io/claude-harness-catalog/" target="_blank">하네스 카탈로그</a>
-    <a href="https://github.com/daniel8824-del/claude-pos-fullstack-day2" target="_blank">GitHub</a>
+    <span class="brand">Day 2 · POS 풀스택 교재</span>
+    <a href="#flow">오늘 흐름</a>
+    <a href="#ch1">1교시</a>
+    <a href="#ch2">2교시</a>
+    <a href="#ch3">3교시</a>
+    <a href="#ch4">4교시</a>
+    <a href="#ch5">연장</a>
+    <a href="#dl">실습 자료</a>
+    <a href="https://daniel8824-del.github.io/claude-harness-catalog/" target="_blank">어제 자료</a>
   </div>
 </nav>
 
@@ -273,324 +373,598 @@
 <header class="hero">
   <div class="container">
     <div class="badge">DAY 2 · 5/13(수) 08:00 ~ 12:30</div>
-    <h1>풀스택 <span class="accent">5단계</span> + POS 상권분석</h1>
-    <p class="subtitle">PLAN → DEV → VERIFY → REFACTOR → SECURITY · 비개발자도 따라할 수 있는 eli5 톤</p>
-    <p class="meta">
-      <span>270분 (4.5시간)</span>
-      <span>만화 8컷 + 영상 2개</span>
-      <span>POS 가상 데이터 205건</span>
-      <span>실습 7종</span>
+    <h1>오늘 5시간 동안<br><span class="accent">같이</span> POS 가게를 만들어요</h1>
+    <p class="lead">
+      처음 듣는 분도, AI를 아예 안 써본 분도 따라올 수 있게 준비했습니다.<br>
+      만화 8컷 + 영상 1분 + 단계별 실습으로 한 칸씩 같이 갑니다.
     </p>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="val">8컷</div><div class="lbl">학습 만화 (Gemini multimodal)</div></div>
-      <div class="hero-stat"><div class="val">2개</div><div class="lbl">hyperframes 영상 60초</div></div>
-      <div class="hero-stat"><div class="val">205건</div><div class="lbl">POS 거래 가상 데이터</div></div>
-      <div class="hero-stat"><div class="val">5단계</div><div class="lbl">풀스택 자동 워크플로우</div></div>
+    <div class="meta-row">
+      <span>📅 2026-05-13 (수)</span>
+      <span>⏰ 08:00 ~ 12:30 (4.5시간)</span>
+      <span>👥 비개발자 환영</span>
     </div>
   </div>
 </header>
 
 <div class="container">
 
-<!-- §1 영상 갤러리 -->
-<section id="video">
-  <span class="section-num">§1 / 영상</span>
-  <h2>hyperframes 영상 2개 · 도입 임팩트</h2>
-  <p class="section-lead">5차시·7차시 도입 5분 중 첫 1분에 풀스크린 재생. 강한 후킹 + 실측 수치 + 비포/애프터 톤.</p>
+<!-- §1 오늘의 흐름 -->
+<section id="flow">
+  <span class="section-tag">§ 0 · 오늘의 흐름</span>
+  <h2>먼저, <span class="accent">5시간 어떻게 보낼지</span> 한눈에</h2>
+  <p class="lead">
+    1교시는 가볍게 영상으로 시작, 4교시까지 단계를 하나씩 같이 만들어 보고, 마지막 30분에 질문 받고 정리해요.
+  </p>
 
-  <div class="video-grid">
-    <div class="video-card">
-      <video controls preload="metadata" poster="images/comics/05-fullstack-5steps.png">
-        <source src="videos/video1-harness-1min.mp4" type="video/mp4">
-        브라우저가 영상을 지원하지 않습니다.
-      </video>
-      <div class="video-meta">
-        <div class="video-title">영상 ① 하네스 1분 요약</div>
-        <div class="video-desc">AI 코딩 vs 하네스 코딩 — 매번 같은 실수 반복 (BEFORE) vs 5단계 자동 (AFTER). 5대 요소(지시문·스킬·훅·MCP) 슬라이드.</div>
-        <span class="video-time">5차시 / 08:00 도입</span>
+  <div class="day-timeline">
+    <div class="day-row">
+      <span class="day-time">08:00 – 09:00</span>
+      <div class="day-info">
+        <div class="ttl">1교시 — 하네스가 뭐예요?</div>
+        <div class="desc">영상 1분으로 워밍업 → 만화 4컷으로 도구 익히기 → <code class="inline">context7 MCP</code> 설치 같이 해보기. <a href="#ch1">이동 →</a></div>
       </div>
     </div>
-    <div class="video-card">
-      <video controls preload="metadata" poster="images/comics/08-research.png">
-        <source src="videos/video2-qmd-1min.mp4" type="video/mp4">
-        브라우저가 영상을 지원하지 않습니다.
-      </video>
-      <div class="video-meta">
-        <div class="video-title">영상 ② QMD 1분 사용법</div>
-        <div class="video-desc">사내 988 파일 1초 검색 · 토큰비 0. Tier 게이트로 외부 API 비용 거의 0. terminal 데모 + Tier 흐름.</div>
-        <span class="video-time">7차시 / 10:00 도입</span>
+    <div class="day-row">
+      <span class="day-time">09:00 – 10:00</span>
+      <div class="day-info">
+        <div class="ttl">2교시 — 가게 매뉴얼 만들기 (Phase 1·2)</div>
+        <div class="desc">POS 가상 데이터 205건 불러오기 + 우리 가게 <code class="inline">CLAUDE.md</code> 직접 써보기. <a href="#ch2">이동 →</a></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- §2 만화 갤러리 -->
-<section id="comics">
-  <span class="section-num">§2 / 만화 8컷</span>
-  <h2>학습 만화 — 셰프 Claude의 식당</h2>
-  <p class="section-lead">어제 카카오톡 png(셰프 Claude)를 reference로 Gemini multimodal로 캐릭터 일관성 확보. 클릭하면 확대.</p>
-
-  <div class="comic-grid">
-    <div class="comic-card" data-img="images/comics/01-prompt-project-skill.png">
-      <img src="images/comics/01-prompt-project-skill.png" alt="① PROMPT / PROJECT / SKILL">
-      <div class="comic-meta">
-        <div class="comic-num">① CHAPTER</div>
-        <div class="comic-title">PROMPT · PROJECT · SKILL</div>
+    <div class="day-row">
+      <span class="day-time">10:00 – 11:00</span>
+      <div class="day-info">
+        <div class="ttl">3교시 — 특기 추가 + 사내 자료 검색 (Phase 3 + QMD)</div>
+        <div class="desc">상권 분석 스킬 작성 + <code class="inline">/codex</code> 로 검수 + <code class="inline">qmd</code> 한 줄로 사내 자료 검색. <a href="#ch3">이동 →</a></div>
       </div>
     </div>
-    <div class="comic-card" data-img="images/comics/02-hook.png">
-      <img src="images/comics/02-hook.png" alt="② HOOK">
-      <div class="comic-meta">
-        <div class="comic-num">② CHAPTER</div>
-        <div class="comic-title">HOOK — 자동 알림 시스템</div>
+    <div class="day-row">
+      <span class="day-time">11:00 – 12:00</span>
+      <div class="day-info">
+        <div class="ttl">4교시 — 자동 알림 + 보안 + 배포 (Phase 4·5)</div>
+        <div class="desc">훅으로 실수 자동 차단 + 보안 검수 + GitHub Pages 배포 라이브. <a href="#ch4">이동 →</a></div>
       </div>
     </div>
-    <div class="comic-card" data-img="images/comics/03-mcp.png">
-      <img src="images/comics/03-mcp.png" alt="③ MCP">
-      <div class="comic-meta">
-        <div class="comic-num">③ CHAPTER</div>
-        <div class="comic-title">MCP — 거래처 직통</div>
-      </div>
-    </div>
-    <div class="comic-card" data-img="images/comics/04-claude-md.png">
-      <img src="images/comics/04-claude-md.png" alt="④ CLAUDE.md">
-      <div class="comic-meta">
-        <div class="comic-num">④ CHAPTER</div>
-        <div class="comic-title">CLAUDE.md — 가게 매뉴얼</div>
-      </div>
-    </div>
-    <div class="comic-card" data-img="images/comics/05-fullstack-5steps.png">
-      <img src="images/comics/05-fullstack-5steps.png" alt="⑤ 풀스택 5단계">
-      <div class="comic-meta">
-        <div class="comic-num">⑤ CHAPTER</div>
-        <div class="comic-title">풀스택 5단계 — PLAN → SECURITY</div>
-      </div>
-    </div>
-    <div class="comic-card" data-img="images/comics/06-codex-review.png">
-      <img src="images/comics/06-codex-review.png" alt="⑥ /codex">
-      <div class="comic-meta">
-        <div class="comic-num">⑥ CHAPTER</div>
-        <div class="comic-title">/codex — 교차 검수</div>
-      </div>
-    </div>
-    <div class="comic-card" data-img="images/comics/07-security-review.png">
-      <img src="images/comics/07-security-review.png" alt="⑦ /security-review">
-      <div class="comic-meta">
-        <div class="comic-num">⑦ CHAPTER</div>
-        <div class="comic-title">/security-review — 보안 검수</div>
-      </div>
-    </div>
-    <div class="comic-card" data-img="images/comics/08-research.png">
-      <img src="images/comics/08-research.png" alt="⑧ 외부 리서치">
-      <div class="comic-meta">
-        <div class="comic-num">⑧ CHAPTER</div>
-        <div class="comic-title">외부 리서치 — 자료 수집</div>
+    <div class="day-row">
+      <span class="day-time">12:00 – 12:30</span>
+      <div class="day-info">
+        <div class="ttl">연장 — Q&amp;A · 막힌 분 코칭 · 다음 시간 예고</div>
+        <div class="desc">한 분도 빠짐없이 끝까지 만들 수 있도록. <a href="#ch5">이동 →</a></div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- §3 강의 흐름 -->
-<section id="timeline">
-  <span class="section-num">§3 / 강의 흐름</span>
-  <h2>Day 2 시간표 (270분)</h2>
-  <p class="section-lead">시바·아모레퍼시픽 측 협의 — 비개발자 5인 포함 + 12:30 종료(30분 연장).</p>
-
-  <ul class="timeline-list">
-    <li>
-      <span class="timeline-time">08:00 – 09:00</span>
-      <div class="timeline-info">
-        <strong>5차시 — 하네스 5대 요소 eli5</strong>
-        <span class="desc">만화 ①~④ + 영상 ① 하네스 1분 · context7 MCP 설치 라이브</span>
-      </div>
-    </li>
-    <li>
-      <span class="timeline-time">09:00 – 10:00</span>
-      <div class="timeline-info">
-        <strong>6차시 — 지시문 + Phase 1·2</strong>
-        <span class="desc">POS용 CLAUDE.md 워크숍 · 데이터 로더 · 외부 리서치 도구 6선 (EXA 포함)</span>
-      </div>
-    </li>
-    <li>
-      <span class="timeline-time">10:00 – 11:00</span>
-      <div class="timeline-info">
-        <strong>7차시 — 스킬 + Phase 3 + QMD</strong>
-        <span class="desc">영상 ② QMD 1분 · SKILL.md + /codex 검수 · 무료 지식그래프 8선</span>
-      </div>
-    </li>
-    <li>
-      <span class="timeline-time">11:00 – 12:00</span>
-      <div class="timeline-info">
-        <strong>8차시 — 훅 + Phase 4·5</strong>
-        <span class="desc">24종 훅 · /security-review · GitHub Pages 배포 라이브</span>
-      </div>
-    </li>
-    <li>
-      <span class="timeline-time">12:00 – 12:30</span>
-      <div class="timeline-info">
-        <strong>연장 — Q&amp;A + 코칭 + Day 3 예고</strong>
-        <span class="desc">막힌 학생 코칭 · 다음 차수 RAG·임베딩·청킹 예고</span>
-      </div>
-    </li>
-  </ul>
-</section>
-
-<!-- §4 풀스택 5단계 -->
-<section id="phases">
-  <span class="section-num">§4 / Full Stack 5 Phases</span>
-  <h2>풀스택 5단계 워크플로우</h2>
-  <p class="section-lead">Phase 0 (시작) → Phase 1~5 (자동) → Phase 6 (배포). 만화 ⑤ 시각화.</p>
-
-  <table>
-    <thead><tr><th>Phase</th><th>이름</th><th>주요 도구</th><th>산출</th></tr></thead>
-    <tbody>
-      <tr><td>0</td><td>Starter</td><td><code class="inline">starter.html</code></td><td>실습 시작점 (학생 배포)</td></tr>
-      <tr><td>1</td><td>SCHEMA / DATA</td><td><code class="inline">pos_data.csv</code> 로더</td><td>205건 거래 데이터 적재</td></tr>
-      <tr><td>2</td><td>CONVENTION</td><td>CLAUDE.md 워크숍</td><td>POS용 지시문 정합</td></tr>
-      <tr><td>3</td><td>MOCKUP / ANALYSIS</td><td>SKILL.md + <code class="inline">/codex</code></td><td>상권 분석 + 교차 검수</td></tr>
-      <tr><td>4</td><td>API / HOOK</td><td>24종 훅 + <code class="inline">/security-review</code></td><td>자동 알림 + 보안 게이트</td></tr>
-      <tr><td>5</td><td>DEPLOY</td><td>GitHub Pages 배포</td><td>라이브 사이트 (이 페이지!)</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- §5 실습 자료 -->
-<section id="practice">
-  <span class="section-num">§5 / 실습 자료</span>
-  <h2>다운로드 — 7종 풀스택</h2>
-  <p class="section-lead">강의 1일 전 학생 배포. 강사 환경에서도 직접 실행 가능. DB 연결 없이 로컬 정적 HTML로 진행.</p>
-
-  <ul class="downloads">
-    <li>
-      <code>README.md</code>
-      <div class="desc">실습 안내 + Phase 0 시작 가이드</div>
-      <a class="dl-btn" href="downloads/README.md" download>다운로드</a>
-    </li>
-    <li>
-      <code>starter.html</code>
-      <div class="desc">학생 Phase 0 시작점 — 빈 HTML 템플릿</div>
-      <a class="dl-btn" href="downloads/starter.html" download>다운로드</a>
-    </li>
-    <li>
-      <code>pos_data.csv</code>
-      <div class="desc">가상 POS 거래 데이터 205건 (날짜·상품·금액·매장)</div>
-      <a class="dl-btn" href="downloads/pos_data.csv" download>다운로드</a>
-    </li>
-    <li>
-      <code>generate_pos_data.py</code>
-      <div class="desc">데이터 재생성 스크립트 — 학생 본인 데이터로 갈아끼우기</div>
-      <a class="dl-btn" href="downloads/generate_pos_data.py" download>다운로드</a>
-    </li>
-    <li>
-      <code>exa_test.py</code>
-      <div class="desc">EXA API 시연 — 외부 리서치 도구 (무료 1000 req/월)</div>
-      <a class="dl-btn" href="downloads/exa_test.py" download>다운로드</a>
-    </li>
-    <li>
-      <code>pos_graph.py</code>
-      <div class="desc">POS 그래프 시각화 (pyvis) — 상품·매장 관계망</div>
-      <a class="dl-btn" href="downloads/pos_graph.py" download>다운로드</a>
-    </li>
-    <li>
-      <code>실습자료-전체.zip</code>
-      <div class="desc">위 6종 + 만화 8컷 한 번에 받기 (~25 MB)</div>
-      <a class="dl-btn" href="downloads/day2-practice.zip" download>다운로드 ZIP</a>
-    </li>
-  </ul>
-
-  <div class="readmore">
-    💡 <strong>강사 실행 환경</strong>
-    <a href="#tools">→ Python 3.11+ · uv venv 권장 · gh CLI 인증 + Pages 권한</a>
+  <div class="tip">
+    오늘은 <strong>DB 연결 없이</strong> 정적 HTML + CSV 파일만으로 진행해요. 따로 설치할 것은 <strong>Claude Code</strong> 하나(어제 설치 완료)와 <strong>context7 MCP</strong> 한 가지뿐입니다.
   </div>
 </section>
 
-<!-- §6 도구 -->
-<section id="tools">
-  <span class="section-num">§6 / Tools</span>
-  <h2>본 강의 사용 도구</h2>
+<!-- §2 1교시 -->
+<section id="ch1">
+  <span class="section-tag">§ 1교시 · 08:00 ~ 09:00</span>
+  <h2><span class="accent">1교시</span> — 하네스가 뭐예요?</h2>
+
+  <div class="goal">
+    <div class="goal-label">▶ 이 교시가 끝나면</div>
+    <div class="goal-text">하네스의 <strong>4가지 도구</strong>를 한 줄로 설명할 수 있어요</div>
+  </div>
+
+  <h3><span class="step-num">1</span>먼저 영상 1분으로 워밍업</h3>
+  <p>
+    바로 본론 들어가기 전에 <strong>오늘 만들 것의 큰 그림</strong>부터 같이 봐요. 자막 켜놓고 1분만 봐 주세요.
+  </p>
+
+  <div class="video-frame">
+    <video controls preload="metadata">
+      <source src="videos/video1-harness-1min.mp4" type="video/mp4">
+      브라우저가 영상을 지원하지 않습니다.
+    </video>
+    <div class="video-meta">
+      <span class="label">영상 · 60초</span>
+      <strong>하네스란? — 4가지 도구로 5단계 자동화</strong>
+    </div>
+  </div>
+
+  <h3><span class="step-num">2</span>비유로 이해해 볼게요</h3>
+
+  <div class="analogy">
+    AI를 <strong>식당 셰프</strong>라고 생각해 봐요.<br><br>
+    혼자 일하면 <strong>매번 같은 손님이 와도 처음 보는 사람처럼 응대</strong>해요. 메뉴도 매번 새로 정하고, 같은 실수를 또 해요. 셰프 입장에서도 피곤하고 손님도 답답하죠.<br><br>
+    <strong>하네스</strong>는 셰프에게 <strong>4가지 도구</strong>를 쥐여주는 거예요. 가게 매뉴얼·전문 레시피·자동 알람·거래처 직통. 이 네 개가 있으면 셰프가 같은 실수를 안 해요.
+  </div>
+
+  <h3><span class="step-num">3</span>4가지 도구 한 컷씩</h3>
+
+  <div class="four-tools">
+    <div class="tool-card">
+      <div class="tool-icon">📜</div>
+      <div class="tool-name">지시문 <span class="term">CLAUDE.md</span></div>
+      <div class="tool-eli5">가게 매뉴얼.<br><span class="quote">"우리 가게는 이렇게 일해요"</span></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🍳</div>
+      <div class="tool-name">스킬 <span class="term">SKILL.md</span></div>
+      <div class="tool-eli5">전문 레시피.<br><span class="quote">"특기 요리법, 시킬 때만 꺼내요"</span></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🔔</div>
+      <div class="tool-name">훅 <span class="term">Hooks</span></div>
+      <div class="tool-eli5">자동 알림.<br><span class="quote">"오븐 알람이 자동으로 울려요"</span></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🚚</div>
+      <div class="tool-name">거래처 직통 <span class="term">MCP</span></div>
+      <div class="tool-eli5">외부 도구 직접 호출.<br><span class="quote">"재료상에 직접 전화해요"</span></div>
+    </div>
+  </div>
+
+  <figure class="comic">
+    <img src="images/comics/01-prompt-project-skill.png" alt="셰프 Claude의 식당 — PROMPT / PROJECT / SKILL">
+    <figcaption><strong>① 만화</strong> · 셰프 Claude의 식당 — 처음 인사 (어제 배포 그대로)</figcaption>
+  </figure>
+
+  <h3><span class="step-num">4</span>같이 해봐요 — context7 MCP 설치</h3>
+  <p>
+    1교시 끝나기 전에 같이 설치할 도구 하나가 있어요. <strong>context7 MCP</strong> — 라이브러리 공식 문서를 AI가 직접 가져오는 도구입니다. 화면 따라 1분이면 끝나요.
+  </p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-h">Claude Code 화면에서 명령 한 줄</div>
+      <div class="step-desc">아래 명령을 그대로 복사 → 붙여넣기</div>
+      <pre>claude mcp add context7 -s user -- npx -y @upstash/context7-mcp@latest</pre>
+    </li>
+    <li>
+      <div class="step-h">Claude Code 재시작</div>
+      <div class="step-desc">설치 확인 — <code>/mcp</code> 입력해서 context7이 보이면 OK</div>
+    </li>
+    <li>
+      <div class="step-h">테스트 — "react 19 useFormStatus 사용법 알려줘"</div>
+      <div class="step-desc">AI가 최신 공식 문서를 가져와서 답합니다. 토큰비도 거의 0.</div>
+    </li>
+  </ol>
+
+  <div class="tip">
+    설치가 막히면 손 들어 주세요. 강사가 직접 와서 같이 해드립니다. 한 분도 못 따라가시면 안 되니까요.
+  </div>
+
+  <h3><span class="step-num">5</span>오늘 만들 것 미리 보기</h3>
+  <figure class="comic">
+    <img src="images/comics/05-fullstack-5steps.png" alt="풀스택 5단계 — PLAN → SECURITY">
+    <figcaption><strong>② 만화</strong> · 오늘 4시간 안에 같이 만들 풀스택 5단계 흐름</figcaption>
+  </figure>
+  <p>
+    1교시는 여기까지! 잠깐 쉬고 09:00에 2교시 시작해요.
+  </p>
+</section>
+
+<!-- §3 2교시 -->
+<section id="ch2">
+  <span class="section-tag">§ 2교시 · 09:00 ~ 10:00</span>
+  <h2><span class="accent">2교시</span> — 우리 가게 매뉴얼 만들기</h2>
+
+  <div class="goal">
+    <div class="goal-label">▶ 이 교시가 끝나면</div>
+    <div class="goal-text">우리 POS 가게의 <strong>CLAUDE.md</strong>를 손수 한 번 써봤어요</div>
+  </div>
+
+  <div class="analogy">
+    이제 가게에 들어왔습니다. 가장 먼저 만들어야 하는 건? <strong>매뉴얼</strong>이에요.<br><br>
+    "우리 가게는 이런 손님을 응대해요" · "이런 상품을 다뤄요" · "이런 규칙으로 일해요" — 이걸 글로 적어 놓으면, 셰프 Claude가 매번 새 손님처럼 헤매지 않아요.
+  </div>
+
+  <figure class="comic">
+    <img src="images/comics/04-claude-md.png" alt="CLAUDE.md — 가게 매뉴얼">
+    <figcaption><strong>③ 만화</strong> · CLAUDE.md = 가게 매뉴얼 (메뉴·규칙·말투)</figcaption>
+  </figure>
+
+  <h3><span class="step-num">1</span>Phase 0 — 실습 폴더 열기</h3>
+  <ol class="steps">
+    <li>
+      <div class="step-h">실습 자료 다운로드</div>
+      <div class="step-desc">아래 <a href="#dl">§ 실습 자료</a> 에서 <code>실습자료-전체.zip</code> 받아서 풀어주세요</div>
+    </li>
+    <li>
+      <div class="step-h">starter.html 더블클릭</div>
+      <div class="step-desc">브라우저가 열리고 빈 화면이 보이면 시작 OK</div>
+    </li>
+  </ol>
+
+  <h3><span class="step-num">2</span>Phase 1 — POS 데이터 불러오기 (가상 205건)</h3>
+  <p>
+    실제 회사 데이터 대신, 가상으로 만든 거래 데이터 <strong>205건</strong>을 씁니다. 날짜·상품·금액·매장 컬럼이 들어 있어요.
+  </p>
+  <ol class="steps">
+    <li>
+      <div class="step-h">Claude Code에게 부탁</div>
+      <div class="step-desc">"<code>pos_data.csv</code> 파일을 starter.html에서 읽어서 표로 보여줘"</div>
+    </li>
+    <li>
+      <div class="step-h">결과 확인</div>
+      <div class="step-desc">starter.html 새로고침 → 205건이 표로 나오면 성공</div>
+    </li>
+  </ol>
+
+  <h3><span class="step-num">3</span>Phase 2 — CLAUDE.md 워크숍</h3>
+  <p>이제 우리 가게의 매뉴얼을 한 줄씩 적어요. 아래가 시작 템플릿이에요.</p>
+
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:18px 22px;border-radius:8px;font-size:13px;">
+# POS 상권분석 프로젝트
+
+## 우리는 무엇을 만들까요
+- 매장별·시간대별 매출 분석 + 인기 상품 Top 5
+
+## 데이터 규칙
+- pos_data.csv (205건, 1주일 가상 데이터)
+- 컬럼: 날짜 / 상품 / 금액 / 매장명
+
+## 작업 스타일
+- 차트는 막대 그래프 위주, 색상은 cyan
+- 정적 HTML만 (DB 연결 없음)
+</pre>
+
+  <div class="tip">
+    여기 내용은 <strong>처음부터 완벽</strong>하지 않아도 돼요. 일하면서 계속 추가해 나갑니다. AI가 같은 실수를 하면 → "이건 이렇게 해줘" 메뉴얼에 한 줄 추가 → 다음에는 안 틀려요.
+  </div>
+
+  <h3><span class="step-num">4</span>외부 자료가 필요할 때</h3>
+  <figure class="comic">
+    <img src="images/comics/08-research.png" alt="외부 리서치 — 자료 수집">
+    <figcaption><strong>④ 만화</strong> · 외부 리서치 — 모르는 건 검색</figcaption>
+  </figure>
+  <p>
+    분석을 하다 보면 "이 상품 트렌드 어떨까?" 같은 외부 정보가 필요할 때가 있어요. 그럴 때 쓰는 무료 도구 6선이 있어요.
+  </p>
 
   <table>
     <thead><tr><th>도구</th><th>역할</th><th>비용</th></tr></thead>
     <tbody>
-      <tr><td><strong>Claude Code</strong></td><td>메인 작업자 — Skills 생태계 + MCP 풀스택</td><td>Pro $20 ~ Max $200</td></tr>
-      <tr><td><strong>context7 MCP</strong></td><td>공식 SDK 문서 — 라이브러리 정확도</td><td>무료</td></tr>
-      <tr><td><strong>QMD</strong></td><td>사내 자료 988 파일 로컬 검색</td><td>무료 (로컬)</td></tr>
-      <tr><td><strong>EXA API</strong></td><td>AI-native semantic 리서치</td><td>무료 1000 req/월</td></tr>
-      <tr><td><strong>Codex CLI</strong></td><td>교차 검수자 — <code class="inline">/codex</code></td><td>GPT-5.5</td></tr>
-      <tr><td><strong>agentmemory</strong></td><td>무료 지식그래프 (Apache-2.0)</td><td>무료 (npx)</td></tr>
-      <tr><td><strong>Gemini multimodal</strong></td><td>만화 8컷 reference 기반 생성</td><td>무료 tier</td></tr>
-      <tr><td><strong>hyperframes</strong></td><td>도입 영상 2개 60초 제작</td><td>오픈소스</td></tr>
-      <tr><td><strong>GitHub Pages</strong></td><td>본 페이지 배포</td><td>무료</td></tr>
+      <tr><td><strong>EXA</strong> ⭐</td><td>AI 의미 검색</td><td>무료 1000회/월</td></tr>
+      <tr><td><strong>context7</strong></td><td>공식 SDK 문서</td><td>무료</td></tr>
+      <tr><td><strong>Brave Search</strong></td><td>일반 웹 검색</td><td>유료 (강사)</td></tr>
+      <tr><td><strong>Firecrawl</strong></td><td>URL 본문 추출</td><td>유료 (강사)</td></tr>
+      <tr><td><strong>네이버 데이터랩</strong></td><td>국내 검색 트렌드</td><td>무료</td></tr>
+      <tr><td><strong>Google News</strong></td><td>뉴스 수집</td><td>무료</td></tr>
     </tbody>
   </table>
 
-  <h3>이어지는 hub</h3>
-  <ul style="padding-left: 22px;">
-    <li><a href="https://daniel8824-del.github.io/claude-harness-catalog/" target="_blank">claude-harness-catalog ⭐</a> — 하네스 시스템 전체 카탈로그 (어제 Day 1 자료)</li>
-    <li><a href="https://daniel8824-del.github.io/claude-skill-catalog/" target="_blank">claude-skill-catalog</a> — 134 스킬 카탈로그</li>
-    <li><a href="https://daniel8824-del.github.io/claude-wiki-verbs/" target="_blank">claude-wiki-verbs</a> — 9-verb 위키 시스템</li>
-    <li><a href="https://daniel8824-del.github.io/claude-feynman-research-skill/" target="_blank">claude-feynman-research-skill</a> — 출처 검증 리서치</li>
+  <div class="tip">
+    오늘은 EXA만 시연해 보고, 차주에 본인 환경에서 설치해 보는 걸 과제로 드릴게요.
+  </div>
+</section>
+
+<!-- §4 3교시 -->
+<section id="ch3">
+  <span class="section-tag">§ 3교시 · 10:00 ~ 11:00</span>
+  <h2><span class="accent">3교시</span> — 특기 추가 + 사내 자료 검색</h2>
+
+  <div class="goal">
+    <div class="goal-label">▶ 이 교시가 끝나면</div>
+    <div class="goal-text"><strong>SKILL.md</strong>를 작성하고, <code>qmd</code>로 사내 자료를 1초 내에 검색해 봤어요</div>
+  </div>
+
+  <div class="analogy">
+    매뉴얼만 있으면 일반 손님은 응대할 수 있어요. 그런데 <strong>특수 손님</strong>이 오면? 예를 들어 "상권 분석을 정밀하게 해주세요" 같은 요청.<br><br>
+    이럴 때 <strong>스킬</strong>이 등장해요. <strong>전문 레시피</strong> 같은 거예요. 필요할 때만 꺼내 쓰니까 평소엔 메뉴얼만으로 가볍게 일할 수 있어요.
+  </div>
+
+  <h3><span class="step-num">1</span>Phase 3 — 상권 분석 스킬 작성</h3>
+  <p>
+    이번엔 "상권 분석" 이라는 전문 레시피를 적어볼게요. <code>.claude/skills/sangkwon-analysis/SKILL.md</code> 라는 파일을 만들어요.
+  </p>
+
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:18px 22px;border-radius:8px;font-size:13px;">
+---
+name: 상권 분석
+description: POS 데이터로 매장 매출, 시간대, 인기 상품 분석. 사용자가 "상권 분석", "매출 패턴", "인기 상품"을 언급할 때 자동 발동.
+---
+
+# 상권 분석 스킬
+
+## 분석 순서
+1. 시간대별 매출 추이 (라인 차트)
+2. 매장별 매출 (막대 차트)
+3. 인기 상품 Top 5 (도넛 차트)
+
+## 색상 규칙
+- 매출 = cyan #00b4d8
+- 강조 = 빨강 #c92a2a
+</pre>
+
+  <h3><span class="step-num">2</span>SKILL을 작성하면 좋은 점</h3>
+  <p>
+    스킬은 <strong>활성화될 때만 메모리에 올라가요</strong>. 평소엔 메타데이터만 100토큰 정도 차지하고, 사용자가 "상권 분석" 이라는 말을 꺼낼 때만 본문 5000토큰이 로딩돼요. <strong>토큰비가 거의 0</strong>이에요.
+  </p>
+
+  <h3><span class="step-num">3</span><code>/codex</code> 로 교차 검수</h3>
+
+  <figure class="comic">
+    <img src="images/comics/06-codex-review.png" alt="/codex 교차 검수">
+    <figcaption><strong>⑤ 만화</strong> · /codex — 다른 AI가 우리 코드를 봐 줘요</figcaption>
+  </figure>
+
+  <p>
+    내 코드를 다른 AI(Codex CLI · GPT 5.5)에게도 봐달라고 부탁할 수 있어요. <strong>다른 시각에서 한 번 더 검수</strong>해 주는 거예요.
+  </p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-h">Claude Code에서 한 줄</div>
+      <pre>/codex 방금 만든 SKILL.md 한 번 봐줘. 빠진 게 있을까?</pre>
+    </li>
+    <li>
+      <div class="step-h">Codex가 검수 결과 전달</div>
+      <div class="step-desc">"색상 규칙은 좋은데, 분석 결과 저장 위치를 추가하면 더 좋겠어요" 같은 피드백.</div>
+    </li>
+  </ol>
+
+  <h3><span class="step-num">4</span>QMD — 사내 자료 검색 한 줄</h3>
+  <p>
+    어제 설치한 <strong>QMD</strong>로 사내 자료를 검색해 볼게요. 988개 사내 문서를 <strong>1초 내</strong>에 찾아줘요. 외부 API 안 거치니까 <strong>토큰비 0원</strong>.
+  </p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-h">터미널에서 한 줄</div>
+      <pre>qmd search "상권 분석" -n 5</pre>
+    </li>
+    <li>
+      <div class="step-h">결과를 점수 순으로 받기</div>
+      <div class="step-desc">[0.92] 최근 분석 자료 / [0.87] 작년 시장조사 / [0.74] 경쟁사 보고서… 점수 0.9 이상이면 전문 읽기.</div>
+    </li>
+  </ol>
+
+  <div class="tip">
+    QMD가 빠른 이유 — 988개 문서를 <strong>로컬에 임베딩 미리</strong> 저장해 두기 때문이에요. 외부 API를 거치지 않으니 토큰비도 0원, 속도도 1초 내.
+  </div>
+
+  <h3><span class="step-num">5</span>지식그래프 도구 — QMD 외에 뭐가 있나</h3>
+
+  <table>
+    <thead><tr><th>도구</th><th>역할</th><th>특성</th></tr></thead>
+    <tbody>
+      <tr><td><strong>QMD</strong> (기본)</td><td>단순 키워드·의미 검색</td><td>988 파일 로컬, 1초 내</td></tr>
+      <tr><td><strong>GBrain</strong></td><td>백링크·타임라인</td><td>"이 파일에 뭐가 연결?"</td></tr>
+      <tr><td><strong>graphify</strong></td><td>커뮤니티·중심 노드</td><td>"vault 핵심 자료?"</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    QMD만 써도 80%는 됩니다. GBrain·graphify는 차주에 자율 학습 과제로.
+  </div>
+</section>
+
+<!-- §5 4교시 -->
+<section id="ch4">
+  <span class="section-tag">§ 4교시 · 11:00 ~ 12:00</span>
+  <h2><span class="accent">4교시</span> — 자동 알림 + 보안 + 배포</h2>
+
+  <div class="goal">
+    <div class="goal-label">▶ 이 교시가 끝나면</div>
+    <div class="goal-text">자동 알림 훅 + <code>/security-review</code> + <strong>GitHub Pages 라이브 배포</strong>까지 완주</div>
+  </div>
+
+  <div class="analogy">
+    오븐에 빵을 넣었으면 <strong>알람</strong>이 울려야 해요. 셰프가 매번 시계 확인할 필요 없게.<br><br>
+    하네스의 <strong>훅</strong>이 그 역할이에요. 위험한 명령(파일 삭제 같은 것)을 자동 차단하거나, 작업 단계마다 자동 점검을 해줘요.
+  </div>
+
+  <figure class="comic">
+    <img src="images/comics/02-hook.png" alt="HOOK — 자동 알림">
+    <figcaption><strong>⑥ 만화</strong> · 훅 — 자동 알림 시스템</figcaption>
+  </figure>
+
+  <h3><span class="step-num">1</span>Phase 4 — 훅 설치 (24종 중 5종만)</h3>
+  <p>
+    훅은 24가지가 있는데, 오늘은 가장 유용한 5가지만 같이 보고 설치할게요.
+  </p>
+
+  <table>
+    <thead><tr><th>훅 이름</th><th>역할</th></tr></thead>
+    <tbody>
+      <tr><td><code class="inline">careful</code></td><td><code class="inline">rm -rf</code> 같은 위험 명령 자동 경고</td></tr>
+      <tr><td><code class="inline">compact-guard</code></td><td>대화 50% 차면 자동 압축</td></tr>
+      <tr><td><code class="inline">smart-commit</code></td><td>git commit 직전 메시지 자동 점검</td></tr>
+      <tr><td><code class="inline">replay-learnings</code></td><td>세션 시작 시 어제 교훈 자동 회상</td></tr>
+      <tr><td><code class="inline">learn-rule</code></td><td>"이거 기억해" 한 마디면 자동 저장</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="step-num">2</span>MCP로 외부 도구 직통</h3>
+
+  <figure class="comic">
+    <img src="images/comics/03-mcp.png" alt="MCP — 거래처 직통">
+    <figcaption><strong>⑦ 만화</strong> · MCP — 외부 도구·DB·검색 API 직접 호출</figcaption>
+  </figure>
+
+  <p>
+    이미 1교시에 <code>context7</code> 하나는 설치했죠. 오늘은 거기까지만 — 차주에 supabase·notion·jira 같은 회사 MCP를 추가합니다.
+  </p>
+
+  <h3><span class="step-num">3</span><code>/security-review</code> — 보안 검수</h3>
+
+  <figure class="comic">
+    <img src="images/comics/07-security-review.png" alt="/security-review">
+    <figcaption><strong>⑧ 만화</strong> · /security-review — 배포 전 보안 점검</figcaption>
+  </figure>
+
+  <p>
+    배포하기 전에 보안 점검 한 번. <code>/security-review</code> 한 줄이면 AI가 <strong>OWASP Top 10</strong> 기준으로 코드를 훑어요. 비밀번호 노출·SQL 인젝션·민감 정보 등.
+  </p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-h">Claude Code에서 한 줄</div>
+      <pre>/security-review</pre>
+    </li>
+    <li>
+      <div class="step-h">결과 확인</div>
+      <div class="step-desc">"이 파일에 API 키가 그대로 박혀 있어요" 같은 경고가 나오면 수정.</div>
+    </li>
+  </ol>
+
+  <h3><span class="step-num">4</span>Phase 5 — GitHub Pages 배포 라이브</h3>
+
+  <p>
+    드디어 마지막. 우리가 만든 POS 분석 결과를 <strong>실제 웹에</strong> 올려요. 강사가 화면에 띄워놓고 같이 합니다.
+  </p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-h">GitHub에 새 repo 만들기</div>
+      <pre>gh repo create my-pos-analysis --public --source=. --push</pre>
+    </li>
+    <li>
+      <div class="step-h">Pages 활성화</div>
+      <pre>gh api -X POST /repos/{user}/{repo}/pages -f 'source[branch]=main' -f 'source[path]=/'</pre>
+    </li>
+    <li>
+      <div class="step-h">~1-2분 후 라이브 URL 확인</div>
+      <div class="step-desc">https://{user}.github.io/my-pos-analysis/ — 본인 분석 결과를 친구에게 공유 가능!</div>
+    </li>
+  </ol>
+
+  <div class="tip">
+    참고로 <strong>지금 보고 계신 이 페이지</strong>도 똑같은 방법으로 만들어졌어요. 사이트 코드는 <a href="https://github.com/daniel8824-del/claude-pos-fullstack-day2" target="_blank">GitHub repo</a> 에서 직접 보실 수 있습니다.
+  </div>
+</section>
+
+<!-- §6 연장 -->
+<section id="ch5">
+  <span class="section-tag">§ 연장 · 12:00 ~ 12:30</span>
+  <h2><span class="accent">연장</span> — Q&amp;A + 다음 시간 예고</h2>
+
+  <h3><span class="step-num">1</span>오늘 정리 한 줄</h3>
+  <p>
+    AI에게 도구 4가지(지시문·스킬·훅·MCP)를 쥐여주면 → 5단계가 자동으로 굴러간다 → POS 가게 한 채를 만들 수 있다.
+  </p>
+
+  <h3><span class="step-num">2</span>막힌 분 코칭</h3>
+  <p>
+    중간에 막힌 분은 손 들어 주세요. 한 분도 빠짐없이 자기 분석 결과를 라이브 URL로 가져가실 수 있도록 강사가 직접 와서 마무리 도와드립니다.
+  </p>
+
+  <h3><span class="step-num">3</span>차주 예고 — Day 3 (5/14 목)</h3>
+  <table>
+    <thead><tr><th>차시</th><th>주제</th></tr></thead>
+    <tbody>
+      <tr><td>9교시</td><td>RAG 본편 — Chroma · Qdrant 운영 사례</td></tr>
+      <tr><td>10교시</td><td>확장자별 청킹 최적화 (PDF · HWP · DOCX)</td></tr>
+      <tr><td>11교시</td><td>백오피스 비-LLM 모델 사례 (OCR · 마이닝)</td></tr>
+      <tr><td>12교시</td><td>사내 지식 베이스 구축 실습</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    오늘 사용한 자료 · 코드는 모두 이 페이지에 남아 있어요. 끝나고도 언제든 다시 보실 수 있습니다.
+  </div>
+</section>
+
+<!-- §7 실습 자료 -->
+<section id="dl">
+  <span class="section-tag">§ 실습 자료</span>
+  <h2>다운로드 — 한 번에 받으세요</h2>
+  <p class="lead">
+    아래 <strong>실습자료-전체.zip</strong> 하나만 받으면 모든 게 포함돼요. 개별 파일이 필요하면 따로 받으셔도 됩니다.
+  </p>
+
+  <ul class="dl">
+    <li>
+      <code>실습자료-전체.zip</code>
+      <div class="dl-desc">⭐ 전체 한 번에 — 만화 8컷 + 실습 6종 (~15 MB)</div>
+      <a class="dl-btn" href="downloads/day2-practice.zip" download>받기</a>
+    </li>
+    <li>
+      <code>README.md</code>
+      <div class="dl-desc">실습 안내 + Phase 0 시작 가이드</div>
+      <a class="dl-btn" href="downloads/README.md" download>받기</a>
+    </li>
+    <li>
+      <code>starter.html</code>
+      <div class="dl-desc">Phase 0 시작점 — 빈 HTML 템플릿</div>
+      <a class="dl-btn" href="downloads/starter.html" download>받기</a>
+    </li>
+    <li>
+      <code>pos_data.csv</code>
+      <div class="dl-desc">가상 POS 거래 데이터 205건</div>
+      <a class="dl-btn" href="downloads/pos_data.csv" download>받기</a>
+    </li>
+    <li>
+      <code>generate_pos_data.py</code>
+      <div class="dl-desc">데이터 재생성 — 본인 데이터로 갈아끼우기</div>
+      <a class="dl-btn" href="downloads/generate_pos_data.py" download>받기</a>
+    </li>
+    <li>
+      <code>exa_test.py</code>
+      <div class="dl-desc">EXA API 시연 (외부 리서치 무료 1000회/월)</div>
+      <a class="dl-btn" href="downloads/exa_test.py" download>받기</a>
+    </li>
+    <li>
+      <code>pos_graph.py</code>
+      <div class="dl-desc">POS 그래프 시각화 (pyvis)</div>
+      <a class="dl-btn" href="downloads/pos_graph.py" download>받기</a>
+    </li>
   </ul>
 </section>
 
-<!-- §7 노트 -->
-<section id="notes">
-  <span class="section-num">§7 / 회사 협의 반영</span>
-  <h2>요구사항 반영 (시바 · 아모레퍼시픽)</h2>
+<!-- §8 FAQ -->
+<section id="faq">
+  <span class="section-tag">§ FAQ</span>
+  <h2>자주 묻는 질문</h2>
 
-  <table>
-    <thead><tr><th>요구사항</th><th>반영</th></tr></thead>
-    <tbody>
-      <tr><td>비개발자 5인 + AI 지식 편차</td><td>만화 8컷 + eli5 톤 + 풀어 설명</td></tr>
-      <tr><td>12:30 종료 (1시간 보충)</td><td>Day 2·3 각 30분 연장 (12:00→12:30)</td></tr>
-      <tr><td>POS 상권분석 실습 데이터</td><td>가상 데이터 205건 + 재생성 스크립트</td></tr>
-      <tr><td>PLAN → DEV → 검수 → 리팩토링 → 보안 실습</td><td>풀스택 5단계 + Phase 0 시작점</td></tr>
-      <tr><td>만화 챕터 각 항목</td><td>8컷 (Gemini multimodal · reference)</td></tr>
-      <tr><td>QMD 활용 + 지식그래프 AI 스킬</td><td>영상 ② + agentmemory · QMD · graphify 3종 비교</td></tr>
-      <tr><td>이러닉 영상 톤</td><td>hyperframes 60초 × 2 — 강한 후킹 + 실측 + 비포/애프터</td></tr>
-      <tr><td>GitHub Pages 프리뷰</td><td>본 페이지 (claude-harness-catalog 패턴 정합)</td></tr>
-    </tbody>
-  </table>
+  <details class="faq">
+    <summary>AI를 아예 안 써봤어도 따라갈 수 있나요?</summary>
+    <div class="answer">
+      네. 1교시에 영상 1분 + 만화 4컷으로 시작해서 점점 깊어집니다. 막히면 손 들어 주시면 강사가 직접 와서 같이 합니다. 한 분도 빠짐없이 끝까지 완주가 목표예요.
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>DB 연결이 필요한가요?</summary>
+    <div class="answer">
+      아니요. 오늘은 <strong>정적 HTML + CSV 파일</strong>만 씁니다. 설치할 것은 어제 끝낸 Claude Code 외에 context7 MCP 하나뿐이에요.
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>비용이 어느 정도 드나요?</summary>
+    <div class="answer">
+      오늘 쓰는 도구는 거의 다 <strong>무료</strong> 또는 강사 환경에서 무상 제공됩니다. Claude Code는 회사 계정 (Pro $20 ~ Max $200), 나머지는 모두 무료.
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>완주하지 못하면 어떻게 하나요?</summary>
+    <div class="answer">
+      이 사이트가 그대로 남아 있어요. 끝나고 댁에서 천천히 따라하셔도 됩니다. 만화 8컷 + 영상 + 단계별 실습이 다 여기에 있어요.
+    </div>
+  </details>
+
+  <details class="faq">
+    <summary>만화 그림체가 좀 어색한데?</summary>
+    <div class="answer">
+      현재 만화 8컷은 AI 이미지 생성 모델 (gemini-2.5-flash-image, 일명 나노 바나나)로 만들었는데 한국어 텍스트 렌더링이 약한 한계가 있어요. 추후 Codex CLI의 이미지 생성 도구로 다시 만들어 교체할 예정입니다.
+    </div>
+  </details>
+
 </section>
 
 </div><!-- /.container -->
-
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox" onclick="this.classList.remove('open')">
-  <span class="close">×</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
 
 <!-- FOOTER -->
 <footer>
   <div class="container">
     <p>
-      <strong>Day 2 — 풀스택 5단계 + POS 상권분석</strong> · 2026-05-13<br>
-      만화 8컷 + hyperframes 영상 2개 + 실습 7종 · 270분 강의 자료.
+      <strong>Day 2 교재 — POS 풀스택 같이 만들기</strong> · 2026-05-13<br>
+      만화 8컷 + 영상 1개 + 실습 7종 · 270분 강의 자료.
     </p>
     <p class="muted">
       Repo: <a href="https://github.com/daniel8824-del/claude-pos-fullstack-day2" target="_blank">github.com/daniel8824-del/claude-pos-fullstack-day2</a> ·
       어제 Day 1 자료: <a href="https://daniel8824-del.github.io/claude-harness-catalog/" target="_blank">claude-harness-catalog</a><br>
-      외부 레이어: Superpowers · OMC · gstack · autoresearch · OMO · pro-workflow · qmd · feynman · hyperframes
+      문의가 있으시면 강의 시간에 손 들어 주세요. 끝나고도 댁에서 따라하실 수 있도록 사이트는 그대로 유지됩니다.
     </p>
   </div>
 </footer>
-
-<script>
-  // Comic lightbox
-  document.querySelectorAll('.comic-card').forEach(function(card) {
-    card.addEventListener('click', function() {
-      var img = card.getAttribute('data-img');
-      document.getElementById('lightbox-img').src = img;
-      document.getElementById('lightbox').classList.add('open');
-    });
-  });
-  document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target.id === 'lightbox' || e.target.classList.contains('close')) {
-      this.classList.remove('open');
-    }
-  });
-</script>
 
 </body>
 </html>
