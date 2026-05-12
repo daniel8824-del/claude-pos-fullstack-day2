@@ -410,6 +410,70 @@
     .instructor-cases { grid-template-columns: 1fr; }
   }
 
+  /* 만화 4장 갤러리 (5대 요소) */
+  .comic-gallery {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin: 16px 0 24px;
+  }
+  .comic-gallery figure.comic { margin: 0; }
+  .comic-gallery figure.comic figcaption {
+    text-align: center; margin-top: 8px;
+  }
+  @media (max-width: 720px) {
+    .comic-gallery { grid-template-columns: 1fr; }
+  }
+
+  /* 개념 박스 4개 (이미지 정합) */
+  .concept-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin: 16px 0 20px;
+  }
+  .concept-box {
+    background: #f7f9fc;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-dark);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .concept-box .concept-h {
+    font-weight: 800; font-size: 16px;
+    color: var(--accent-dark);
+    margin-bottom: 8px;
+  }
+  .concept-box p {
+    font-size: 14px; color: #333;
+    line-height: 1.6; margin: 0;
+  }
+  @media (max-width: 720px) {
+    .concept-grid { grid-template-columns: 1fr; }
+  }
+
+  /* 플러그인 카드 (각 5+ 스킬) */
+  .plugin-card {
+    margin: 16px 0 20px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: #fafbfc;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  }
+  .plugin-card .plugin-h {
+    display: flex; gap: 14px; align-items: center;
+    padding-bottom: 12px; margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .plugin-card .plugin-icon { font-size: 32px; line-height: 1; }
+  .plugin-card .plugin-name {
+    font-size: 19px; font-weight: 800; color: var(--accent-dark);
+    line-height: 1.2;
+  }
+  .plugin-card .plugin-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--muted);
+    margin-top: 2px; letter-spacing: 0.02em;
+  }
+  .plugin-card table { margin: 0; font-size: 13.5px; }
+
   table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
   table th, table td {
     text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border);
@@ -454,16 +518,13 @@
 
 <nav class="topbar">
   <div class="container">
-    <span class="brand">Day 2 · POS 풀스택</span>
+    <span class="brand">Day 2 · 하네스 5요소</span>
     <a href="#flow">흐름</a>
     <a href="#ch1">5차시</a>
-    <a href="#copilot">Copilot</a>
     <a href="#ch2">6차시</a>
     <a href="#ch3">7차시</a>
-    <a href="#agents">Agents</a>
     <a href="#ch4">8차시</a>
-    <a href="#aiops">AI-Ops</a>
-    <a href="#ch5">연장</a>
+    <a href="#copilot">Copilot</a>
     <a href="#dl">자료</a>
     <a href="https://daniel8824-del.github.io/claude-harness-catalog/" target="_blank">Day 1</a>
   </div>
@@ -472,12 +533,12 @@
 <header class="hero">
   <div class="container">
     <div class="badge">DAY 2 · 5/13(수) 08:00 ~ 12:30</div>
-    <h1>하네스 <span class="accent">5대 요소</span>로<br>POS 풀스택 5단계 완주</h1>
+    <h1>하네스 <span class="accent">5대 요소</span> +<br>Superpowers 풀스택 5단계</h1>
     <p class="lead">
-      지시문 · 스킬 · 훅 · MCP · 설정 — 5가지 도구로 POS 상권분석 사이트를 PLAN → DEVELOP → VERIFY → REFACTOR → SECURITY 한 사이클 만들고 GitHub Pages로 배포.
+      CLAUDE.md · MCP · Skills · Hooks · Memory — 5요소를 갖춘 환경에서 Superpowers 스킬로 POS 분석 앱을 PLAN → DEVELOP → VERIFY → REFACTOR → SECURITY 한 사이클 완주.
     </p>
     <p class="lead" style="font-size:15px;background:var(--accent-soft);padding:12px 16px;border-radius:8px;margin-top:14px;">
-      <strong>진행 방식</strong> | 강사는 <strong>Claude Code</strong>로 시연합니다. 수강생은 본인 <strong>GitHub Copilot</strong>(VS Code 확장 또는 CLI) 환경에서 같은 흐름을 적용합니다. <strong>개념(지시문·스킬·훅·MCP)은 양쪽 대응되지만 파일 경로·명령 문법은 도구별로 다릅니다.</strong> SKILL.md는 GitHub Agent Skills 표준이라 형식 자체는 동일 — 자세한 매핑은 <a href="#copilot">§ Copilot 대응</a>.
+      <strong>진행 방식</strong> | 강사는 <strong>Claude Code</strong>로 시연합니다. 수강생은 본인 <strong>GitHub Copilot</strong>(VS Code 확장 또는 CLI) 환경에서 같은 흐름을 적용합니다. <strong>5요소는 양쪽 대응되지만 파일 경로·명령 문법은 도구별로 다릅니다.</strong> SKILL.md는 GitHub Agent Skills 표준이라 형식 자체는 동일 — 자세한 매핑은 <a href="#copilot">§ Copilot 대응</a>.
     </p>
     <div class="meta-row">
       <span>📅 2026-05-13 (수)</span>
@@ -496,38 +557,31 @@
 
   <div class="day-timeline">
     <div class="day-row">
-      <span class="day-time">08:00 – 09:00</span>
+      <span class="day-time">08:00 – 09:00 (60분)</span>
       <div class="day-info">
-        <div class="ttl">5차시 | 하네스 5대 요소 + context7 MCP 설치</div>
-        <div class="desc">영상 ① 1분 + 만화 ①~④로 5대 요소(지시문·스킬·훅·MCP·설정) + 강사 사례 3건. <a href="#ch1">이동 →</a></div>
+        <div class="ttl">5차시 | 하네스 엔지니어링 + 5대 요소</div>
+        <div class="desc">영상 ① + 하네스 정의 + 5요소(CLAUDE.md · MCP · Skills · Hooks · Memory) + 만화 갤러리 + 대표 플러그인 3종(각 5+ 스킬) + context7 · Superpowers 설치. <a href="#ch1">이동 →</a></div>
       </div>
     </div>
     <div class="day-row">
-      <span class="day-time">09:00 – 10:00</span>
+      <span class="day-time">09:00 – 10:30 (90분)</span>
       <div class="day-info">
-        <div class="ttl">6차시 | 지시문 엔지니어링 + Phase 1·2</div>
-        <div class="desc">3 도구 지시문 비교(CLAUDE.md / Copilot / Cursor) + 상권 리서치 5종 + 워크숍 4영역 + 데이터 로더 + 분석 함수. <a href="#ch2">이동 →</a></div>
+        <div class="ttl">6차시 | Superpowers로 POS 분석 앱 풀스택 5단계</div>
+        <div class="desc">brainstorming → writing-plans → verification → requesting-code-review → /security-review로 pos_data.csv 이상 5건 검사 앱 완주. 코덱스 검수 팁 박스 포함. <a href="#ch2">이동 →</a></div>
       </div>
     </div>
     <div class="day-row">
-      <span class="day-time">10:00 – 11:00</span>
+      <span class="day-time">10:30 – 11:30 (60분)</span>
       <div class="day-info">
-        <div class="ttl">7차시 | 스킬 개발 + Phase 3 + agentmemory</div>
-        <div class="desc">영상 ② + SKILL.md 패턴 + 운영 스킬 7개 + /codex 검수 + /simplify 리팩 + <strong>agentmemory 학생 따라하기</strong> + 무료 지식그래프 8선. <a href="#ch3">이동 →</a></div>
+        <div class="ttl">7차시 | 조직 맞춤 스킬 토론·제작</div>
+        <div class="desc">POS팀 업무 인벤토리 → 자유 그룹(3~4명) → SKILL.md 1개 작성 → 발표 + 상호 피드백. 회사 자산이 되는 첫 스킬 후보. <a href="#ch3">이동 →</a></div>
       </div>
     </div>
     <div class="day-row">
-      <span class="day-time">11:00 – 12:00</span>
+      <span class="day-time">11:30 – 12:30 (60분)</span>
       <div class="day-info">
-        <div class="ttl">8차시 | 훅 시스템 + Phase 4·5</div>
-        <div class="desc">훅 4 이벤트(PreToolUse/PostToolUse/Notification/Stop) + 3 유형(command/http/prompt) + 강사 5종 + /security-review + GitHub Pages 배포. <a href="#ch4">이동 →</a></div>
-      </div>
-    </div>
-    <div class="day-row">
-      <span class="day-time">12:00 – 12:30</span>
-      <div class="day-info">
-        <div class="ttl">연장 | Q&amp;A + 막힌 학생 코칭 + Day 3 예고</div>
-        <div class="desc">Day 3(5/14) RAG·임베딩·청킹·백오피스 비-LLM 예고. <a href="#ch5">이동 →</a></div>
+        <div class="ttl">8차시 | QMD · LLM 위키 · 지식그래프 · AI-Ops 안내</div>
+        <div class="desc">영상 ②③ + QMD 재정리 + LLM 위키(Karpathy 패턴) + 무료 지식그래프 8선 비교 + 전통 POS → AI-Ops 5단계 로드맵 + Day 3 예고 · Q&amp;A. <a href="#ch4">이동 →</a></div>
       </div>
     </div>
   </div>
@@ -541,11 +595,11 @@
 <!-- §1 5차시 -->
 <section id="ch1">
   <span class="section-tag">§ 5차시 · 08:00 ~ 09:00</span>
-  <h2><span class="accent">5차시</span> | 하네스 5대 요소 + context7 MCP 설치</h2>
+  <h2><span class="accent">5차시</span> | 하네스 엔지니어링 + 5대 요소</h2>
 
   <div class="goal">
     <div class="goal-label">학습 목표</div>
-    <div class="goal-text"><strong>지시문 · 스킬 · 훅 · MCP · 설정</strong> 5가지를 한 줄로 설명하고, context7 MCP 설치까지 완료한다</div>
+    <div class="goal-text">하네스 엔지니어링의 의미와 <strong>5대 요소 (CLAUDE.md · MCP · Skills · Hooks · Memory)</strong>를 한 줄로 설명하고, context7 MCP 설치까지 완료한다</div>
   </div>
 
   <h3><span class="step-num">1</span>도입 영상 (60초)</h3>
@@ -556,112 +610,261 @@
     </video>
     <div class="video-meta">
       <span class="label">영상 · 60초</span>
-      <strong>하네스 5대 요소 → 풀스택 5단계 자동화</strong>
+      <strong>하네스 5대 요소 미리보기</strong>
     </div>
   </div>
 
-  <h3><span class="step-num">2</span>핵심 개념 | 하네스 5대 요소</h3>
+  <h3><span class="step-num">2</span>하네스 엔지니어링이란?</h3>
+  <p>"하네스(Harness)"는 원래 말의 마구(馬具)입니다. 천 마력 말도 마구 없이는 밭을 갈 수 없습니다. AI 에이전트도 똑같습니다 — 모델이 아무리 뛰어나도 "어떻게 일하라"는 시스템이 없으면 매번 다른 결과가 나옵니다. 그 시스템을 설계하는 기술이 <strong>하네스 엔지니어링</strong>입니다.</p>
+  <p class="lead">프롬프트 엔지니어링 (2023) → 컨텍스트 엔지니어링 (2025) → <strong>하네스 엔지니어링 (2026)</strong></p>
+
+  <table>
+    <thead><tr><th>구분</th><th>프롬프트 엔지니어링</th><th>하네스 엔지니어링</th></tr></thead>
+    <tbody>
+      <tr><td><strong>범위</strong></td><td>단일 입력 (한 번의 질문)</td><td>영구적인 시스템 설계</td></tr>
+      <tr><td><strong>지속성</strong></td><td>세션 종료 시 사라짐</td><td>파일로 저장, 팀 전체 공유</td></tr>
+      <tr><td><strong>구성</strong></td><td>텍스트 프롬프트 1개</td><td>규칙 + 도구 + 스킬 + 훅 + 메모리</td></tr>
+      <tr><td><strong>재현성</strong></td><td>같은 프롬프트도 결과 다름</td><td>시스템이 일관된 결과 보장</td></tr>
+      <tr><td><strong>대상</strong></td><td>채팅 한 턴</td><td>전체 작업 흐름</td></tr>
+    </tbody>
+  </table>
+
+  <p>핵심: <strong>하네스 산출물(CLAUDE.md · 스킬 파일 · 훅 스크립트)은 전부 Git에 커밋되는 파일</strong>입니다. 팀원이 바뀌어도, 모델이 업그레이드되어도, 하네스는 남습니다.</p>
+
+  <div class="concept-grid">
+    <div class="concept-box">
+      <div class="concept-h">CLI 에이전트란?</div>
+      <p>IDE 플러그인과 달리 터미널에서 AI가 직접 파일을 읽고, 코드를 작성하고, 빌드·테스트까지 수행하는 도구. Claude Code · Copilot CLI · Gemini CLI · Codex CLI 등.</p>
+    </div>
+    <div class="concept-box">
+      <div class="concept-h">하네스 엔지니어링이란?</div>
+      <p>에이전트가 프로젝트 규칙을 따르고 반복 실수를 하지 않도록 환경을 체계적으로 구성하는 기술. 5요소(CLAUDE.md · MCP · Skills · Hooks · Memory)의 조합.</p>
+    </div>
+    <div class="concept-box">
+      <div class="concept-h">Plan-first 개발이란?</div>
+      <p><code class="inline">.md</code> 문서로 계획·요구사항을 먼저 정리하고 AI에게 실행을 위임하는 패턴. 성숙한 팀의 표준 워크플로우. Superpowers의 <code class="inline">writing-plans</code>가 이 패턴.</p>
+    </div>
+    <div class="concept-box">
+      <div class="concept-h">프롬프트 캐싱이란?</div>
+      <p>반복되는 입력 토큰을 재사용해 LLM API 비용을 30~50% 줄이는 기법. CLAUDE.md · SKILL.md 같은 정적 컨텍스트가 자동으로 캐시되어 매 세션 토큰비가 낮아집니다.</p>
+    </div>
+  </div>
+
+  <h3><span class="step-num">3</span>핵심 개념 | 하네스 5대 요소</h3>
 
   <div class="five-tools">
     <div class="tool-card">
       <div class="tool-icon">📜</div>
-      <div class="tool-name">① 지시문 <span class="term">CLAUDE.md / AGENTS.md</span></div>
-      <div class="tool-def">팀·프로젝트 룰을 적은 .md 파일. 매 세션 자동 로드되어 AI가 동일 룰을 따른다.</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">🍳</div>
-      <div class="tool-name">② 스킬 <span class="term">SKILL.md</span></div>
-      <div class="tool-def">특정 분야 전문 자료. 활성화될 때만 로드. GitHub Agent Skills 표준 — Claude Code · Copilot 모두 동일 형식.</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">🔔</div>
-      <div class="tool-name">③ 훅 <span class="term">Hooks</span></div>
-      <div class="tool-def">PreToolUse · PostToolUse · Notification · Stop 4 이벤트. <strong>도구 사용 전후 · 세션 시작/종료 · 사용자 프롬프트 제출 · 오류 발생</strong> 같은 이벤트에 자동 반응.</div>
+      <div class="tool-name">① CLAUDE.md / AGENTS.md <span class="term">지시문</span></div>
+      <div class="tool-def">팀·프로젝트 룰을 적은 .md 파일. 매 세션 자동 로드되어 AI가 동일 룰을 따릅니다. 하단에 <strong>Bug Log</strong>를 두면 같은 실수 반복률이 확 줄어듭니다.</div>
     </div>
     <div class="tool-card">
       <div class="tool-icon">🚚</div>
-      <div class="tool-name">④ MCP <span class="term">Model Context Protocol</span></div>
-      <div class="tool-def">AI가 외부 시스템(Jira · Confluence · AWS · Oracle · Gitlab · MS Office)에 직접 연결되는 통로.</div>
+      <div class="tool-name">② MCP <span class="term">Model Context Protocol</span></div>
+      <div class="tool-def">AI에 외부 도구·데이터베이스·이슈 트래커·검색 API를 표준으로 연결하는 통로. 2~3개로 시작해서 한계에 부딪힐 때만 추가 (도구 선택 혼란 방지).</div>
     </div>
-    <div class="tool-card" style="grid-column: 1 / -1;">
-      <div class="tool-icon">⚙️</div>
-      <div class="tool-name">⑤ 설정 <span class="term">settings.json</span></div>
-      <div class="tool-def">훅 정의 · permissions · 환경변수 · 모델 라우팅. 가게 인테리어처럼 도구 4종이 어떻게 어우러질지 정의.</div>
+    <div class="tool-card">
+      <div class="tool-icon">🍳</div>
+      <div class="tool-name">③ Skills <span class="term">SKILL.md / Plugins</span></div>
+      <div class="tool-def">태스크별 전문 지식을 별도 파일로 분리. 활성화될 때만 로드되는 <strong>점진적 공개</strong>(Progressive Disclosure). 컨텍스트가 깨끗하게 유지됩니다. GitHub Agent Skills 표준 — Claude Code · Copilot 동일 형식.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🔔</div>
+      <div class="tool-name">④ Hooks <span class="term">자동화 트리거</span></div>
+      <div class="tool-def">비결정적 AI에 결정적 제어를 추가. <strong>PreToolUse</strong>(도구 사용 전 검증) · <strong>PostToolUse</strong>(사용 후 처리) · <strong>Stop</strong>(완료 전 검증) — 작업 특정 시점에 자동 실행되는 스크립트.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🧠</div>
+      <div class="tool-name">⑤ Memory <span class="term">세션 간 컨텍스트</span></div>
+      <div class="tool-def">AI의 가장 큰 약점 — 세션이 끝나면 다 잊습니다. 사용자 선호·프로젝트 컨텍스트·과거 실수를 파일에 저장하고 다음 세션에 자동 로드합니다. CLAUDE.md 하단의 Bug Log도 Memory의 한 형태입니다.</div>
     </div>
   </div>
 
-  <figure class="comic">
-    <img src="images/comics/01-prompt-project-skill.png" alt="PROMPT · PROJECT · SKILL">
-    <figcaption><strong>만화 ①</strong> | PROMPT · PROJECT · SKILL — 셰프 식당의 즉석 주문 · 단골 노트 · 전문 매뉴얼</figcaption>
-  </figure>
+  <h3><span class="step-num">4</span>만화로 보는 5대 요소</h3>
+  <p class="lead">셰프 식당 메타포 — 각 요소가 식당 운영의 어디에 해당하는지.</p>
+  <div class="comic-gallery">
+    <figure class="comic">
+      <img src="images/comics/01-prompt-project-skill.png" alt="PROMPT · PROJECT · SKILL">
+      <figcaption><strong>① PROMPT · PROJECT · SKILL</strong><br>즉석 주문 · 단골 노트 · 전문 매뉴얼</figcaption>
+    </figure>
+    <figure class="comic">
+      <img src="images/comics/04-claude-md.png" alt="CLAUDE.md">
+      <figcaption><strong>④ CLAUDE.md</strong><br>가게 룰북 — 매 세션 자동 로드</figcaption>
+    </figure>
+    <figure class="comic">
+      <img src="images/comics/03-mcp.png" alt="MCP">
+      <figcaption><strong>③ MCP</strong><br>거래처 직통 라인</figcaption>
+    </figure>
+    <figure class="comic">
+      <img src="images/comics/02-hook.png" alt="Hook">
+      <figcaption><strong>② Hook</strong><br>오븐 알람 — 자동 트리거</figcaption>
+    </figure>
+  </div>
 
-  <h3><span class="step-num">3</span>실습 | context7 MCP 설치 (모두 따라하기)</h3>
+  <h3><span class="step-num">5</span>대표 하네스 플러그인 (각 5+ 스킬)</h3>
+  <p class="lead">5대 요소를 미리 묶어둔 오픈소스 플러그인. <strong>오늘은 Superpowers만 설치</strong>하고, 나머지는 필요할 때 회사 환경에 맞게 골라 도입합니다.</p>
+
+  <div class="plugin-card">
+    <div class="plugin-h">
+      <span class="plugin-icon">⚡</span>
+      <div>
+        <div class="plugin-name">Superpowers</div>
+        <div class="plugin-meta">obra/superpowers · 코딩 워크플로우 강화</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>스킬</th><th>언제 · 무엇</th></tr></thead>
+      <tbody>
+        <tr><td><code class="inline">brainstorming</code></td><td>새 기능·3+ 파일 변경 시 설계 전 다지선다 인터뷰 + 트레이드오프</td></tr>
+        <tr><td><code class="inline">writing-plans</code></td><td>6+ 파일 대형 작업의 태스크 분해 + 순서·의존성·체크포인트</td></tr>
+        <tr><td><code class="inline">systematic-debugging</code></td><td>버그 원인 불명확 시 가설 3+ 수립 → 검증 → 근본 원인 확정</td></tr>
+        <tr><td><code class="inline">verification-before-completion</code></td><td>완료 주장 전 type-check · build · test 강제 검증</td></tr>
+        <tr><td><code class="inline">requesting-code-review</code></td><td>독립 컨텍스트에서 코드 리뷰 위임</td></tr>
+        <tr><td><code class="inline">test-driven-development</code></td><td>TDD — 실패 테스트 → 구현 → 통과 사이클</td></tr>
+        <tr><td><code class="inline">dispatching-parallel-agents</code></td><td>독립 작업 2+ 병렬 서브에이전트 분배</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="plugin-card">
+    <div class="plugin-h">
+      <span class="plugin-icon">🛡</span>
+      <div>
+        <div class="plugin-name">gstack</div>
+        <div class="plugin-meta">안전 가드 + QA 자동화</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>스킬</th><th>언제 · 무엇</th></tr></thead>
+      <tbody>
+        <tr><td><code class="inline">careful</code></td><td>위험 명령 자동 차단 (<code class="inline">rm -rf</code> · <code class="inline">DROP</code> · <code class="inline">force-push</code>)</td></tr>
+        <tr><td><code class="inline">freeze</code></td><td>작업 디렉토리 범위 제한 — 다른 폴더 수정 금지</td></tr>
+        <tr><td><code class="inline">unfreeze</code></td><td>freeze 해제</td></tr>
+        <tr><td><code class="inline">guard</code></td><td>careful + freeze 통합 안전 모드</td></tr>
+        <tr><td><code class="inline">browse</code></td><td>헤드리스 QA — 자동 클릭 · 폼 입력 · 스크린샷</td></tr>
+        <tr><td><code class="inline">qa</code></td><td>대화형 QA 시나리오 실행</td></tr>
+        <tr><td><code class="inline">connect-chrome</code></td><td>가시적 Chromium 실행 — 실시간 인터랙션</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="plugin-card">
+    <div class="plugin-h">
+      <span class="plugin-icon">🎼</span>
+      <div>
+        <div class="plugin-name">oh-my-claudecode (OMC)</div>
+        <div class="plugin-meta">멀티에이전트 오케스트레이션 · 21 에이전트 · 37 스킬</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>스킬</th><th>언제 · 무엇</th></tr></thead>
+      <tbody>
+        <tr><td><code class="inline">autopilot</code></td><td>아이디어 → 완성 코드까지 완전 자율 실행</td></tr>
+        <tr><td><code class="inline">ralph</code></td><td>끝날 때까지 무한 루프 (테스트 통과까지)</td></tr>
+        <tr><td><code class="inline">ultrawork</code></td><td>여러 파일 동시 최대 병렬 리팩토링</td></tr>
+        <tr><td><code class="inline">team</code></td><td>N개 에이전트 팀 협업 (Frontend + Backend + Test)</td></tr>
+        <tr><td><code class="inline">plan</code></td><td>Planner + Architect + Critic 합의 전략 계획</td></tr>
+        <tr><td><code class="inline">analyze</code></td><td>딥 분석 — 메모리 누수 · 성능 병목 · 아키텍처</td></tr>
+        <tr><td><code class="inline">build-fix</code></td><td>빌드 · 타입 에러 자동 수렴</td></tr>
+        <tr><td><code class="inline">code-review</code></td><td>code-reviewer 에이전트 자동 호출</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:13px;color:#555;">회사 환경에서 외부 마켓 접근 제한 시 — 필요한 SKILL.md만 <code class="inline">.github/skills/{name}/SKILL.md</code> 또는 <code class="inline">.claude/skills/{name}/SKILL.md</code>에 직접 배치하면 동일 작동.</p>
+
+  <h3><span class="step-num">6</span>실습 | context7 MCP + Superpowers 플러그인 설치</h3>
+
+  <p class="lead">명령어를 외울 필요 없습니다. <strong>GitHub 주소</strong>를 그대로 던지면 AI가 알아서 설치합니다. Claude Code · Copilot CLI 양쪽 동일.</p>
+
+  <h4 style="margin-top:20px;font-size:16px;">실습 1 — context7 MCP (공식 SDK 문서 조회)</h4>
 
   <div class="dual-track">
     <div class="track instr">
-      <div class="track-h">강사 시연 (Claude Code)</div>
-      <pre>claude mcp add context7 -- \
-  npx -y @upstash/context7-mcp@latest
+      <div class="track-h">자연어 요청 (양쪽 동일)</div>
+      <pre>"https://github.com/upstash/context7
+이 MCP 설치해줘"
+
+# AI가 자동 실행:
+# claude mcp add context7 -- \
+#   npx -y @upstash/context7-mcp@latest
+# (Copilot은 copilot mcp add ...)
 
 # 재시작 후
 /mcp
 # → context7 등록 확인</pre>
     </div>
     <div class="track stu">
-      <div class="track-h">수강생 매핑 (Copilot CLI)</div>
-      <pre>copilot mcp add context7 -- \
+      <div class="track-h">명령어 직접 (선택)</div>
+      <pre># Claude Code
+claude mcp add context7 -- \
   npx -y @upstash/context7-mcp@latest
 
-# 재시작 후
-/mcp
-# → context7 등록 확인</pre>
+# Copilot CLI (동등)
+copilot mcp add context7 -- \
+  npx -y @upstash/context7-mcp@latest</pre>
     </div>
   </div>
 
   <p>테스트 쿼리 (양쪽 동일):</p>
   <pre style="background:#1a1a1a;color:#f0f0f0;padding:12px 14px;border-radius:6px;font-size:13px;">React Query v5의 useQuery 사용법을 최신 공식 문서에서 찾아줘.</pre>
 
+  <h4 style="margin-top:24px;font-size:16px;">실습 2 — Superpowers 플러그인 (코딩 워크플로우 4종)</h4>
+
+  <div class="dual-track">
+    <div class="track instr">
+      <div class="track-h">자연어 요청 (양쪽 동일)</div>
+      <pre>"https://github.com/obra/superpowers
+이 플러그인 마켓플레이스 추가하고
+superpowers 설치해줘"
+
+# AI가 자동 실행:
+# /plugin marketplace add \
+#   obra/superpowers-marketplace
+# /plugin install \
+#   superpowers@superpowers-marketplace</pre>
+    </div>
+    <div class="track stu">
+      <div class="track-h">설치 후 등록되는 스킬</div>
+      <pre>brainstorming
+  └─ 새 기능 함께 고민
+
+writing-plans
+  └─ 3단계+ 구현 계획 작성
+
+systematic-debugging
+  └─ 4단계 구조화 디버깅
+
+verification-before-completion
+  └─ 완료 주장 전 검증</pre>
+    </div>
+  </div>
+
+  <p>테스트 (Phase 1 시작 시 자연 발동):</p>
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:12px 14px;border-radius:6px;font-size:13px;">"새 기능 만들기 전에 brainstorming 스킬로 같이 고민해보자"</pre>
+
   <div class="reference">
-    <p><strong>터미널 처음이신 분</strong> | 옆 분과 짝을 지어주세요. 한 명이 따라하면 같이 봅니다.</p>
+    <p><strong>터미널 처음이신 분</strong> | 옆 분과 짝을 지어주세요. 한 명이 따라하면 같이 봅니다.<br>
+    <strong>회사 환경에서 외부 마켓 접근 제한 시</strong> — 필요한 SKILL.md만 <code class="inline">.github/skills/{name}/SKILL.md</code> 또는 <code class="inline">.claude/skills/{name}/SKILL.md</code>에 직접 복사하면 동일하게 작동합니다.</p>
   </div>
 
-  <h3><span class="step-num">4</span>강사 사례 3건 (10분) | 6개월~1년 실 운영 자산</h3>
-
-  <div class="instructor-cases">
-    <div class="ic">
-      <div class="ic-name">Yurisma 학원 SaaS</div>
-      <div>CLAUDE.md 80+ 룰 누적<br>6개월 운영 사고 0건</div>
-      <div class="ic-key">결제 분기 · 알림톡 backend 전환 · 회사 정보 grep 정합</div>
-    </div>
-    <div class="ic">
-      <div class="ic-name">BeautyDecode</div>
-      <div>"1편씩 1대1 처리" 룰<br>품질 3배</div>
-      <div class="ic-key">배치 → 1편 분리 → 토큰 0.5× / 품질 3×</div>
-    </div>
-    <div class="ic">
-      <div class="ic-name">proposal-bid</div>
-      <div>MCP 외부 RFP 자동 수집<br>작업 시간 1/5</div>
-      <div class="ic-key">SVG 모드 (slide_kit lock-in 회피)</div>
-    </div>
-  </div>
-
-  <h3><span class="step-num">5</span>오늘 만들 것 미리보기 | 만화 ⑤</h3>
-  <figure class="comic">
-    <img src="images/comics/05-fullstack-5steps.png" alt="풀스택 5단계 = 셰프의 하루">
-    <figcaption><strong>만화 ⑤</strong> | 풀스택 5단계 — 셰프의 하루</figcaption>
-  </figure>
+  <h3><span class="step-num">7</span>Superpowers 스킬 자연어 호출 예시</h3>
+  <p class="lead">스킬은 활성화될 때만 로드되는 <strong>점진적 공개</strong> — 매 세션 시작 시 메타데이터(~100 토큰)만 스캔, 호출 시점에만 본문(~5,000 토큰) 로드. <strong>스킬 이름을 외울 필요 없습니다</strong> — 상황을 그대로 말하면 AI가 적합한 스킬을 자동 활성화.</p>
 
   <table>
-    <thead><tr><th>단계</th><th>의미</th><th>오늘 사용할 명령 (강의안 정합)</th></tr></thead>
+    <thead><tr><th>상황</th><th>자연어 호출 (예시)</th><th>발동 스킬</th></tr></thead>
     <tbody>
-      <tr><td><strong>1. PLAN</strong></td><td>메뉴 기획 (책상)</td><td>brainstorming 스킬</td></tr>
-      <tr><td><strong>2. DEVELOP</strong></td><td>요리 (가스레인지)</td><td>writing-plans 스킬 + 실제 코딩</td></tr>
-      <tr><td><strong>3. VERIFY</strong></td><td>옆 셰프 시식 — 완성도 검증</td><td>verification-before-completion 스킬</td></tr>
-      <tr><td>(곁가지) <strong>DEBUG</strong></td><td>막힌 곳 차분히 파헤치기</td><td>systematic-debugging 스킬</td></tr>
-      <tr><td><strong>4. REFACTOR / REVIEW</strong></td><td>레시피 간소화 + 코드 리뷰</td><td>requesting-code-review 스킬 · <code class="inline">/codex</code> · <code class="inline">/simplify</code></td></tr>
-      <tr><td><strong>5. SECURITY</strong></td><td>보건소 위생 점검</td><td><code class="inline">/security-review</code></td></tr>
+      <tr><td>새 기능 시작</td><td>"새 기능 만들기 전에 같이 고민해보자"</td><td><code class="inline">brainstorming</code></td></tr>
+      <tr><td>대형 작업 계획</td><td>"이 기능 구현 계획을 <code class="inline">plan.md</code>로 작성해줘"</td><td><code class="inline">writing-plans</code></td></tr>
+      <tr><td>버그 원인 모름</td><td>"이 에러 어디서 나는지 모르겠어, 체계적으로 디버깅"</td><td><code class="inline">systematic-debugging</code></td></tr>
+      <tr><td>완료 주장 전</td><td>"커밋 전 type-check · build · test 다 돌려서 확인"</td><td><code class="inline">verification-before-completion</code></td></tr>
+      <tr><td>코드 리뷰 위임</td><td>"이 PR 독립 컨텍스트에서 리뷰해줘"</td><td><code class="inline">requesting-code-review</code></td></tr>
     </tbody>
   </table>
+
+  <div class="reference">
+    <p><strong>다음 차시 예고</strong> | 6차시에서 Superpowers 4종(brainstorming · writing-plans · verification · debugging) + <code class="inline">/security-review</code>로 POS 데이터 분석 앱을 풀스택 5단계로 함께 만듭니다.</p>
+  </div>
 </section>
 
 <!-- §Copilot 대응 (1교시 뒤로 이동) -->
@@ -694,11 +897,6 @@
         <td>(별도 개념 없음)</td>
         <td><code class="inline">.github/instructions/*.instructions.md</code></td>
         <td>Copilot 전용 — 경로별(path-specific) 코딩 룰.</td>
-      </tr>
-      <tr>
-        <td><code class="inline">.claude/agents/{name}.md</code></td>
-        <td><code class="inline">.github/agents/{name}.md</code> (공식 권장)</td>
-        <td>Custom Agent — 양쪽 동일 명세.</td>
       </tr>
       <tr>
         <td><code class="inline">~/.claude/hooks/</code></td>
@@ -747,725 +945,427 @@
 
 <!-- §2 6차시 -->
 <section id="ch2">
-  <span class="section-tag">§ 6차시 · 09:00 ~ 10:00</span>
-  <h2><span class="accent">6차시</span> | 지시문 엔지니어링 + Phase 1·2</h2>
+  <span class="section-tag">§ 6차시 · 09:00 ~ 10:30 (90분)</span>
+  <h2><span class="accent">6차시</span> | Superpowers로 POS 분석 앱 만들기 (풀스택 5단계)</h2>
 
   <div class="goal">
     <div class="goal-label">학습 목표</div>
-    <div class="goal-text"><strong>3 도구 지시문 통일 패턴</strong> 이해 + POS용 CLAUDE.md/AGENTS.md 조별 워크숍 + 데이터 로더(Phase 1) + 분석 함수(Phase 2)</div>
+    <div class="goal-text"><strong>Superpowers 스킬 4종 + <code class="inline">/security-review</code></strong>로 pos_data.csv (205건)의 이상 5건을 elif chain으로 검사·출력하는 미니 분석 앱을 풀스택 5단계로 완주한다</div>
   </div>
 
-  <h3><span class="step-num">1</span>3 도구 지시문 — 패턴은 동일</h3>
-
-  <table>
-    <thead><tr><th>AI 도구</th><th>지시문 파일</th><th>위치</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Claude Code</strong></td><td><code class="inline">CLAUDE.md</code></td><td>repo root · ~/.claude/ · subdir</td></tr>
-      <tr><td><strong>GitHub Copilot</strong></td><td><code class="inline">AGENTS.md</code> (1순위) · <code class="inline">.github/copilot-instructions.md</code></td><td>repo root · .github/</td></tr>
-      <tr><td><strong>Cursor</strong></td><td><code class="inline">.cursorrules</code></td><td>repo root</td></tr>
-    </tbody>
-  </table>
-
-  <p>→ <strong>한 번 작성하면 세 도구 모두 활용 가능.</strong> 회사 repo에서 AGENTS.md를 1순위로 두고 CLAUDE.md/.cursorrules는 호환 유지.</p>
-
+  <h3><span class="step-num">1</span>오늘 만들 것 미리보기</h3>
   <figure class="comic">
-    <img src="images/comics/04-claude-md.png" alt="CLAUDE.md | 가게 운영 매뉴얼">
-    <figcaption><strong>만화 ④</strong> | CLAUDE.md = 가게 운영 매뉴얼 (AI에게 회사 룰 가르치기)</figcaption>
+    <img src="images/comics/05-fullstack-5steps.png" alt="풀스택 5단계 = 셰프의 하루">
+    <figcaption><strong>만화 ⑤</strong> | 풀스택 5단계 — 셰프의 하루</figcaption>
   </figure>
 
-  <h3><span class="step-num">2</span>외부 리서치 | EXA API 1종 집중 (만화 ⑧)</h3>
-
-  <p>실전에선 외부 자료 수집이 풀스택의 진짜 첫 단계입니다. <strong>오늘 강의에선 EXA API 한 가지만 깊이</strong> — AI 의미 검색에 특화된 무료 1000회/월 도구. 강사가 회원가입 → API 키 발급 후 라이브 시연.</p>
-
   <table>
-    <thead><tr><th>항목</th><th>EXA API</th></tr></thead>
+    <thead><tr><th>단계</th><th>의미 (셰프)</th><th>Superpowers 스킬 (기본)</th><th>참고 도구</th></tr></thead>
     <tbody>
-      <tr><td>역할</td><td>AI 의미 검색 (단순 키워드 매칭이 아닌 의미 기반 — 경쟁사 페이지·트렌드·논문 등)</td></tr>
-      <tr><td>비용</td><td>무료 1000 검색/월 · 가입 후 즉시 API 키 발급</td></tr>
-      <tr><td>회원가입</td><td><a href="https://exa.ai/" target="_blank">exa.ai</a> → 이메일·GitHub 로그인 → Dashboard에서 API 키 복사</td></tr>
-      <tr><td>호출 방법</td><td>별도 .py 스크립트 X — AI 프롬프트 한 줄 또는 PowerShell curl 한 줄</td></tr>
+      <tr><td><strong>1. PLAN</strong></td><td>메뉴 기획</td><td><code class="inline">brainstorming</code></td><td>—</td></tr>
+      <tr><td><strong>2. DEVELOP</strong></td><td>요리</td><td><code class="inline">writing-plans</code> + 실제 코딩</td><td>—</td></tr>
+      <tr><td><strong>3. VERIFY</strong></td><td>옆 셰프 시식</td><td><code class="inline">verification-before-completion</code></td><td>—</td></tr>
+      <tr><td>(곁가지) <strong>DEBUG</strong></td><td>막힌 곳 파헤치기</td><td><code class="inline">systematic-debugging</code></td><td>—</td></tr>
+      <tr><td><strong>4. REFACTOR</strong></td><td>레시피 간소화 + 외부 검수자 시선</td><td><code class="inline">requesting-code-review</code></td><td>(팁) <code class="inline">/codex</code> · <code class="inline">/simplify</code></td></tr>
+      <tr><td><strong>5. SECURITY</strong></td><td>보건소 위생 점검</td><td><code class="inline">/security-review</code></td><td>—</td></tr>
     </tbody>
   </table>
+  <p style="font-size:13px;color:#555;"><strong>기본은 Superpowers 스킬</strong>. /codex (외부 OpenAI), /simplify (Anthropic 내장) 등 외부 검수 도구는 4단계 REFACTOR에서 <strong>참고용 팁</strong>으로만 다룹니다.</p>
 
-  <h4>호출 예시 — 둘 중 편한 방식으로</h4>
+  <h3><span class="step-num">2</span>POS 데이터 명세 (SAP IBP)</h3>
 
-  <div class="dual-track">
-    <div class="track instr">
-      <div class="track-h">방법 ① AI 프롬프트 한 줄</div>
-      <pre>EXA API로 "POS 상권 분석 2026"
-검색해서 상위 5건 정리해줘.
-환경변수 EXA_API_KEY 사용.</pre>
-    </div>
-    <div class="track stu">
-      <div class="track-h">방법 ② PowerShell curl 한 줄</div>
-      <pre>curl -X POST https://api.exa.ai/search `
-  -H "Authorization: Bearer YOUR_KEY" `
-  -H "Content-Type: application/json" `
-  -d '{\"query\":\"POS 상권 분석 2026\"}'</pre>
-    </div>
-  </div>
-
-  <div class="reference">
-    <p><strong>다른 외부 리서치 도구</strong>는 강사 본인 환경에서 운영 중 (Brave Search · firecrawl · 공공 데이터 data.go.kr · 소상공인 상권분석 sg.sbiz.or.kr). 본 강의에서는 EXA 1종에 집중 — 회원가입 부담 최소, 가장 빠른 ROI. 다른 도구 깊이는 Day 4 (MCP·자동화)에서.</p>
-  </div>
-
-  <figure class="comic">
-    <img src="images/comics/08-research.png" alt="외부 자료 리서치">
-    <figcaption><strong>만화 ⑧</strong> | 셰프의 시장조사 — 사내 → 외부 순서, Tier 게이트</figcaption>
-  </figure>
-
-  <h3><span class="step-num">3</span>워크숍 | POS용 CLAUDE.md 조별 작성 (4인 1조 × 4~5조)</h3>
-
-  <p>각 조 화이트보드에 다음 4영역 채우기:</p>
-
-  <pre style="background:#1a1a1a;color:#f0f0f0;padding:18px 22px;border-radius:8px;font-size:13px;">
-# POS 시스템 CLAUDE.md (조별 작성)
-
-## 1. 도메인 규칙
-- [어제 1차시 진단에서 도출된 회사 룰 3~5개]
-
-## 2. 아키텍처 패턴
-- [POS 시스템 핵심 모듈 / 데이터 흐름]
-
-## 3. 금지 패턴
-- [절대 하면 안 되는 코드 패턴 3개]
-
-## 4. 검수 룰
-- [PR 머지 전 체크리스트]</pre>
-
-  <p><strong>강사 예시</strong> — Yurisma CLAUDE.md 발췌 (운영 6개월 누적):</p>
-
-  <pre style="background:#1a1a1a;color:#f0f0f0;padding:18px 22px;border-radius:8px;font-size:13px;">
-## 도메인 규칙
-- 결제 카드·알뜰 = payssam / 무통장 = 페이액션 (단일 결제사 lock-in 회피)
-- 알림톡 = bizm (스윗트래커) · 솔라피 폐기
-
-## 금지 패턴
-- 닫힌 기능 다 여는 게 원칙 (disabled/readOnly closure 금지)
-- fm 페이지 cream bg 금지 (사용자 명시 거부)
-
-## 검수 룰
-- 수정 후 즉시 commit/push (dogfooding 사이클)
-- verify 직접 (URL fetch / deploy status는 curl로)
-- 오버액션 금지 (작업 chain 성공 시 brief 보고만)</pre>
-
-  <h3><span class="step-num">4</span>실습 Phase 1 | POS 데이터 로더</h3>
-
-  <p>POS 데이터 명세 — <strong>SAP Integrated Business Planning (IBP) 표준 주요 지표</strong> 기반:</p>
+  <p><strong>SAP Integrated Business Planning</strong> 표준 주요 지표 기반 9 컬럼 · 205건 (정상 200 + 이상 5):</p>
   <table>
-    <thead><tr><th>컬럼 (주요 지표 ID)</th><th>의미</th><th>예시</th></tr></thead>
+    <thead><tr><th>컬럼</th><th>의미</th><th>예시</th></tr></thead>
     <tbody>
       <tr><td><code class="inline">BASE_WEEK</code></td><td>기술적 주 (YYYYWW)</td><td>202618</td></tr>
       <tr><td><code class="inline">PRODUCT_ID</code></td><td>제품 SKU</td><td>AMP-TONER-001</td></tr>
       <tr><td><code class="inline">LOCATION_ID</code></td><td>장소 (점포·DC)</td><td>STORE_GANGNAM</td></tr>
       <tr><td><code class="inline">CUSTOMER_ID</code></td><td>고객 (백화점·마트·면세점·온라인)</td><td>CUST_DEPT_LOTTE</td></tr>
-      <tr><td><code class="inline">CUSTSTORESLSQTY</code></td><td>고객 점포 판매 수량 (판촉 포함)</td><td>720</td></tr>
-      <tr><td><code class="inline">CUSTSTORESLSPROMQTY</code></td><td>고객 점포 판촉 판매 수량 (정기 외)</td><td>120</td></tr>
-      <tr><td><code class="inline">CUSTSTORESTOCKQTY</code></td><td>고객 점포 재고 수량</td><td>1500</td></tr>
-      <tr><td><code class="inline">CUSTDCSLSQTY</code></td><td>고객 물류센터 DC 판매 수량</td><td>700</td></tr>
-      <tr><td><code class="inline">CUSTDCSTOCKQTY</code></td><td>고객 물류센터 DC 재고 수량</td><td>8000</td></tr>
+      <tr><td><code class="inline">CUSTSTORESLSQTY</code></td><td>고객 점포 판매 수량</td><td>720</td></tr>
+      <tr><td><code class="inline">CUSTSTORESLSPROMQTY</code></td><td>고객 점포 판촉 판매</td><td>120</td></tr>
+      <tr><td><code class="inline">CUSTSTORESTOCKQTY</code></td><td>고객 점포 재고</td><td>1500</td></tr>
+      <tr><td><code class="inline">CUSTDCSLSQTY</code></td><td>고객 DC 판매</td><td>700</td></tr>
+      <tr><td><code class="inline">CUSTDCSTOCKQTY</code></td><td>고객 DC 재고</td><td>8000</td></tr>
     </tbody>
   </table>
 
-  <p>건수: <strong>205건 (정상 200 + 이상 5)</strong>. 5주 분량 (202618 ~ 202622) · 화장품 6 SKU · 8개 점포 · 4개 고객사. UTF-8 BOM 인코딩 (Excel 한글 호환).</p>
-
-  <p>이상 5건 — Phase 2 분석에서 발견해야 할 5종 카테고리 (각 정확히 1건씩 의도). 정상 200건은 모든 카테고리 안 걸리도록 데이터 정합 완료:</p>
+  <p>이상 5건 — elif chain 순서대로 검사 (한 row가 여러 카테고리 동시 매칭 안 되도록):</p>
   <ol style="padding-left:22px;font-size:14.5px;">
-    <li><strong>STOCK 음수</strong> — <code class="inline">STOCK &lt; 0</code> (입고 누락 또는 마이너스 정합 실패)</li>
-    <li><strong>SLS=0인데 PROM&gt;0</strong> — <code class="inline">SLS == 0 AND PROM &gt; 0</code> (정기 판매 0인데 판촉만 발생, 불가능 패턴)</li>
-    <li><strong>재고 결품 직전</strong> — <code class="inline">SLS &gt; STOCK AND STOCK &gt;= 0</code> (판매가 재고 초과 — ①과 중복 방지)</li>
-    <li><strong>DC 판매 0인데 점포 판매 큼</strong> — <code class="inline">DC_SLS == 0</code> (배송 누락 또는 DC 우회 의심)</li>
-    <li><strong>PROM &gt; SLS</strong> — <code class="inline">PROM &gt; SLS AND SLS &gt; 0</code> (판촉 &gt; 전체 — ②와 중복 방지)</li>
+    <li><strong>STOCK 음수</strong> — <code class="inline">STOCK &lt; 0</code></li>
+    <li><strong>SLS=0인데 PROM&gt;0</strong> — <code class="inline">SLS == 0 AND PROM &gt; 0</code></li>
+    <li><strong>재고 결품 직전</strong> — <code class="inline">SLS &gt; STOCK AND STOCK &gt;= 0</code></li>
+    <li><strong>DC 판매 0</strong> — <code class="inline">DC_SLS == 0</code></li>
+    <li><strong>PROM &gt; SLS</strong> — <code class="inline">PROM &gt; SLS AND SLS &gt; 0</code></li>
   </ol>
-  <p style="font-size:13px;color:var(--muted);"><strong>검사 순서 주의</strong>: elif chain — 한 row가 여러 카테고리 동시 매칭되지 않도록 (위 카테고리 1~5 순서대로 검사하고 매칭되면 다음 카테고리 건너뜀).</p>
-
   <div class="reference">
-    <p><strong>출처</strong> | SAP IBP 고객 점포·DC 데이터 주요 지표 (<a href="https://help.sap.com/docs/SAP_INTEGRATED_BUSINESS_PLANNING/feae3cea3cc549aaa9d9de7d363a83e6/eeed2f56ab1cf81ae10000000a441470.html?locale=ko-KR" target="_blank">SAP Help</a>). POS·CDP·SCM 도메인 표준 키 지표.</p>
+    <p><strong>출처</strong> | SAP IBP 고객 점포·DC 주요 지표 (<a href="https://help.sap.com/docs/SAP_INTEGRATED_BUSINESS_PLANNING/feae3cea3cc549aaa9d9de7d363a83e6/eeed2f56ab1cf81ae10000000a441470.html?locale=ko-KR" target="_blank">SAP Help</a>). 실습 자료: <a href="#dl">§ 다운로드</a>에서 <code class="inline">pos_data.csv</code>.</p>
   </div>
 
-  <h4>실습 시작점 — 빈 폴더 + CSV 한 장</h4>
-  <p><a href="#dl">§ 실습 자료</a>에서 <code class="inline">pos_data.csv</code>를 받아서 빈 작업 폴더에 둡니다. <strong>starter.html · generate_pos_data.py · pos_graph.py 같은 사전 코드는 일부러 제공 안 합니다</strong> — AI에게 처음부터 만들어달라는 게 본 실습의 본질이라서요. CSV 한 장과 AI 한 명이면 충분합니다.</p>
+  <h3><span class="step-num">3</span>Phase 1 — PLAN (15분) | brainstorming 스킬</h3>
+  <p>"새 기능 만들기 전에 같이 고민해보자"라고 말하면 <code class="inline">brainstorming</code> 스킬이 자동 활성화. 다지선다 인터뷰로 설계 의사결정.</p>
 
   <div class="dual-track">
     <div class="track instr">
-      <div class="track-h">강사 시연 (Claude Code) — 한 줄 요청</div>
-      <pre>같은 폴더에 있는 pos_data.csv를
-fetch로 읽고 객체 배열 변환 후
-정적 HTML에 표로 보여주는
-index.html 만들어줘.
+      <div class="track-h">자연어 호출 (Claude Code · Copilot 동일)</div>
+      <pre>"pos_data.csv (205건, SAP IBP 9컬럼)을 읽어
+이상 5건을 elif chain으로 찾아 표 출력하는
+미니 분석 앱을 만들고 싶어. 같이 설계해보자."
 
-컬럼 (SAP IBP):
-  BASE_WEEK, PRODUCT_ID,
-  LOCATION_ID, CUSTOMER_ID,
-  CUSTSTORESLSQTY,
-  CUSTSTORESLSPROMQTY,
-  CUSTSTORESTOCKQTY,
-  CUSTDCSLSQTY, CUSTDCSTOCKQTY
-
-UTF-8 BOM 처리.
-로컬에서 file:// 열어도 동작하게.</pre>
+# brainstorming 스킬 자동 활성화
+# → 다지선다 인터뷰:
+#   Q1. 출력: CLI 표 / HTML 페이지 / JSON?
+#   Q2. 검사: 단일 함수 / elif chain / dispatcher?
+#   Q3. 런타임: 순수 파이썬 / pandas?</pre>
     </div>
     <div class="track stu">
-      <div class="track-h">수강생 매핑 (Copilot Chat 한 줄)</div>
-      <pre>Create index.html that loads
-pos_data.csv from same folder
-(via fetch, UTF-8 BOM) and renders
-all rows as an HTML table.
+      <div class="track-h">산출물</div>
+      <pre>research.md
+  └─ pos_data.csv 9컬럼 명세
+  └─ 이상 5건 카테고리 분석
 
-SAP IBP columns:
-  BASE_WEEK, PRODUCT_ID,
-  LOCATION_ID, CUSTOMER_ID,
-  CUSTSTORESLSQTY,
-  CUSTSTORESLSPROMQTY,
-  CUSTSTORESTOCKQTY,
-  CUSTDCSLSQTY, CUSTDCSTOCKQTY
-
-Make it work with file:// (local).</pre>
+design.md
+  └─ 다지선다 결정 결과
+  └─ 함수 분해 설계
+  └─ 의사 코드 골격</pre>
     </div>
   </div>
 
-  <h3><span class="step-num">5</span>실습 Phase 2 | 분석 함수 4종</h3>
+  <h3><span class="step-num">4</span>Phase 2 — DEVELOP (30분) | writing-plans + 실제 코딩</h3>
+  <p>"이 기능 구현 계획을 plan.md로 작성해줘"로 <code class="inline">writing-plans</code> 활성화. 태스크 분해 + 순서 + 체크포인트.</p>
 
-  <p>같은 프롬프트로 다음 분석 함수 추가:</p>
-  <ol style="padding-left:22px;">
-    <li><strong>매장별 주간 판매 합계</strong> — CUSTSTORESLSQTY 그룹 by LOCATION × BASE_WEEK</li>
-    <li><strong>판촉 비율</strong> — CUSTSTORESLSPROMQTY / CUSTSTORESLSQTY × 100%</li>
-    <li><strong>재고 회전율</strong> — CUSTSTORESLSQTY / CUSTSTORESTOCKQTY (점포 결품 위험 신호)</li>
-    <li><strong>이상 데이터 탐지</strong> — 위 5종 케이스 자동 탐지 (5건 발견 예상)</li>
-  </ol>
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:14px 18px;border-radius:8px;font-size:13px;">"plan.md를 todo 리스트로 변환하고 전부 구현해줘.
+각 단계 완료 시 plan.md에 [x] 체크.
+모든 작업 완료까지 멈추지 마.
+any 타입 쓰지 마, 지속적으로 type-check 실행."</pre>
 
-  <div class="field-case">
-    <strong>POS 운영 사례 — 회사 룰의 영역</strong>: 결제 분기 · 회사 정보(주소·연락처) 변경 시 grep 정합 · 금지 패턴(disabled closure) · 보안 규제(PCI-DSS) 같은 <strong>회사 도메인 룰</strong>은 CLAUDE.md/AGENTS.md에 정리. <em>매번 같은 양식의 분석·보고서 작성처럼 "반복 작업 모듈화"는 SKILL의 영역이라 §3교시에서 다룹니다.</em> 강사 실 운영 룰 80+개 누적.
+  <p>강사 시연 흐름:</p>
+  <ul>
+    <li><code class="inline">load_csv(path)</code> — UTF-8 BOM 정합 + 9컬럼 파싱</li>
+    <li><code class="inline">check_anomaly(row)</code> — elif chain 5종 (위 명세 순서)</li>
+    <li><code class="inline">main()</code> — 205건 순회 + 정확히 5건 찾기 + 표 출력</li>
+  </ul>
+
+  <h3><span class="step-num">5</span>Phase 3 — VERIFY (10분) | verification-before-completion</h3>
+  <p>"완료 주장 전 type-check · test · 실행 결과까지 다 확인해줘" → <code class="inline">verification-before-completion</code> 활성화.</p>
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:14px 18px;border-radius:8px;font-size:13px;"># Claude가 자동 실행:
+python -m mypy pos_analyzer.py    # type-check
+python -m pytest tests/           # test
+python pos_analyzer.py            # 실제 실행
+# → 정확히 5건 출력 확인 (이상 1·2·3·4·5)</pre>
+  <p>막혔을 때: "이 에러 어디서 나는지 모르겠어, 체계적으로 디버깅" → <code class="inline">systematic-debugging</code> 자동 발동 (가설 3+ 수립 → 검증 → 근본 원인 확정).</p>
+
+  <h3><span class="step-num">6</span>Phase 4 — REFACTOR (20분) | requesting-code-review + 외부 검수 팁</h3>
+  <p>"이 코드 독립 컨텍스트에서 리뷰해줘" → <code class="inline">requesting-code-review</code> 활성화. 메인 세션과 분리된 코드 리뷰 에이전트가 자동 호출 — 작업한 사람이 자기 자신을 리뷰하는 함정 회피.</p>
+
+  <figure class="comic">
+    <img src="images/comics/06-codex-review.png" alt="코덱스 검수">
+    <figcaption><strong>만화 ⑥</strong> | 외부 검수자 시선 — 옆 식당 셰프가 다른 관점으로 본다</figcaption>
+  </figure>
+
+  <div class="reference">
+    <p><strong>(팁) 외부 AI 검수 도구</strong> — Superpowers 검수가 기본이고 아래는 <strong>참고용 선택지</strong>입니다.<br>
+    <code class="inline">/codex</code> — OMC 플러그인 + Codex MCP 설치 시 OpenAI GPT 모델로 동일 코드를 다른 관점에서 리뷰. 다른 의견이 필요할 때 보조 도구.<br>
+    <code class="inline">/simplify</code> — Anthropic 내장. 3개 리뷰 에이전트가 병렬로 검토(재사용성·품질·효율성) + 자동 수정.</p>
+  </div>
+
+  <h3><span class="step-num">7</span>Phase 5 — SECURITY (10분) | /security-review</h3>
+  <p>Anthropic 공식 슬래시 명령. 코드의 보안 취약점(CSV 파싱 — path traversal, 입력 검증, 의존성 보안 등) 자동 점검.</p>
+
+  <figure class="comic">
+    <img src="images/comics/07-security-review.png" alt="보안 검수">
+    <figcaption><strong>만화 ⑦</strong> | 보건소 위생 점검 — 출하 전 마지막 관문</figcaption>
+  </figure>
+
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:14px 18px;border-radius:8px;font-size:13px;">/security-review
+
+# Claude가 자동 분석:
+# - CSV path 파라미터 검증
+# - 사용자 입력 sanitize
+# - 의존성 CVE 점검
+# - 결과 요약 + 수정 권장</pre>
+
+  <div class="reference">
+    <p><strong>완주 체크</strong> | pos_data.csv 205건 → 이상 정확히 5건 출력 (STOCK 음수 · SLS=0 PROM&gt;0 · 재고 결품 · DC 판매 0 · PROM&gt;SLS) + 보안 리뷰 통과 = 풀스택 5단계 완주.</p>
   </div>
 </section>
 
 <!-- §3 7차시 -->
 <section id="ch3">
-  <span class="section-tag">§ 7차시 · 10:00 ~ 11:00</span>
-  <h2><span class="accent">7차시</span> | 스킬 개발 + Phase 3 + QMD/agentmemory 시연</h2>
+  <span class="section-tag">§ 7차시 · 10:30 ~ 11:30 (60분)</span>
+  <h2><span class="accent">7차시</span> | 조직 맞춤 스킬 토론·제작</h2>
 
   <div class="goal">
     <div class="goal-label">학습 목표</div>
-    <div class="goal-text">SKILL.md 패턴 작성 → <code>/codex</code> 검수 → <code>/simplify</code> 리팩 → QMD/agentmemory <strong>강사 5분 시연 (학생은 보기만, 본격 설치는 차주)</strong></div>
+    <div class="goal-text">우리 POS팀 업무 흐름에서 <strong>반복되는 작업</strong>을 찾아 자유 그룹 토의로 SKILL.md 1개를 작성·발표한다. 회사 자산이 되는 스킬의 첫 후보를 만든다.</div>
   </div>
 
-  <h3><span class="step-num">1</span>도입 영상 (60초) | QMD 1분 사용법</h3>
-  <div class="video-frame">
-    <video controls preload="metadata">
-      <source src="videos/video2-qmd-1min.mp4" type="video/mp4">브라우저가 영상을 지원하지 않습니다.
-    </video>
-    <div class="video-meta">
-      <span class="label">영상 · 60초</span>
-      <strong>사내 자료 988 파일 1초 검색 — 토큰비 0</strong>
-    </div>
-  </div>
-
-  <h3><span class="step-num">2</span>핵심 개념 | SKILL.md</h3>
-
-  <table class="concept-table">
-    <thead><tr><th>개념</th><th>정의</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>SKILL.md<span class="term">.claude/skills/*/  ·  skills/*/</span></td>
-        <td>특정 분야 전문 자료. <strong>파일 맨 위 메타정보(이름·발동조건)</strong>가 명시되어 자동 발동. <strong>GitHub Agent Skills 표준</strong> — Claude Code · Copilot 모두 동일 형식.</td>
-      </tr>
-      <tr>
-        <td>토큰 효율<span class="term">활성화 시만</span></td>
-        <td>비활성 시 메타정보만 로드, 활성화 시 본문 로드 (강사 환경 기준 예시: 메타 ~100토큰 / 본문 ~5000토큰. 실제 토큰 수는 SKILL 본문 길이에 따라 다름).</td>
-      </tr>
-      <tr>
-        <td>/codex<span class="term">교차 검수</span></td>
-        <td>다른 AI(Codex CLI · GPT-5.5)에게 코드를 검수받는 명령. 단일 AI 의존 회피. 강사 OMC 플러그인 명령 — 수강생은 인라인 프롬프트 또는 awesome-copilot 동등 명령.</td>
-      </tr>
-      <tr>
-        <td>/simplify<span class="term">Anthropic 공식</span></td>
-        <td>Claude Code 2.1.63+ bundled. 코드 단순화 3 에이전트 병렬 실행 (재사용성·품질·효율성).</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <figure class="comic">
-    <img src="images/comics/01-prompt-project-skill.png" alt="SKILL | 학생의 공부 도구">
-    <figcaption><strong>만화 ①</strong> | SKILL = 전문 레시피 매뉴얼</figcaption>
-  </figure>
-
-  <h3><span class="step-num">3</span>강사 운영 스킬 7개 사례</h3>
+  <h3><span class="step-num">1</span>POS팀 업무 흐름 — 어떤 작업이 스킬이 되는가</h3>
+  <p class="lead">스킬 후보의 핵심 조건은 <strong>"같은 양식·같은 절차로 매번 반복되는 작업"</strong>. 회사 룰은 CLAUDE.md, 도메인 패턴은 SKILL.md입니다.</p>
 
   <table>
-    <thead><tr><th>스킬</th><th>용도</th><th>강사 사용 빈도</th></tr></thead>
+    <thead><tr><th>업무</th><th>반복성</th><th>스킬 후보 예시</th></tr></thead>
     <tbody>
-      <tr><td><code class="inline">slide-pptx</code></td><td>PPTX 자동 생성</td><td>매주 (강의·제안서)</td></tr>
-      <tr><td><code class="inline">proposal-bid</code></td><td>RFP 입찰 제안서</td><td>월 2-3회</td></tr>
-      <tr><td><code class="inline">news-collector</code></td><td>뉴스 자동 수집</td><td>매일 (백그라운드)</td></tr>
-      <tr><td><code class="inline">youtube-collector</code></td><td>유튜브 댓글·자막 수집</td><td>리서치 시</td></tr>
-      <tr><td><code class="inline">qmd-search</code></td><td>사내 지식 검색</td><td>매 세션</td></tr>
-      <tr><td><code class="inline">session-handoff</code></td><td>세션 마무리 메모</td><td>매일 종료 시</td></tr>
-      <tr><td><code class="inline">learn-rule</code></td><td>실수 → 룰 누적</td><td>사고 발생 시</td></tr>
+      <tr><td>POS 거래 이상 탐지</td><td>매일</td><td><code class="inline">pos-anomaly-check</code> — elif chain 검사 + 보고</td></tr>
+      <tr><td>점포·SKU별 주간 리포트</td><td>매주</td><td><code class="inline">weekly-store-report</code> — SAP IBP 9컬럼 → 표·차트</td></tr>
+      <tr><td>판매 데이터 정합 검증</td><td>마감 시</td><td><code class="inline">sales-reconcile</code> — DC vs 점포 vs ERP 차이</td></tr>
+      <tr><td>RFP·제안서 작성</td><td>월 1-2회</td><td><code class="inline">proposal-bid</code> — 양식·구조 자동</td></tr>
+      <tr><td>장애 보고서</td><td>발생 시</td><td><code class="inline">incident-report</code> — 5why + 후속 조치 템플릿</td></tr>
     </tbody>
   </table>
 
-  <p>강사 보유 총 134종 (글로벌 ~/.claude/skills/). 한 번 만들어두면 평생 자산.</p>
+  <h3><span class="step-num">2</span>SKILL.md 작성 가이드</h3>
 
-  <h3><span class="step-num">4</span>실습 Phase 3 | /codex 검수 + /simplify 리팩</h3>
+  <p>두 부분으로 구성 — <strong>frontmatter</strong>(메타데이터)와 <strong>body</strong>(절차).</p>
 
-  <figure class="comic">
-    <img src="images/comics/06-codex-review.png" alt="/codex | 옆 셰프 검수">
-    <figcaption><strong>만화 ⑥</strong> | /codex — 옆 가게 셰프(GPT)의 정직한 검수</figcaption>
-  </figure>
-
-  <div class="dual-track">
-    <div class="track instr">
-      <div class="track-h">강사 시연 (Claude Code)</div>
-      <pre>/ask codex "index.html의 Phase
-1·2 코드를 리뷰해줘. 보안·성능·
-가독성 관점에서."
-
-# 결과 반영 후
-/simplify</pre>
-    </div>
-    <div class="track stu">
-      <div class="track-h">수강생 매핑 (Copilot)</div>
-      <pre># Copilot Chat에 인라인
-"이 코드 GPT-5 시각에서 코드 리뷰
-해줘. 보안·성능·가독성 관점."
-
-# 또는 awesome-copilot의
-# code-review 스킬 호출</pre>
-    </div>
-  </div>
-
-  <h3><span class="step-num">5</span>QMD + agentmemory | 강사 5분 라이브 시연 (학생은 보기만)</h3>
-
-  <p><strong>실습 범위 — 명확히</strong>:</p>
-  <ul style="padding-left:22px;font-size:15px;">
-    <li>강의 시간: <strong>강사 라이브 데모만 5분</strong> (강사 환경에서 qmd search · agentmemory recall 1~2회 실행 화면 보여줌)</li>
-    <li>학생: <strong>설치 X</strong> — 보기만. agentmemory는 12 hooks · 4 skills · 51 MCP tools가 한꺼번에 등록되어 학생 환경에 부담</li>
-    <li>차주 자율 과제: 본인 PC에 천천히 설치 (README 따라)</li>
-  </ul>
-
-  <p>두 도구 비교 (강사 환경 기준):</p>
-
-  <table>
-    <thead><tr><th>도구</th><th>역할</th><th>비용</th></tr></thead>
-    <tbody>
-      <tr><td><strong>QMD</strong></td><td>마크다운 검색 (semantic + keyword)</td><td>로컬 임베딩 — 강사 환경 무료</td></tr>
-      <tr><td><strong>agentmemory</strong></td><td>4-tier 메모리 + BM25+벡터 + 지식그래프</td><td>기본 무료 (로컬 <code class="inline">all-MiniLM-L6-v2</code>)</td></tr>
-      <tr><td>graphify (참고만)</td><td>community clustering 그래프</td><td>빌드 시 LLM 호출 — <strong>본 강의 미사용</strong></td></tr>
-    </tbody>
-  </table>
-
-  <h4>agentmemory 작동 방식 (본격)</h4>
-
-  <p><strong>4-tier 메모리 — 인간 뇌 처리 영감 (Ebbinghaus 망각 곡선 적용)</strong>:</p>
-  <table>
-    <thead><tr><th>Tier</th><th>의미</th><th>예시</th></tr></thead>
-    <tbody>
-      <tr><td><strong>① Working</strong></td><td>현재 작업 (raw observations)</td><td>"방금 starter.html 수정 중"</td></tr>
-      <tr><td><strong>② Episodic</strong></td><td>세션 일화 (compressed summaries)</td><td>"어제 POS Phase 1 데이터 로더 작성"</td></tr>
-      <tr><td><strong>③ Semantic</strong></td><td>의미적 사실·패턴</td><td>"POS CSV는 항상 UTF-8 BOM"</td></tr>
-      <tr><td><strong>④ Procedural</strong></td><td>워크플로우·결정 패턴</td><td>"디버깅 4단계: 증상→가설→검증→수정"</td></tr>
-    </tbody>
-  </table>
-  <p>자주 호출되는 메모리는 강해지고, 오래 안 쓰면 자동 제거(decay).</p>
-
-  <p><strong>12 hooks — 자동 캡처 (제로 수동)</strong>:</p>
-  <ul style="padding-left:22px;font-size:14.5px;">
-    <li><code class="inline">SessionStart</code> · <code class="inline">SessionEnd</code> · <code class="inline">Stop</code> — 세션 시작/종료</li>
-    <li><code class="inline">UserPromptSubmit</code> — 프라이버시 필터 통과한 프롬프트</li>
-    <li><code class="inline">PreToolUse</code> · <code class="inline">PostToolUse</code> · <code class="inline">PostToolUseFailure</code> — 도구 호출 전후·실패</li>
-    <li><code class="inline">PreCompact</code> — 컨텍스트 압축 직전 재주입</li>
-    <li><code class="inline">SubagentStart</code> · <code class="inline">SubagentStop</code> — 서브에이전트 라이프사이클</li>
-  </ul>
-
-  <p><strong>Triple-stream 검색 — Reciprocal Rank Fusion (k=60)</strong>:</p>
-  <table>
-    <thead><tr><th>스트림</th><th>방식</th></tr></thead>
-    <tbody>
-      <tr><td>BM25</td><td>Stemmed 키워드 매칭 + synonym expansion</td></tr>
-      <tr><td>Vector</td><td>Cosine similarity (로컬 <code class="inline">all-MiniLM-L6-v2</code> 또는 OpenAI/Gemini/Cohere 등)</td></tr>
-      <tr><td>Graph</td><td>지식 그래프 traversal (엔티티 매칭)</td></tr>
-    </tbody>
-  </table>
-  <p>세션별 최대 3건 다양화. <strong>95.2% R@5 (LongMemEval-S 벤치)</strong>.</p>
-
-  <p><strong>MCP tools</strong>: 기본 8개 core (memory_recall · memory_smart_search · memory_save · memory_compress_file 등) + <code class="inline">AGENTMEMORY_TOOLS=all</code>로 51개 전체 (governance · snapshots · workflows · team · graph).</p>
-
-  <p><strong>저장</strong>: SQLite (외부 의존성 0). <strong>임베딩</strong>: 로컬 무료 또는 클라우드 5종 선택.</p>
-
-  <div class="reference">
-    <p><strong>⚠ Copilot CLI 직접 지원 X</strong> (2026-05 기준). 공식 지원: Claude Code · Cursor · Gemini CLI · Codex CLI · Hermes · OpenClaw 등. <strong>Copilot에서 쓰려면 REST API 우회</strong> — <code class="inline">/agentmemory/observe</code> 엔드포인트로 직접 호출, 또는 Copilot hook에서 curl로 POST. 강사 시연은 Claude Code 환경.</p>
-  </div>
-
-  <h4>강사 라이브 화면 (학생 보기만)</h4>
-  <pre style="background:#1a1a1a;color:#f0f0f0;padding:12px 14px;border-radius:6px;font-size:13px;">
-# 강사 환경 (이미 설치된 상태에서 검색만 시연)
-> agentmemory에서 "POS Phase 1 데이터 로더" 검색해줘.
-# → BM25 + 벡터 RRF 결과 표시
-
-> 오늘 어떤 작업을 했는지 episodic memory에서 5건 추출해줘.
-# → 4-tier 메모리에서 자동 회상
-
-# qmd도 같은 시연
-> qmd search "Hermes agent" -n 5
-# → 사내 988 파일에서 score 순 검색</pre>
-
-  <p><strong>학생 차주 과제 (선택)</strong>: 본인 환경에서 <code class="inline">npx @agentmemory/agentmemory</code> 한 줄 실행 후 일주일 자동 캡처 확인. 본인 도구(Claude Code 또는 Copilot)에 따라 설정이 다를 수 있으니 <a href="https://github.com/rohitg00/agentmemory" target="_blank">rohitg00/agentmemory README</a> 참조.</p>
-
-  <h3><span class="step-num">6</span>무료 지식그래프 도구 8선 비교 (학생 선택 가이드)</h3>
-
-  <p>모두 오픈소스 (Apache-2.0 / MIT). 사용자 요구 "지식그래프는 무료로" 반영.</p>
-
-  <table>
-    <thead><tr><th>도구</th><th>GitHub</th><th>라이센스</th><th>LLM 비용</th><th>POS 적용</th></tr></thead>
-    <tbody>
-      <tr><td><strong>agentmemory</strong> ⭐</td><td>rohitg00/agentmemory</td><td>Apache-2.0</td><td>기본 무료</td><td>본 실습 채택</td></tr>
-      <tr><td><strong>LightRAG</strong></td><td>HKUDS/LightRAG</td><td>MIT</td><td>LLM 호출 필요 (Ollama 가능)</td><td>사내 RAG 후보</td></tr>
-      <tr><td><strong>GraphRAG</strong></td><td>microsoft/graphrag</td><td>MIT</td><td>~$5-20/빌드</td><td>대규모 사내 데이터</td></tr>
-      <tr><td><strong>txtai</strong></td><td>neuml/txtai</td><td>Apache-2.0</td><td>로컬 모델 무료</td><td>검색·요약 종합</td></tr>
-      <tr><td><strong>mem0</strong></td><td>mem0ai/mem0</td><td>Apache-2.0</td><td>LLM 호출 필요</td><td>agent 메모리</td></tr>
-      <tr><td><strong>cognee</strong></td><td>topoteretes/cognee</td><td>Apache-2.0</td><td>LLM 호출 필요</td><td>코드베이스 분석</td></tr>
-      <tr><td><strong>Kùzu</strong></td><td>kuzudb/kuzu</td><td>MIT</td><td>무료 (DB만)</td><td>POS 그래프 저장소</td></tr>
-      <tr><td><strong>Apache AGE</strong></td><td>apache/age</td><td>Apache-2.0</td><td>무료 (DB 확장)</td><td>Oracle 보완 후보</td></tr>
-    </tbody>
-  </table>
-
-  <div class="reference">
-    <p><strong>POS팀 환경별 추천</strong> | 빠르게 시작: <strong>agentmemory (npx 한 줄)</strong> · 비용 0원 유지: agentmemory(LLM OFF) + Kùzu · 사내 RAG 본격: LightRAG/txtai · Oracle 보완: Apache AGE.</p>
-  </div>
-</section>
-
-<!-- §Custom Agent + 서브에이전트 + 팀체제 (강의안 line 814~838 Day 2 본편 누락 보완) -->
-<section id="agents">
-  <span class="section-tag">§ Custom Agent · 서브에이전트 · 팀체제</span>
-  <h2>스킬보다 <span class="accent">더 자율적인 단위</span> — Custom Agent</h2>
-  <p class="lead">
-    SKILL은 "특정 분야 전문 매뉴얼"이고, <strong>Custom Agent는 자기 임무·도구·모델을 가진 독립 일꾼</strong>입니다. 메인 에이전트가 필요할 때 자동으로 위임 → 서브에이전트가 결과 가져옴 → 메인이 정리. 큰 작업을 specialist 여러 명에게 나눠 시키는 게 팀체제.
-  </p>
-
-  <h3><span class="step-num">1</span>핵심 개념 — Custom Agent (.agent.md)</h3>
-  <table class="concept-table">
-    <thead><tr><th>개념</th><th>정의</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>Custom Agent<span class="term">.agent.md</span></td>
-        <td>독립 임무·도구·모델을 가진 에이전트. 메인이 필요할 때 자동 위임 (intent matching).</td>
-      </tr>
-      <tr>
-        <td>서브에이전트<span class="term">sub-agent</span></td>
-        <td>메인 에이전트의 위임 호출로만 동작. read-only / 코딩 / 리뷰 등 좁은 역할.</td>
-      </tr>
-      <tr>
-        <td>팀체제<span class="term">Multi-agent orchestration</span></td>
-        <td>Coordinator + Planner + Implementer + Reviewer 같은 specialist 조합. 큰 작업 분담.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3><span class="step-num">2</span>예시 — POS 거래 검증 에이전트</h3>
-  <p>강사 본인이 운영 중인 POS 거래 검증 에이전트 정의 (Day 1 4차시 라이트닝에서 미리 본 것):</p>
-
-  <pre style="background:#1a1a1a;color:#f0f0f0;padding:18px 22px;border-radius:8px;font-size:13px;">
----
-name: pos-tx-verifier
-description: POS 거래 로그 이상 패턴 자동 탐지. 사용자가 "거래 검증", "이상 패턴", "결제 이상" 언급 시 자동 발동.
-model: sonnet
-tools: Read, Bash, Grep
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:18px 22px;border-radius:8px;font-size:13px;">---
+name: pos-anomaly-check
+description: POS CSV 이상 5종 (STOCK 음수, SLS=0 PROM>0 등)을 elif chain으로
+  검사하고 표로 보고. "이상 탐지", "anomaly", "POS 검사" 언급 시 자동 발동.
 ---
 
-# POS Transaction Verifier
+# POS Anomaly Check
 
-## 임무
-Oracle DB 거래 로그 → 이상 패턴 3종 탐지:
-- 동일 단말 1초 내 중복 결제
-- 거래 취소 누락 (chargeback)
-- 야간 시간대 비정상 금액 (1AM~5AM, 평균 5배 이상)
+## 입력
+- pos_data.csv (SAP IBP 9컬럼)
+- 검사 기간 (default: 최근 5주)
 
-## 보고 형식
+## 절차
+1. CSV 로드 (UTF-8 BOM)
+2. elif chain으로 5종 검사 (순서 — 중복 매칭 방지):
+   ① STOCK &lt; 0
+   ② SLS == 0 AND PROM &gt; 0
+   ③ SLS &gt; STOCK AND STOCK &gt;= 0
+   ④ DC_SLS == 0
+   ⑤ PROM &gt; SLS AND SLS &gt; 0
+3. 케이스별 row 정렬 + 표 출력
+4. 발견 0건 시 "정상" 보고
+
+## 출력 형식
 - 발견 건수
-- 케이스별 timestamp · terminal_id
-- 후속 조치 권장 사항</pre>
+- 카테고리별 row (timestamp · SKU · LOCATION)
+- 후속 조치 제안</pre>
 
-  <h3><span class="step-num">3</span>저장 위치 — 강사(Claude Code) vs 수강생(Copilot)</h3>
+  <p>프론트매터 필수 필드:</p>
+  <ul style="padding-left:22px;font-size:14.5px;">
+    <li><code class="inline">name</code> — 스킬 식별자 (kebab-case)</li>
+    <li><code class="inline">description</code> — <strong>자동 발동 트리거</strong>. AI가 이 텍스트만 보고 스킬 발동 판단</li>
+  </ul>
+  <p style="font-size:13px;color:#555;">description은 "언제 발동하는지"가 명확해야 — "OO 언급 시 자동 발동" 같은 패턴 권장.</p>
 
-  <div class="dual-track">
-    <div class="track instr">
-      <div class="track-h">강사 (Claude Code)</div>
-      <pre>프로젝트: .claude/agents/{name}.md
-글로벌:   ~/.claude/agents/{name}.md
-
-# 호출 방식
-- 메인이 자동 위임 (intent matching)
-- 또는 명시: "pos-tx-verifier로
-  거래 로그 검증해줘"</pre>
-    </div>
-    <div class="track stu">
-      <div class="track-h">수강생 (GitHub Copilot)</div>
-      <pre>공식 권장: .github/agents/{name}.md
-(repo level custom agent)
-
-# 호출 방식
-- IDE Settings → Chat → "Enable Subagent"
-- Copilot CLI: /fleet (백그라운드 서브)
-- Mission Control: @docs-agent · @test-agent</pre>
-    </div>
-  </div>
-
-  <h3><span class="step-num">4</span>팀체제 — Coordinator + Specialists</h3>
-  <p>큰 작업을 한 명에게 시키지 말고 specialist 여러 명에게 나눠 위임:</p>
-
+  <p>회사 환경 저장 위치 (GitHub Agent Skills 표준 — 파일 형식 양쪽 동일):</p>
   <table>
-    <thead><tr><th>역할</th><th>임무</th><th>강사 (OMC)</th><th>수강생 (Copilot)</th></tr></thead>
+    <thead><tr><th>도구</th><th>저장 위치</th></tr></thead>
     <tbody>
-      <tr><td><strong>Coordinator</strong></td><td>전체 워크플로우 지휘</td><td>prometheus (planning)</td><td>Mission Control 메인</td></tr>
-      <tr><td><strong>Planner</strong></td><td>설계 계획 작성</td><td>metis (pre-planning)</td><td>@planner.agent.md</td></tr>
-      <tr><td><strong>Implementer</strong></td><td>실제 코딩</td><td>executor</td><td>@implementer.agent.md</td></tr>
-      <tr><td><strong>Reviewer</strong></td><td>코드 리뷰·QA</td><td>code-reviewer · momus</td><td>@reviewer.agent.md</td></tr>
-      <tr><td><strong>Security</strong></td><td>보안 검수</td><td>security-reviewer</td><td>@security.agent.md</td></tr>
+      <tr><td>Claude Code</td><td><code class="inline">.claude/skills/{skill-name}/SKILL.md</code></td></tr>
+      <tr><td>GitHub Copilot</td><td><code class="inline">.github/skills/{skill-name}/SKILL.md</code></td></tr>
     </tbody>
   </table>
 
-  <div class="field-case">
-    <strong>POS 적용 예시</strong>: "야간 결제 이상 분석 + 자동 차단 룰 PR" 같은 큰 작업을 한 에이전트에게 시키면 빠짐·실수 발생. <strong>Coordinator가 5명 specialist에 분담</strong> → planner(룰 설계) · implementer(코드) · reviewer(테스트) · security(취약점) · documenter(PR 본문). 강사 본인 6개월 운영 — 큰 작업 ROI 3~5배.
-  </div>
+  <h3><span class="step-num">3</span>그룹 토의 + SKILL.md 작성 (자유 그룹 3~4명) | 25분</h3>
+
+  <p>3~4명 자유 그룹. 모르는 분들끼리도 OK. 도시바·아모레퍼시픽 POS팀 시각으로:</p>
+
+  <ol style="padding-left:22px;font-size:15px;">
+    <li><strong>업무 인벤토리</strong> (5분) — 우리 팀이 매주·매일 반복하는 작업 5개 나열</li>
+    <li><strong>스킬 후보 1개 선정</strong> (5분) — 가장 시간이 많이 소요되는 작업</li>
+    <li><strong>SKILL.md 작성</strong> (15분) — frontmatter + 절차 + 출력 형식</li>
+  </ol>
 
   <div class="reference">
-    <p><strong>공식 출처</strong> | <a href="https://docs.github.com/en/copilot/how-tos/copilot-sdk/use-copilot-sdk/custom-agents" target="_blank">GitHub Copilot Custom Agents & Sub-agent Orchestration</a> · <a href="https://github.blog/ai-and-ml/github-copilot/how-to-orchestrate-agents-using-mission-control/" target="_blank">Mission Control 멀티 에이전트 오케스트레이션</a> · <a href="https://github.com/features/copilot/cli" target="_blank">Copilot CLI /fleet</a> · <a href="https://github.com/github/awesome-copilot/blob/main/AGENTS.md" target="_blank">awesome-copilot agents/ 카탈로그</a></p>
+    <p><strong>AI에게 도움 요청 OK</strong> | 빈 페이지에서 시작하지 마세요. Claude Code/Copilot에 "POS 거래 이상 탐지 스킬 SKILL.md 초안 작성해줘 — 입력은 pos_data.csv, 출력은 표 형식"이라고 요청하면 AI가 frontmatter + 절차 골격을 만들어줍니다. 거기서 조원이 조직 룰에 맞게 다듬으세요.</p>
   </div>
 
-  <h3><span class="step-num">5</span>회사 적용 | 스킬·에이전트 공유</h3>
-  <p>한 명이 만든 스킬·에이전트를 회사 전체와 공유하는 표준 방법:</p>
-  <ul style="padding-left:22px;font-size:15px;">
-    <li><strong>사내 Git Private repo</strong> — <code class="inline">github.com/{회사}/copilot-skills</code> 신규 생성. awesome-copilot 폴더 구조 (skills/ · agents/ · hooks/ · AGENTS.md) 그대로 따라가면 Copilot이 자동 인식.</li>
-    <li><strong>직원 동기화 한 줄</strong> — <code class="inline">copilot plugin marketplace add {회사}/copilot-skills</code></li>
-    <li><strong>변경 워크플로우</strong> — PR 머지 → 전 직원 자동 업데이트. 룰 변경 이력은 git log + Confluence(설명용) 페어로.</li>
-    <li><strong>권한·운영</strong> — GitHub Org Team 권한 분배. 회사 IT 협의 영역.</li>
+  <h3><span class="step-num">4</span>발표 + 상호 피드백 | 20분</h3>
+
+  <p>각 조 5분 (발표 3분 + 질의 2분). 5조 기준 25분, 시간 여유 시 추가 토론.</p>
+
+  <p><strong>발표 포맷</strong>:</p>
+  <ul style="padding-left:22px;font-size:14.5px;">
+    <li><strong>1분</strong> — 어떤 업무를 자동화하는 스킬인가 (목적·반복성)</li>
+    <li><strong>1분</strong> — 입력 · 절차 · 출력 (핵심 흐름)</li>
+    <li><strong>1분</strong> — 회사 적용 시 막힐 부분 (보안·권한·데이터 접근)</li>
   </ul>
+
+  <p><strong>다른 조 피드백 — 2가지에 집중</strong>:</p>
+  <ol style="padding-left:22px;font-size:14.5px;">
+    <li><strong>description이 트리거하기 명확한가?</strong> — AI가 이 텍스트만 보고 발동 판단할 수 있어야</li>
+    <li><strong>절차가 누가 봐도 따라할 수 있는가?</strong> — 새 직원 매뉴얼 수준</li>
+  </ol>
+
   <div class="reference">
-    <p>공식 <code class="inline">github/awesome-copilot</code> 마켓플레이스는 public 오픈소스. 회사 사내용은 별도 private repo 신규 (fork 아님). 외부 노출 0.</p>
+    <p><strong>오늘 만든 SKILL.md는 회사 자산입니다</strong> | 조원 중 한 분이 회사 repo (<code class="inline">.github/skills/</code> 또는 <code class="inline">.claude/skills/</code>)에 커밋하면 팀원 전체가 같은 스킬을 활용 가능. 한 번 만들어두면 평생 자산이 됩니다.</p>
   </div>
 </section>
 
 <!-- §4 8차시 -->
 <section id="ch4">
-  <span class="section-tag">§ 8차시 · 11:00 ~ 12:00</span>
-  <h2><span class="accent">8차시</span> | 훅 시스템 + Phase 4·5 (보안 + 배포)</h2>
+  <span class="section-tag">§ 8차시 · 11:30 ~ 12:30 (60분)</span>
+  <h2><span class="accent">8차시</span> | QMD · LLM 위키 · 지식그래프 · AI-Ops 안내</h2>
 
   <div class="goal">
     <div class="goal-label">학습 목표</div>
-    <div class="goal-text">훅 4 이벤트 + 3 유형 이해 + <code>/security-review</code> + <strong>GitHub Pages 배포 완료</strong></div>
+    <div class="goal-text">어제 설치한 <strong>QMD</strong>를 재정리하고 <strong>LLM 위키 / 무료 지식그래프 8선 / AI-Ops 5단계 로드맵</strong>까지 안내. 회사 환경 적용 선택 가이드 제공.</div>
   </div>
 
-  <h3><span class="step-num">1</span>훅 4 이벤트</h3>
-
-  <table>
-    <thead><tr><th>이벤트</th><th>발동 시점</th><th>예시</th></tr></thead>
-    <tbody>
-      <tr><td><code class="inline">PreToolUse</code></td><td>도구 실행 전</td><td>저장 전 린트·위험 명령 차단</td></tr>
-      <tr><td><code class="inline">PostToolUse</code></td><td>도구 실행 후</td><td>저장 후 자동 포맷팅</td></tr>
-      <tr><td><code class="inline">Notification</code></td><td>알림 발생 시</td><td>슬랙 알림 전송</td></tr>
-      <tr><td><code class="inline">Stop</code></td><td>응답 완료 시</td><td>빌드 자동 검증 · 텔레그램 알림</td></tr>
-    </tbody>
-  </table>
-
-  <p>Copilot CLI도 동일 이벤트명 그대로(<code class="inline">preToolUse</code> · <code class="inline">postToolUse</code> · <code class="inline">sessionStart</code> · <code class="inline">sessionEnd</code> · <code class="inline">userPromptSubmitted</code> · <code class="inline">errorOccurred</code> · <code class="inline">agentStop</code>).</p>
-
-  <h3><span class="step-num">2</span>훅 3 유형 (JSON)</h3>
-
-  <pre style="background:#1a1a1a;color:#f0f0f0;padding:14px 18px;border-radius:6px;font-size:13px;">
-// 1. command — 셸 명령
-{ "type": "command",
-  "command": "npx prettier --write $CLAUDE_FILE_PATH" }
-
-// 2. http — URL POST 요청
-{ "type": "http",
-  "url": "https://hooks.slack.com/..." }
-
-// 3. prompt — 단일 LLM 평가
-{ "type": "prompt",
-  "prompt": "이 변경이 보안에 영향 있는지 확인해" }</pre>
-
-  <figure class="comic">
-    <img src="images/comics/02-hook.png" alt="HOOK | 자동 알림">
-    <figcaption><strong>만화 ②</strong> | HOOK = 자동 알림 시스템 (주문 종 · 오븐 체크 · 자동 프린터)</figcaption>
-  </figure>
-
-  <h3><span class="step-num">3</span>강사 운영 훅 5종</h3>
-
-  <table>
-    <thead><tr><th>훅</th><th>역할</th></tr></thead>
-    <tbody>
-      <tr><td><code class="inline">RTK</code> (Rust Token Killer)</td><td>dev 명령 자동 압축 — 토큰 60-90% 절감</td></tr>
-      <tr><td><code class="inline">careful</code></td><td><code class="inline">rm -rf</code> · <code class="inline">DROP TABLE</code> 사전 차단</td></tr>
-      <tr><td><code class="inline">compact-guard</code></td><td>컨텍스트 50% 도달 시 자동 압축</td></tr>
-      <tr><td><code class="inline">smart-commit</code></td><td>git commit 직전 자동 검수 · 메시지 자동화</td></tr>
-      <tr><td><code class="inline">Stop Hook</code> 텔레그램</td><td>작업 완료 시 자동 알림</td></tr>
-    </tbody>
-  </table>
-
-  <div class="hook-use">
-    <ul>
-      <li><strong>위험 명령 자동 차단</strong> → <code>careful</code> · <code>PreToolUse</code></li>
-      <li><strong>긴 대화에서 토큰비 폭주</strong> → <code>compact-guard</code> · 50% 자동</li>
-      <li><strong>git 메시지 일관성</strong> → <code>smart-commit</code></li>
-      <li><strong>SQL 실행 시 자동 EXPLAIN, 결제 함수 수정 시 자동 보안 점검</strong> → 도메인 HOOK 직접 작성</li>
-      <li><strong>야간 배치 완료 알림</strong> → Stop Hook + Slack/텔레그램 HTTP</li>
-    </ul>
-  </div>
-
-  <h3><span class="step-num">4</span>핵심 개념 | MCP</h3>
-  <figure class="comic">
-    <img src="images/comics/03-mcp.png" alt="MCP | 거래처 직통">
-    <figcaption><strong>만화 ③</strong> | MCP = 거래처와 직통 (Jira · Oracle · AWS · Confluence)</figcaption>
-  </figure>
-  <p>5차시에 <code class="inline">context7</code> 1종 설치 완료. 회사 MCP(supabase · jira · notion 등) 추가는 차주.</p>
-
-  <h3><span class="step-num">5</span>실습 Phase 4 | /security-review</h3>
-
-  <figure class="comic">
-    <img src="images/comics/07-security-review.png" alt="/security-review | 보건소 점검">
-    <figcaption><strong>만화 ⑦</strong> | /security-review = 보건소 위생 점검 (OWASP Top 10)</figcaption>
-  </figure>
-
-  <div class="dual-track">
-    <div class="track instr">
-      <div class="track-h">강사 시연 (Claude Code 공식)</div>
-      <pre>/security-review index.html
-
-# OWASP Top 10 검사
-# XSS · CSRF · innerHTML 위험 탐지
-# 자동 수정 제안</pre>
-    </div>
-    <div class="track stu">
-      <div class="track-h">수강생 (Copilot)</div>
-      <pre># Copilot Chat 인라인
-"이 코드 OWASP Top 10 기준으로
-보안 검수해줘. XSS · CSRF · 입력
-검증 누락 등."
-
-# 또는 awesome-copilot의
-# security-review 스킬</pre>
+  <h3><span class="step-num">1</span>QMD 재정리 (어제 설치한 도구)</h3>
+  <div class="video-frame">
+    <video controls preload="metadata">
+      <source src="videos/video2-qmd-1min.mp4" type="video/mp4">
+      브라우저가 영상을 지원하지 않습니다.
+    </video>
+    <div class="video-meta">
+      <span class="label">영상 ② · 60초</span>
+      <strong>QMD — 사내 마크다운 1초 검색</strong>
     </div>
   </div>
 
-  <p><code class="inline">/security-review</code>는 Anthropic 공식 슬래시 (2025-08~). Copilot 환경에서는 인라인 프롬프트 또는 awesome-copilot 동등 스킬로 대체.</p>
-
-  <h3><span class="step-num">6</span>실습 Phase 5 | 배포 (선택 — 로컬 HTML로 충분)</h3>
-
-  <p>Phase 5 결과물은 <strong>로컬 정적 HTML로 충분합니다</strong>. 회사 환경에선 외부 공개 부담 + 보안 정책상 GitHub public Pages 비추천. 강의에선 <strong>강사 시연만</strong>, 수강생 본인 환경에선 회사 정책에 따라:</p>
+  <p><strong>QMD (Quick Markdown DB)</strong>는 로컬 마크다운 폴더 전체를 임베딩·인덱싱해서 의미·키워드 검색을 즉시 제공하는 로컬 도구. 어제 1차시에 설치 완료. 본 강의에선 추후 활용법만 안내합니다.</p>
 
   <table>
-    <thead><tr><th>옵션</th><th>대상</th><th>비고</th></tr></thead>
+    <thead><tr><th>특징</th><th>설명</th></tr></thead>
     <tbody>
-      <tr><td><strong>로컬 정적 HTML</strong> (기본)</td><td>본인 PC에서 <code class="inline">file://</code> 열기</td><td>가장 안전. 회사 정책 무관.</td></tr>
-      <tr><td>사내 Git Private repo</td><td>회사 GitHub Org private + 사내 호스팅</td><td>회사 IT 정책 따라</td></tr>
-      <tr><td>GitHub Pages (public)</td><td>개인 학습용 — 가상 데이터만</td><td>회사 데이터 X</td></tr>
+      <tr><td>검색 방식</td><td>BM25 (키워드) + Cosine similarity (의미) 결합</td></tr>
+      <tr><td>임베딩 모델</td><td>로컬 bge-m3 (1024dim, multilingual) — 외부 API 호출 0</td></tr>
+      <tr><td>응답 속도</td><td>약 1초 (수백 파일 단위)</td></tr>
+      <tr><td>토큰비</td><td>0원 (로컬 처리)</td></tr>
+      <tr><td>대상</td><td>회사 위키 · 세션 로그 · 기획 문서 등 마크다운 모음</td></tr>
     </tbody>
   </table>
 
-  <p style="margin-top:14px;"><strong>회사 데이터 주의</strong>: 실 매장 매출·고객 정보는 절대 GitHub public Pages 올리지 않기. 가상 데이터(오늘 실습용 pos_data.csv)만 안전. 회사 운영 분석은 <strong>사내 git private + 사내 호스팅</strong>으로.</p>
+  <p>추후 활용:</p>
+  <ul style="padding-left:22px;font-size:14.5px;">
+    <li><strong>새 세션 시작 시</strong> — "이전에 OO 관련 작업 있었나?" → qmd search로 자동 회상</li>
+    <li><strong>중복 작업 방지</strong> — 새 기획서 작성 전 유사 자료 검색</li>
+    <li><strong>리서치 순서</strong> — 사내 자료 1차 → 외부 검색 2차 (Tier 게이트)</li>
+  </ul>
 
-  <p>아래는 강사 시연 (가상 데이터 사용 시):</p>
-
-  <ol class="steps">
-    <li>
-      <div class="step-h">Git 초기화 + .gitignore</div>
-      <pre>cd 실습폴더 && git init -b main
-# .gitignore는 AI에게 요청</pre>
-    </li>
-    <li>
-      <div class="step-h">첫 커밋 (강사: <code>/smart-commit</code> · 수강생: 인라인)</div>
-      <pre>git add . && git commit -m "init"</pre>
-    </li>
-    <li>
-      <div class="step-h">신규 repo 생성 + 푸시</div>
-      <pre>gh repo create pos-analyzer-day2 --public --source . --push</pre>
-    </li>
-    <li>
-      <div class="step-h">Pages 활성화</div>
-      <pre>gh api -X POST repos/{user}/pos-analyzer-day2/pages \
-  -f 'source[branch]=main'</pre>
-    </li>
-    <li>
-      <div class="step-h">3분 후 라이브 URL 확보</div>
-      <div class="step-desc">https://{user}.github.io/pos-analyzer-day2/ — 강의 끝나면 강사에게 공유</div>
-    </li>
-  </ol>
-
-  <div class="failure-case">
-    <strong>강사 사고 회수 — auto-accept 무한루프 $50/일</strong>: 종료 조건 없이 auto-accept 모드 + 자리 비움 → 8시간 같은 작업 변형 반복. <strong>룰</strong>: 종료 조건 명시 + 시간 제한 + 비용 알람. 베테랑 청중도 같은 사고 가능 — 본 강의에서 정직 회수.
+  <h3><span class="step-num">2</span>LLM 위키 — 자기 복제 운영 메모리</h3>
+  <div class="video-frame">
+    <video controls preload="metadata">
+      <source src="videos/video3-llm-wiki-1min.mp4" type="video/mp4">
+      브라우저가 영상을 지원하지 않습니다.
+    </video>
+    <div class="video-meta">
+      <span class="label">영상 ③ · 60초</span>
+      <strong>LLM 위키 — RAG가 아니라 축적</strong>
+    </div>
   </div>
-</section>
 
-<!-- §AI-Ops 로드맵 -->
-<section id="aiops">
-  <span class="section-tag">§ AI-Ops · 회사 추가 요청 반영 (강의안 부록)</span>
-  <h2>전통 POS → <span class="accent">AI-Ops</span> 전환 5단계 로드맵</h2>
-  <p class="lead">
-    오늘 배운 도구를 POS 운영·개발 조직에 단계적으로 적용하면 어떤 변화가 가능한지. <strong>본 섹션은 회사 측(시바·아모레퍼시픽) 추가 요청 반영 — 강의안 본 흐름 외 부록.</strong>
-  </p>
+  <p class="lead">"RAG는 매번 검색해서 답을 만든다. <strong>LLM 위키는 지식이 쌓여서 답이 더 좋아진다.</strong>" — Andrej Karpathy의 LLM Wiki 패턴.</p>
+
+  <table>
+    <thead><tr><th>구분</th><th>RAG</th><th>LLM 위키</th></tr></thead>
+    <tbody>
+      <tr><td><strong>방식</strong></td><td>매번 원문 검색 → 즉석 컨텍스트</td><td>원자료를 AI가 재구성한 장기 메모리</td></tr>
+      <tr><td><strong>가치</strong></td><td>정보 즉시 회수</td><td>축적될수록 답이 더 좋아짐</td></tr>
+      <tr><td><strong>산출물</strong></td><td>없음 (매번 새로 생성)</td><td>위키 자체가 누적 자산</td></tr>
+      <tr><td><strong>주제</strong></td><td>외부 문서</td><td>나 · 우리 팀 (실패 · 판단 · 결정 맥락)</td></tr>
+    </tbody>
+  </table>
+
+  <p>3계층 구조 (Karpathy 패턴):</p>
+  <pre style="background:#1a1a1a;color:#f0f0f0;padding:14px 18px;border-radius:8px;font-size:13px;">raw    — 불변 원자료 (대화 기록, 프로젝트 메모, 회고)
+wiki   — AI 소유 마크다운 (요약 · 엔티티 · 상호 링크)
+schema — 운영 규칙 (CLAUDE.md, lint 정책)</pre>
+
+  <p>3가지 작업:</p>
+  <ul style="padding-left:22px;font-size:14.5px;">
+    <li><strong>ingest</strong> — 새 raw → wiki 페이지 · 엔티티 생성/갱신</li>
+    <li><strong>query</strong> — 위키만 읽고 답변 합성</li>
+    <li><strong>lint</strong> — 끊긴 링크 · 중복 개념 · 낡은 규칙 정리</li>
+  </ul>
+
+  <p>핵심 원칙 — <strong>Gold In, Gold Out</strong>: "모으기만 하면 쓰레기통. 내 생각이 붙어야 지식이 됩니다." 목적 있는 수집만이 골드 데이터.</p>
+
+  <h3><span class="step-num">3</span>무료 지식그래프 도구 8선 (학생 선택 가이드)</h3>
+
+  <p>모두 오픈소스. LLM 호출 여부 · POS 환경 적합도 기준 비교:</p>
+
+  <table>
+    <thead><tr><th>도구</th><th>GitHub</th><th>라이센스</th><th>LLM 비용</th><th>특징 · POS 적합도</th></tr></thead>
+    <tbody>
+      <tr><td><strong>LightRAG</strong></td><td>HKUDS/LightRAG</td><td>MIT</td><td>LLM 호출 필요 (Ollama 가능)</td><td>경량 RAG + 그래프. 사내 RAG 1차 후보</td></tr>
+      <tr><td><strong>GraphRAG</strong></td><td>microsoft/graphrag</td><td>MIT</td><td>~$5-20/빌드</td><td>Microsoft 공식. 대규모 사내 데이터</td></tr>
+      <tr><td><strong>txtai</strong></td><td>neuml/txtai</td><td>Apache-2.0</td><td>로컬 모델 무료</td><td>검색 · 요약 · QA 통합. 가장 가벼움</td></tr>
+      <tr><td><strong>mem0</strong></td><td>mem0ai/mem0</td><td>Apache-2.0</td><td>LLM 호출 필요</td><td>agent 메모리 특화</td></tr>
+      <tr><td><strong>cognee</strong></td><td>topoteretes/cognee</td><td>Apache-2.0</td><td>LLM 호출 필요</td><td>코드베이스 · 도메인 지식 그래프</td></tr>
+      <tr><td><strong>Kùzu</strong></td><td>kuzudb/kuzu</td><td>MIT</td><td>무료 (DB만)</td><td>임베디드 그래프 DB. POS 그래프 저장소</td></tr>
+      <tr><td><strong>Apache AGE</strong></td><td>apache/age</td><td>Apache-2.0</td><td>무료 (DB 확장)</td><td>PostgreSQL 위 그래프 확장. Oracle 보완</td></tr>
+      <tr><td><strong>Neo4j Community</strong></td><td>neo4j/neo4j</td><td>GPLv3</td><td>무료 (DB만)</td><td>가장 성숙한 그래프 DB. 학습 자료 풍부</td></tr>
+    </tbody>
+  </table>
+
+  <div class="reference">
+    <p><strong>POS팀 환경별 추천</strong><br>
+    • <strong>빠른 시작 (비용 0원)</strong> — txtai (로컬) 또는 Kùzu (DB)<br>
+    • <strong>사내 RAG 본격</strong> — LightRAG (Ollama 로컬) 또는 GraphRAG (대규모)<br>
+    • <strong>Oracle 보완</strong> — Apache AGE (PostgreSQL 확장) 또는 Neo4j Community<br>
+    • <strong>agent 메모리</strong> — mem0 또는 cognee</p>
+  </div>
+
+  <figure class="comic">
+    <img src="images/comics/08-research.png" alt="리서치">
+    <figcaption><strong>만화 ⑧</strong> | 셰프의 시장조사 — 사내 → 외부 순서 (Tier 게이트). LLM 위키가 사내 1차.</figcaption>
+  </figure>
+
+  <h3><span class="step-num">4</span>QMD 리서치 장점 (LLM 위키와의 연결)</h3>
+
+  <p>QMD는 LLM 위키 운영의 <strong>인덱싱·검색 레이어</strong>. 위키를 쌓아도 빠르게 못 찾으면 무용지물. QMD가 그 검색을 1초로 제공합니다.</p>
+
+  <ul style="padding-left:22px;font-size:14.5px;">
+    <li><strong>증분 인덱싱</strong> — 새 파일 추가 시 변경분만 임베딩 (전체 재계산 X)</li>
+    <li><strong>로컬 임베딩</strong> — 사내 자료가 외부 API에 노출 X (보안)</li>
+    <li><strong>스코어 게이트</strong> — 0.9 이상 강한 매칭만 자동 회상 → 노이즈 차단</li>
+    <li><strong>다국어</strong> — bge-m3 모델이 한국어·영어 동시 처리</li>
+  </ul>
+
+  <p style="font-size:13px;color:#555;">QMD 운영 흐름 — 새 자료 추가 → <code class="inline">qmd update</code> (인덱싱) → <code class="inline">qmd search "쿼리"</code> (검색). 회사 환경 적용 시 사내 위키·세션 로그·기획서 폴더를 대상으로 지정.</p>
+
+  <h3><span class="step-num">5</span>전통 POS → AI-Ops 전환 5단계 로드맵</h3>
+  <p class="lead">오늘 배운 5요소(CLAUDE.md · MCP · Skills · Hooks · Memory)를 POS 운영·개발 조직에 단계적으로 적용하면 어떤 변화가 가능한지.</p>
 
   <table>
     <thead><tr><th>단계</th><th>전통 POS (As-Is)</th><th>AI-Ops (To-Be)</th></tr></thead>
     <tbody>
-      <tr><td><strong>1</strong></td><td>매출 보고서 점장별 양식 → 본사 통합 1~2일</td><td><strong>CLAUDE.md/AGENTS.md</strong>에 통일 양식 → AI 자동 정리</td></tr>
-      <tr><td><strong>2</strong></td><td>분석 요청 시 SQL 매번 새로 → 2~3일</td><td><strong>SKILL</strong>로 자주 쓰는 분석 패턴 누적 → 30분</td></tr>
-      <tr><td><strong>3</strong></td><td>POS 단말 오류 → 새벽 호출 → 출동</td><td><strong>HOOK</strong>으로 자동 진단 · 자동 티켓 발행</td></tr>
+      <tr><td><strong>1</strong></td><td>매출 보고서 점장별 양식 → 본사 통합 1~2일</td><td><strong>CLAUDE.md/AGENTS.md</strong> 통일 양식 → AI 자동 정리</td></tr>
+      <tr><td><strong>2</strong></td><td>분석 요청 시 SQL 매번 새로 → 2~3일</td><td><strong>SKILL</strong>에 자주 쓰는 분석 패턴 누적 → 30분</td></tr>
+      <tr><td><strong>3</strong></td><td>POS 단말 오류 → 새벽 호출 → 출동</td><td><strong>HOOK</strong> 자동 진단 + 자동 티켓</td></tr>
       <tr><td><strong>4</strong></td><td>외부 데이터(상권·날씨·트렌드) 수동 합치기</td><td><strong>MCP</strong>로 외부 시스템 직통 → AI 자동 결합</td></tr>
-      <tr><td><strong>5</strong></td><td>배포·보안 점검 매번 수동</td><td><strong>/security-review + GitHub Pages</strong> 자동화</td></tr>
+      <tr><td><strong>5</strong></td><td>분석 결과·실패 사례 매번 잊어버림</td><td><strong>Memory + LLM 위키</strong>로 조직 자산 축적</td></tr>
     </tbody>
   </table>
 
-  <h3>실행 과제</h3>
-  <ol>
-    <li>데이터 표준화 — 매장별 양식 통합 (CLAUDE.md/AGENTS.md 1차)</li>
-    <li>분석 자동화 — 자주 쓰는 패턴 SKILL.md 누적</li>
-    <li>운영 자동화 — HOOK 도입 (위험 명령·실수 자동 차단)</li>
-    <li>외부 연계 — MCP로 사내 DB·상권 데이터·티켓 시스템 연결</li>
-    <li>배포 파이프라인 — 보안 점검 자동화</li>
-  </ol>
-
-  <h3>고려 사항 (POS 특수성)</h3>
-  <ul>
+  <p>POS 도메인 고려 사항:</p>
+  <ul style="padding-left:22px;font-size:14.5px;">
     <li><strong>결제 정확성 100%</strong> — AI 자동화는 보조 영역부터, 결제 본 함수는 사람 승인 후</li>
     <li><strong>24/7 영업 환경</strong> — 배포 윈도우 제한, 점진적 롤아웃 필수</li>
-    <li><strong>매장 네트워크 분산</strong> — 단말 다양성·오프라인 대응 고려</li>
-    <li><strong>PG·카드사 연동</strong> — 외부 의존성 변경 시 다중 검수</li>
-    <li><strong>PCI-DSS 등 보안 규제</strong> — 민감 정보 격리·로그 보존</li>
+    <li><strong>매장 네트워크 분산</strong> — 단말 다양성 · 오프라인 대응 고려</li>
+    <li><strong>PCI-DSS 등 보안 규제</strong> — 민감 정보 격리 · 로그 보존</li>
   </ul>
 
   <div class="reference">
-    <p><strong>Claude Code/Copilot HOOK의 동작 범위</strong> | 개발자 PC 내 동작. POS 운영 시스템 자체 자동화는 MCP + 외부 자동화 도구(n8n · Airflow 등) 결합으로 단계적 진입. <strong>오늘 배운 것 = 개발 단계 가속</strong>, 운영 시스템 자동화는 별도 트랙.</p>
+    <p><strong>오늘 배운 것 = 개발 단계 가속</strong>. 운영 시스템 자체 자동화는 MCP + 외부 자동화 도구(n8n · Airflow 등) 결합으로 단계적 진입. 별도 트랙으로 분리.</p>
   </div>
-</section>
 
-<!-- §5 연장 -->
-<section id="ch5">
-  <span class="section-tag">§ 연장 · 12:00 ~ 12:30</span>
-  <h2><span class="accent">연장</span> | 정리 + Day 3 예고</h2>
+  <h3><span class="step-num">6</span>Day 2 마무리 · Day 3 예고 · Q&amp;A</h3>
 
-  <h3><span class="step-num">1</span>오늘 학습 정리</h3>
-  <p>하네스 5대 요소(지시문·스킬·훅·MCP·설정) → 풀스택 5단계(PLAN·DEVELOP·VERIFY·REFACTOR·SECURITY) → POS 분석 사이트 GitHub Pages 배포. 강사 Claude Code 시연 + 수강생 본인 Copilot 환경 매핑 동등 적용.</p>
+  <p>오늘 학습 정리 — 하네스 5대 요소(CLAUDE.md · MCP · Skills · Hooks · Memory) + Superpowers로 풀스택 5단계 완주 + 조직 맞춤 SKILL.md 작성 + QMD/LLM 위키/지식그래프 안내. <strong>회사 적용 1단계는 AGENTS.md 작성부터</strong>.</p>
 
-  <h3><span class="step-num">2</span>Day 3 (5/14 목) 예고 — RAG + 임베딩·청킹 + 백오피스 비-LLM</h3>
   <table>
-    <thead><tr><th>차시</th><th>주제</th></tr></thead>
+    <thead><tr><th>Day 3 (5/14 목) 예고</th><th>주제</th></tr></thead>
     <tbody>
       <tr><td>9교시</td><td>RAG 본편 — Chroma · Qdrant 운영 사례</td></tr>
       <tr><td>10교시</td><td>확장자별 청킹 최적화 (PDF · HWP · DOCX)</td></tr>
       <tr><td>11교시</td><td>백오피스 비-LLM 모델 사례 (OCR · 마이닝)</td></tr>
       <tr><td>12교시</td><td>사내 지식 베이스 구축 실습</td></tr>
-      <tr><td>연장</td><td>Q&amp;A + Day 4 예고</td></tr>
     </tbody>
   </table>
 
-  <h3><span class="step-num">3</span>차주 자율 과제 (2개)</h3>
-  <ul>
-    <li>본인 프로젝트에 <strong>AGENTS.md</strong> (또는 <code class="inline">.github/copilot-instructions.md</code>) 작성 — 200줄 이내, 회사 룰</li>
-    <li>회사 도메인에 맞는 <strong>SKILL.md 1개</strong> 작성 (<code class="inline">skills/{name}/SKILL.md</code>) → 동료 리뷰</li>
-  </ul>
+  <p style="margin-top:16px;">Q&amp;A — 회사 적용 시 막힐 부분, 도메인 특수 케이스, 보안·권한·데이터 접근 등 자유 질문.</p>
 
   <div class="field-case">
-    오늘 만든 사이트는 라이브로 남아 있습니다. 일하시면서 막힐 때 다시 보시고, 본인 POS 매장·DC·고객 데이터로 응용해 보세요. 같은 5단계가 어디든 적용됩니다.
+    오늘 만든 사이트는 라이브로 남아 있습니다. 일하시면서 막힐 때 다시 보시고, 본인 POS 매장·DC·고객 데이터로 응용해 보세요. 같은 5단계 + 5요소가 어디든 적용됩니다.
   </div>
 </section>
 
@@ -1495,11 +1395,11 @@ Oracle DB 거래 로그 → 이상 패턴 3종 탐지:
 <footer>
   <div class="container">
     <p>
-      <strong>Day 2 교재 | 하네스 5대 요소 + 풀스택 5단계</strong> · 2026-05-13<br>
-      만화 8컷 + 영상 2개 + CSV 1개 · 270분 (연장 30분 포함).
+      <strong>Day 2 교재 | 하네스 5대 요소(CLAUDE.md · MCP · Skills · Hooks · Memory) + Superpowers 풀스택 5단계</strong> · 2026-05-13<br>
+      만화 8컷 + 영상 3개 + CSV 1개 · 270분 (4차시 60+90+60+60).
     </p>
     <p class="muted">
-      Repo: <a href="https://github.com/daniel8824-del/claude-pos-fullstack-day2" target="_blank">github.com/daniel8824-del/claude-pos-fullstack-day2</a> ·
+      Repo: <a href="https://github.com/daniel8824-del/pos-day2" target="_blank">github.com/daniel8824-del/pos-day2</a> ·
       어제 Day 1 자료: <a href="https://daniel8824-del.github.io/claude-harness-catalog/" target="_blank">claude-harness-catalog</a><br>
       외부 출처: <a href="https://github.com/obra/superpowers" target="_blank">obra/superpowers</a> · <a href="https://github.com/rohitg00/agentmemory" target="_blank">rohitg00/agentmemory</a> · <a href="https://github.com/github/awesome-copilot" target="_blank">github/awesome-copilot</a>
     </p>
